@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1170" />
+<meta name="theme-color" content="#2a2e34" />
+<meta name="description" content="WardOS Desk · phone plate contact sheet · ALL desk-*-phone.png · PIN layer · STALE known only · no invent" />
+<title>WardOS · DESK · PHONE GALLERY</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    width: 1920px; height: 1200px; overflow: hidden;
+    background: #2a2e34; color: #e8eaed;
+    font-family: "Inter Display", "Inter", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .panel {
+    width: 1920px; height: 1200px;
+    padding: 10px 12px 8px;
+    display: flex; flex-direction: column; gap: 6px;
+    position: relative; overflow: hidden;
+    background-color: #2a2e34;
+    background-image:
+      linear-gradient(165deg, rgba(90,96,108,0.42) 0%, rgba(40,44,50,0.28) 45%, rgba(22,24,28,0.30) 100%),
+      url("camo-glass-tile-desk.png");
+    background-size: auto, 420px 420px;
+    background-position: center, 0 0;
+    background-repeat: no-repeat, repeat;
+    border: 1px solid rgba(255,255,255,0.10);
+  }
+  .panel::before {
+    content: "";
+    position: absolute; inset: 0; pointer-events: none; z-index: 0;
+    background:
+      linear-gradient(180deg, rgba(255,255,255,0.14) 0%, transparent 28%, transparent 72%, rgba(0,0,0,0.24) 100%),
+      radial-gradient(ellipse 70% 50% at 18% 12%, rgba(255,255,255,0.13) 0%, transparent 55%),
+      radial-gradient(ellipse 50% 40% at 88% 78%, rgba(255,255,255,0.05) 0%, transparent 60%);
+    mix-blend-mode: soft-light;
+    opacity: 0.85;
+  }
+  .panel::after {
+    content: "";
+    position: absolute; inset: 0; pointer-events: none; z-index: 0;
+    background:
+      linear-gradient(118deg, transparent 0 34%, rgba(255,255,255,0.08) 34% 38%, transparent 38% 62%, rgba(255,255,255,0.04) 62% 64%, transparent 64%);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.14),
+      inset 0 -1px 0 rgba(0,0,0,0.28),
+      inset 1px 0 0 rgba(255,255,255,0.06),
+      inset -1px 0 0 rgba(0,0,0,0.22);
+  }
+  .panel > * { position: relative; z-index: 2; }
+  /* UNITY LOCK · Desk dark camo glass cards (shade of House template) */
+  .hdr, .bluf, .card, .tile, .side .card, .recommend, .gate, .nav, .ftr, .strip, .lane, .row-card {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  .hdr {
+    display: flex; align-items: center; justify-content: space-between; gap: 10px;
+    flex-shrink: 0; padding: 7px 10px;
+    border-radius: 10px;
+    background: rgba(22,26,32,0.70); border: 1px solid rgba(255,255,255,0.12);
+  }
+  .hdr-left { display: flex; align-items: center; gap: 8px; min-width: 0; }
+  .back {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-size: 11px; font-weight: 650; color: #a8b0bc; letter-spacing: -0.01em;
+    padding: 5px 10px; border-radius: 999px; min-height: 28px;
+    background: #141c28; border: 1px solid #2a3a50;
+    text-decoration: none; flex-shrink: 0;
+  }
+  .back .chev { font-size: 13px; font-weight: 700; color: #4da3ff; line-height: 1; }
+  .avatar {
+    width: 28px; height: 28px; border-radius: 7px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 9px; font-weight: 800; color: #7ec8ff; letter-spacing: 0.06em;
+    background: #0f1a28; border: 1px solid #2a4a6a;
+  }
+  .eyebrow {
+    font-size: 8px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #4da3ff;
+  }
+  .name { font-size: 15px; font-weight: 700; letter-spacing: -0.03em; color: #fff; line-height: 1.05; }
+  .mock-tag {
+    font-size: 7px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+    color: #a8b0bc; text-align: right; line-height: 1.35; padding: 4px 7px; border-radius: 7px;
+    background: rgba(30,34,42,0.65); border: 1px dashed rgba(255,255,255,0.22); max-width: 420px;
+  }
+
+  .shot-grid {
+    flex: 1; min-height: 0;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 6px;
+  }
+  .card {
+    display: flex; flex-direction: column; gap: 3px;
+    padding: 4px;
+    border-radius: 8px;
+    text-decoration: none; color: inherit;
+    background: rgba(22,26,32,0.70); border: 1px solid rgba(255,255,255,0.12);
+    min-height: 0; overflow: hidden;
+    position: relative;
+  }
+  .card.hero {
+    border-color: #2a5a8a;
+    box-shadow: 0 0 0 1px rgba(77,163,255,0.22);
+  }
+  .card.life {
+    border-color: #2a4a3a;
+  }
+  .thumb-wrap {
+    flex: 1; min-height: 0;
+    border-radius: 5px; overflow: hidden;
+    background: #2a2e34;
+    border: 1px solid #1a2738;
+  }
+  .thumb-wrap img {
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: top center;
+    display: block;
+  }
+  .card-label {
+    font-size: 10px; font-weight: 700; letter-spacing: -0.02em; color: #e8eaed;
+    padding: 0 2px; flex-shrink: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .badge {
+    position: absolute; top: 7px; left: 7px; z-index: 2;
+    font-size: 6px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase;
+    color: #7ec8ff; padding: 2px 5px; border-radius: 999px;
+    background: rgba(15,26,40,0.92); border: 1px solid #2a4a6a;
+  }
+  .badge.life-b {
+    color: #6ddeb5; border-color: #2a5a40; background: rgba(12,22,18,0.92);
+  }
+  .ftr {
+    flex-shrink: 0; display: flex; align-items: center; justify-content: space-between;
+    font-size: 9px; color: #6a7588; font-weight: 500;
+  }
+  .ftr-chip {
+    font-size: 7px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+    color: #7ec8ff; border: 1px solid #2a4a6a;
+    padding: 3px 7px; border-radius: 999px;
+    background: #0f1a28;
+  }
+
+  .nav { display: flex; flex-wrap: wrap; gap: 4px; flex-shrink: 0; }
+  .nav a {
+    flex: 1 1 58px; text-align: center; text-decoration: none;
+    border: 1px dashed #3a4a60; background: #0e1520; color: #7a8799;
+    font-size: 8px; font-weight: 700; letter-spacing: 0.03em;
+    padding: 5px 2px; border-radius: 6px;
+  }
+  .nav a.here {
+    border-style: solid; border-color: #2a4a6a; color: #7ec8ff; background: #0f1a28;
+  }
+</style>
+</head>
+<body>
+<div class="panel">
+  <header class="hdr">
+    <div class="hdr-left">
+      <a class="back" href="desk-index.html" aria-label="Back to Desk index"><span class="chev">‹</span> Index</a>
+      <div class="avatar" aria-hidden="true">PIN</div>
+      <div>
+        <div class="eyebrow">DESK · PHONE PLATES · CONTACT SHEET</div>
+        <h1 class="name">Gallery · all 14 desk phone plates</h1>
+      </div>
+    </div>
+    <div class="mock-tag">MOCK · PIN · STALE cash 2026-09-18 ~9:49a CT<br/>Financial 8 + Travel · Body · Alin · Party · Us · Kids</div>
+  </header>
+
+  <nav class="nav" aria-label="Desk plates">
+    <a href="desk-index.html">Desk home</a>
+    <a href="desk-travel.html">Travel</a>
+    <a href="desk-body.html">Body</a>
+    <a href="desk-house-alin.html">Alin</a>
+    <a href="desk-kids.html">Kids</a>
+    <a href="desk-party.html">Party</a>
+    <a href="desk-us.html">Us</a>
+    <a href="desk-cash.html">Cash</a>
+    <a href="desk-eoy.html">EOY</a>
+    <a href="desk-cards.html">Cards</a>
+    <a href="desk-freeze.html">FREEZE</a>
+    <a href="desk-autopay.html">Autopay</a>
+    <a href="desk-envelopes.html">Envelopes</a>
+    <a href="desk-refresh.html">Refresh</a>
+    <a class="here" href="desk-gallery.html">Gallery</a>
+  </nav>
+
+  <nav class="shot-grid" aria-label="Desk phone plate gallery">
+    <a class="card hero" href="desk-index.html">
+      <span class="badge">Hero</span>
+      <div class="thumb-wrap"><img src="../../board-os-desk-index-phone.png" alt="Desk index phone" /></div>
+      <div class="card-label">Index</div>
+    </a>
+    <a class="card hero" href="desk-freeze.html">
+      <span class="badge">Hero</span>
+      <div class="thumb-wrap"><img src="../../board-os-desk-freeze-phone.png" alt="FREEZE phone" /></div>
+      <div class="card-label">FREEZE</div>
+    </a>
+    <a class="card hero" href="desk-cash.html">
+      <span class="badge">Hero</span>
+      <div class="thumb-wrap"><img src="../../board-os-desk-cash-phone.png" alt="Cash phone" /></div>
+      <div class="card-label">Cash</div>
+    </a>
+    <a class="card" href="desk-envelopes.html">
+      <div class="thumb-wrap"><img src="../../board-os-desk-envelopes-phone.png" alt="Envelopes phone" /></div>
+      <div class="card-label">Envelopes</div>
+    </a>
+    <a class="card" href="desk-autopay.html">
+      <div class="thumb-wrap"><img src="../../board-os-desk-autopay-phone.png" alt="Autopay phone" /></div>
+      <div class="card-label">Autopay</div>
+    </a>
+    <a class="card" href="desk-eoy.html">
+      <div class="thumb-wrap"><img src="../../board-os-desk-eoy-phone.png" alt="EOY phone" /></div>
+      <div class="card-label">EOY</div>
+    </a>
+    <a class="card" href="desk-cards.html">
+      <div class="thumb-wrap"><img src="../../board-os-desk-cards-phone.png" alt="Cards phone" /></div>
+      <div class="card-label">Cards</div>
+    </a>
+    <a class="card" href="desk-refresh.html">
+      <div class="thumb-wrap"><img src="../../board-os-desk-refresh-phone.png" alt="Refresh phone" /></div>
+      <div class="card-label">Refresh</div>
+    </a>
+    <a class="card life" href="desk-travel.html">
+      <span class="badge life-b">Life</span>
+      <div class="thumb-wrap"><img src="../../board-os-desk-travel-phone.png" alt="Travel phone" /></div>
+      <div class="card-label">Travel</div>
+    </a>
+    <a class="card life" href="desk-body.html">
+      <span class="badge life-b">Life</span>
+      <div class="thumb-wrap"><img src="../../board-os-desk-body-phone.png" alt="Body phone" /></div>
+      <div class="card-label">Body / Vita</div>
+    </a>
+    <a class="card life" href="desk-house-alin.html">
+      <span class="badge life-b">Life</span>
+      <div class="thumb-wrap"><img src="../../board-os-desk-alin-phone.png" alt="Alin phone" /></div>
+      <div class="card-label">House / Alin</div>
+    </a>
+    <a class="card life" href="desk-kids.html">
+      <span class="badge life-b">Life</span>
+      <div class="thumb-wrap"><img src="../../board-os-desk-kids-phone.png" alt="Kids phone" /></div>
+      <div class="card-label">Kids</div>
+    </a>
+    <a class="card life" href="desk-party.html">
+      <span class="badge life-b">Life</span>
+      <div class="thumb-wrap"><img src="../../board-os-desk-party-phone.png" alt="Party phone" /></div>
+      <div class="card-label">Party</div>
+    </a>
+    <a class="card life" href="desk-us.html">
+      <span class="badge life-b">Life</span>
+      <div class="thumb-wrap"><img src="../../board-os-desk-us-phone.png" alt="Us phone" /></div>
+      <div class="card-label">Us</div>
+    </a>
+    <a class="card" href="desk-waiting.html">
+      <div class="thumb-wrap"><img src="../../board-os-desk-waiting-phone.png" alt="Waiting phone" /></div>
+      <div class="meta"><div class="name">Waiting-on</div><div class="path">desk-waiting</div></div>
+    </a>
+    <a class="card" href="desk-leave-card.html">
+      <div class="thumb-wrap"><img src="../../board-os-desk-leave-card-phone.png" alt="Leave card phone" /></div>
+      <div class="meta"><div class="name">Leave card A</div><div class="path">desk-leave-card</div></div>
+    </a>
+    <a class="card" href="desk-lock-packet.html">
+      <div class="thumb-wrap"><img src="../../board-os-desk-lock-packet-phone.png" alt="Lock packet phone" /></div>
+      <div class="meta"><div class="name">Lock packet B</div><div class="path">desk-lock-packet</div></div>
+    </a>
+    <a class="card" href="desk-wallet.html">
+      <div class="thumb-wrap"><img src="../../board-os-desk-wallet-phone.png" alt="Wallet phone" /></div>
+      <div class="meta"><div class="name">Wallet</div><div class="path">desk-wallet</div></div>
+    </a>
+    <a class="card" href="desk-admin.html">
+      <div class="thumb-wrap"><img src="../../board-os-desk-admin-phone.png" alt="Admin phone" /></div>
+      <div class="meta"><div class="name">Admin</div><div class="path">desk-admin</div></div>
+    </a>
+
+  </nav>
+
+  <footer class="ftr">
+    <span>PIN · dark camo glass · 14 phone plates · known only · no invent $</span>
+    <span class="ftr-chip">DESK GALLERY · 1170×731 · 14 CURRENT</span>
+  </footer>
+</div>
+</body>
+</html>

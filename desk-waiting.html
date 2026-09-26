@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#2a2e34" />
+<meta name="description" content="WardOS Desk waiting-on open loops · Atlas packet · known-only · no money" />
+<title>WardOS · Desk · Waiting-on</title>
+<style>
+  @font-face { font-family:"Inter Display"; src:url("fonts/InterDisplay-Regular.ttf") format("truetype"); font-weight:400; }
+  @font-face { font-family:"Inter Display"; src:url("fonts/InterDisplay-Medium.ttf") format("truetype"); font-weight:500; }
+  @font-face { font-family:"Inter Display"; src:url("fonts/InterDisplay-SemiBold.ttf") format("truetype"); font-weight:600; }
+  @font-face { font-family:"Inter Display"; src:url("fonts/InterDisplay-Bold.ttf") format("truetype"); font-weight:700; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  :root {
+    --canvas:#2a2e34; --glass:rgba(22,26,32,.72); --glass-strong:rgba(18,22,28,.82);
+    --line:rgba(255,255,255,.13); --text:#f2f4f7; --mute:#9aa6b5; --quiet:#718094;
+    --blue:#4da3ff; --soft:#6ddeb5; --amber:#ffc14d; --cliff:#ff8a4c;
+  }
+  html,body { width:100%; height:100%; min-width:0; overflow:hidden; background:var(--canvas); color:var(--text); font-family:"Inter Display",Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; -webkit-font-smoothing:antialiased; }
+  a { color:inherit; text-decoration:none; }
+  .panel { width:100vw; height:100vh; min-height:0; padding:22px 32px 16px; display:flex; flex-direction:column; gap:14px; position:relative; overflow:hidden; background-color:var(--canvas); background-image:linear-gradient(165deg,rgba(90,96,108,.42),rgba(40,44,50,.28) 45%,rgba(22,24,28,.30)),url("camo-glass-tile-desk.png"); background-size:auto,420px 420px; background-position:center,0 0; background-repeat:no-repeat,repeat; border:1px solid rgba(255,255,255,.10); }
+  .panel::before { content:""; position:absolute; inset:0; pointer-events:none; z-index:0; background:linear-gradient(180deg,rgba(255,255,255,.14),transparent 28%,transparent 72%,rgba(0,0,0,.24)),radial-gradient(ellipse 70% 50% at 18% 12%,rgba(255,255,255,.13),transparent 55%),radial-gradient(ellipse 50% 40% at 88% 78%,rgba(255,255,255,.05),transparent 60%); mix-blend-mode:soft-light; opacity:.85; }
+  .panel::after { content:""; position:absolute; inset:0; pointer-events:none; z-index:0; background:linear-gradient(118deg,transparent 0 34%,rgba(255,255,255,.08) 34% 38%,transparent 38% 62%,rgba(255,255,255,.04) 62% 64%,transparent 64%); box-shadow:inset 0 1px 0 rgba(255,255,255,.14),inset 0 -1px 0 rgba(0,0,0,.28),inset 1px 0 0 rgba(255,255,255,.06),inset -1px 0 0 rgba(0,0,0,.22); }
+  .panel > * { position:relative; z-index:2; }
+  .glass { backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); }
+  .hdr { flex:0 0 auto; display:flex; align-items:center; justify-content:space-between; gap:18px; padding:12px 18px; border-radius:16px; background:rgba(28,32,38,.68); border:1px solid rgba(255,255,255,.12); box-shadow:0 1px 0 rgba(255,255,255,.10) inset,0 8px 24px rgba(0,0,0,.22); }
+  .hdr-left { display:flex; align-items:center; gap:14px; min-width:0; }
+  .back { display:inline-flex; align-items:center; gap:6px; min-height:40px; padding:8px 14px; flex:0 0 auto; border-radius:999px; color:#7ec8ff; background:#0f1a28; border:1px solid #2a4a6a; font-size:14px; font-weight:700; }
+  .back .chev { color:var(--blue); font-size:18px; line-height:1; }
+  .eyebrow { margin-bottom:4px; color:var(--blue); font-size:12px; font-weight:700; letter-spacing:.22em; text-transform:uppercase; }
+  .title { color:#fff; font-size:32px; font-weight:700; letter-spacing:-.03em; line-height:1.05; }
+  .tags { display:flex; align-items:center; justify-content:flex-end; flex-wrap:wrap; gap:8px; }
+  .tag { padding:8px 11px; border-radius:8px; color:#a8b0bc; background:rgba(30,34,42,.65); border:1px dashed rgba(255,255,255,.22); font-size:11px; font-weight:800; letter-spacing:.10em; text-transform:uppercase; white-space:nowrap; }
+  .tag.mock { color:#7dffd4; background:#0c1a16; border:1px solid #2a5a48; }
+  .tag.pin { color:#b8d4f0; background:rgba(40,48,58,.72); border:1px solid rgba(180,200,220,.35); }
+  .bluf { flex:0 0 auto; min-height:96px; display:flex; align-items:center; justify-content:space-between; gap:18px; padding:16px 22px; overflow:hidden; border-radius:18px; background:linear-gradient(145deg,rgba(28,32,38,.74),rgba(18,20,24,.82)); border:1px solid #243448; box-shadow:0 8px 24px rgba(0,0,0,.20); position:relative; }
+  .bluf::before { content:""; position:absolute; inset:0 0 auto; height:3px; background:linear-gradient(90deg,var(--blue),var(--soft) 50%,var(--amber)); }
+  .bluf .kicker { color:#8491a2; font-size:11px; font-weight:800; letter-spacing:.18em; text-transform:uppercase; }
+  .bluf .main { margin-top:4px; color:#fff; font-size:26px; font-weight:800; letter-spacing:-.025em; line-height:1.1; }
+  .bluf .sub { margin-top:4px; color:#9aa6b5; font-size:13px; font-weight:500; }
+  .bluf-badge { flex:0 0 auto; padding:12px 15px; border-radius:11px; color:#7dffd4; background:#0c1a16; border:1px solid #2a5a48; font-size:11px; font-weight:900; letter-spacing:.12em; text-align:center; text-transform:uppercase; }
+  .section-head { flex:0 0 auto; display:flex; align-items:baseline; justify-content:space-between; padding:0 3px; }
+  .section-title { color:#9aa6b5; font-size:12px; font-weight:800; letter-spacing:.18em; text-transform:uppercase; }
+  .section-meta { color:#718094; font-size:12px; font-weight:600; }
+  .waiting-grid { flex:1 1 auto; min-height:0; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); grid-template-rows:repeat(3,minmax(0,1fr)); gap:12px; }
+  .wait-card { min-width:0; min-height:0; display:flex; flex-direction:column; gap:9px; padding:16px 18px; overflow:hidden; border-radius:16px; background:var(--glass); border:1px solid var(--line); box-shadow:0 1px 0 rgba(255,255,255,.08) inset,0 6px 18px rgba(0,0,0,.22); }
+  .wait-card.p0 { border-color:rgba(255,138,76,.72); box-shadow:0 0 0 1px rgba(255,138,76,.12) inset,0 8px 22px rgba(0,0,0,.25); }
+  .card-top { display:flex; align-items:center; justify-content:space-between; gap:8px; flex:0 0 auto; }
+  .index { color:var(--blue); font-size:14px; font-weight:800; letter-spacing:.08em; }
+  .wait-card.p0 .index { color:var(--cliff); }
+  .priority { padding:5px 8px; border-radius:7px; color:var(--amber); background:#2a2208; border:1px solid #6a5420; font-size:10px; font-weight:900; letter-spacing:.12em; text-transform:uppercase; }
+  .priority-p0 { color:var(--cliff); background:#2a1208; border-color:#6a3020; }
+  .wait-card h2 { color:#fff; font-size:19px; font-weight:750; letter-spacing:-.02em; line-height:1.16; }
+  .wait-card .rule { height:1px; flex:0 0 auto; background:rgba(255,255,255,.10); }
+  .fact { display:flex; align-items:baseline; justify-content:space-between; gap:12px; color:#c2cad4; font-size:13px; font-weight:550; line-height:1.25; }
+  .fact strong { color:#fff; font-weight:700; text-align:right; }
+  .label { flex:0 0 auto; color:#7a8799; font-size:10px; font-weight:800; letter-spacing:.15em; text-transform:uppercase; }
+  .wait-card.done { opacity: 0.72; border-color: rgba(61,206,160,0.45); }
+  .wait-card.done h2 { color: #a8c4b4; text-decoration: line-through; text-decoration-color: rgba(125,255,212,0.45); }
+  .priority-done { color: #7dffd4; background: #0c1a16; border-color: #2a5a48; }
+  .wait-card.done .index { color: #7dffd4; }
+  .nav { flex:0 0 auto; display:flex; flex-wrap:wrap; gap:8px; }
+  .nav a { flex:1 1 90px; min-height:40px; display:flex; align-items:center; justify-content:center; padding:9px 6px; border-radius:11px; color:#7a8799; background:#0e1520; border:1px dashed #3a4a60; font-size:11px; font-weight:700; letter-spacing:.04em; text-align:center; }
+  .nav a.here { color:#7ec8ff; background:#0f1a28; border-style:solid; border-color:#2a4a6a; }
+  .footer { flex:0 0 auto; display:flex; align-items:center; justify-content:space-between; gap:14px; padding-top:7px; border-top:1px solid #1e2d42; color:#9aa8ba; font-size:12px; font-weight:600; line-height:1.25; }
+  .footer .cap { min-width:0; }
+  .footer .stamp { flex:0 0 auto; color:#5a6678; font-size:10px; font-weight:700; letter-spacing:.05em; text-align:right; line-height:1.35; }
+  @media (max-width:1399px) {
+    .panel { padding:14px 18px 10px; gap:9px; }
+    .hdr { padding:9px 13px; gap:12px; }
+    .back { min-height:36px; padding:7px 11px; font-size:12px; }
+    .eyebrow { font-size:10px; margin-bottom:3px; }
+    .title { font-size:24px; }
+    .tag { padding:6px 8px; font-size:9px; }
+    .bluf { min-height:72px; padding:11px 15px; gap:12px; }
+    .bluf .kicker { font-size:9px; }
+    .bluf .main { font-size:19px; }
+    .bluf .sub { font-size:10px; margin-top:3px; }
+    .bluf-badge { padding:9px 11px; font-size:9px; }
+    .section-title { font-size:10px; }
+    .section-meta { font-size:10px; }
+    .waiting-grid { gap:8px; }
+    .wait-card { gap:6px; padding:10px 12px; border-radius:13px; }
+    .index { font-size:11px; }
+    .priority { padding:4px 6px; font-size:8px; }
+    .wait-card h2 { font-size:15px; line-height:1.12; }
+    .fact { gap:7px; font-size:10px; line-height:1.15; }
+    .label { font-size:8px; }
+    .nav { gap:5px; }
+    .nav a { min-height:34px; padding:7px 4px; font-size:9px; }
+    .footer { padding-top:4px; font-size:9px; }
+    .footer .stamp { font-size:8px; }
+  }
+  @media (max-width:760px) {
+    .tags { display:none; }
+    .bluf-badge { display:none; }
+    .footer .stamp { display:none; }
+    .wait-card h2 { font-size:14px; }
+  }
+</style>
+</head>
+<body>
+<div class="panel">
+  <header class="hdr glass">
+    <div class="hdr-left">
+      <a class="back" href="desk-index.html" aria-label="Back to Desk"><span class="chev">‹</span> Desk</a>
+      <div>
+        <div class="eyebrow">WardOS · Desk · PIN</div>
+        <h1 class="title">Waiting-on · open loops</h1>
+      </div>
+    </div>
+    <div class="tags"><span class="tag mock">MOCK · WardOS</span><span class="tag">KNOWN ONLY</span><span class="tag pin">PIN</span></div>
+  </header>
+
+  <section class="bluf glass" aria-label="Waiting-on summary">
+    <div>
+      <div class="kicker">Atlas packet · waitingOn · no money</div>
+      <div class="main">Open loops, in owner order</div>
+      <div class="sub">8 open · P0 Wells durable session OPEN again · source: data/atlas-packet.json</div>
+    </div>
+    <div class="bluf-badge">No money<br/>on this plate</div>
+  </section>
+
+  <div class="section-head"><div class="section-title">Waiting-on</div><div class="section-meta">Atlas packet · 8 open · 1 done</div></div>
+  <main class="waiting-grid" aria-label="Waiting-on open loops">
+        <article class="wait-card" data-priority="P0">
+          <div class="card-top"><span class="index">00</span><span class="priority">P0 OPEN</span></div>
+          <h2>P0 Wells durable session — OPEN again</h2>
+          <div class="rule"></div>
+          <div class="fact"><span class="label">Owner</span><strong>Ledger+Atlas+Dan</strong></div>
+          <div class="fact"><span class="label">Blocks</span><span>fresh AVAILABLE · cash STALE</span></div>
+          <div class="fact"><span class="label">Held</span><span>last live Sat Sep 19 6:54p CT · dead ~9:22p</span></div>
+        </article>
+        <article class="wait-card" data-priority="OPEN">
+          <div class="card-top"><span class="index">01</span><span class="priority">OPEN</span></div>
+          <h2>ParentSquare sign-in on Atlas box</h2>
+          <div class="rule"></div>
+          <div class="fact"><span class="label">Owner</span><strong>Atlas+Dan</strong></div>
+          <div class="fact"><span class="label">Blocks</span><span>school feed</span></div>
+        </article>
+        <article class="wait-card" data-priority="OPEN">
+          <div class="card-top"><span class="index">02</span><span class="priority">OPEN</span></div>
+          <h2>Weather source for outdoor sports</h2>
+          <div class="rule"></div>
+          <div class="fact"><span class="label">Owner</span><strong>Atlas</strong></div>
+          <div class="fact"><span class="label">Blocks</span><span>House weather chip</span></div>
+        </article>
+        <article class="wait-card" data-priority="OPEN">
+          <div class="card-top"><span class="index">03</span><span class="priority">OPEN</span></div>
+          <h2>KS kitchen tablet physically up</h2>
+          <div class="rule"></div>
+          <div class="fact"><span class="label">Owner</span><strong>Dan</strong></div>
+          <div class="fact"><span class="label">Blocks</span><span>MOCK → TABLET-TEST</span></div>
+        </article>
+        <article class="wait-card" data-priority="OPEN">
+          <div class="card-top"><span class="index">04</span><span class="priority">OPEN</span></div>
+          <h2>Costco Hisense 65 freight pickup call</h2>
+          <div class="rule"></div>
+          <div class="fact"><span class="label">Owner</span><strong>Costco carrier</strong></div>
+          <div class="fact"><span class="label">Blocks</span><span>OPEN payable $587.15 PENDING last-yes</span></div>
+        </article>
+        <article class="wait-card" data-priority="OPEN">
+          <div class="card-top"><span class="index">05</span><span class="priority">OPEN</span></div>
+          <h2>UA add-ons / pizza last-yes</h2>
+          <div class="rule"></div>
+          <div class="fact"><span class="label">Owner</span><strong>Dan</strong></div>
+          <div class="fact"><span class="label">Blocks</span><span>party spend</span></div>
+        </article>
+        <article class="wait-card" data-priority="OPEN">
+          <div class="card-top"><span class="index">06</span><span class="priority">OPEN</span></div>
+          <h2>Alin punch execute</h2>
+          <div class="rule"></div>
+          <div class="fact"><span class="label">Owner</span><strong>Alin</strong></div>
+          <div class="fact"><span class="label">Blocks</span><span>house work</span></div>
+        </article>
+        <article class="wait-card" data-priority="OPEN">
+          <div class="card-top"><span class="index">07</span><span class="priority">OPEN</span></div>
+          <h2>Post-travel wallet stack (DL/ins/HSA/Apple/Target)</h2>
+          <div class="rule"></div>
+          <div class="fact"><span class="label">Owner</span><strong>Dan+Atlas</strong></div>
+          <div class="fact"><span class="label">Blocks</span><span>post-Nashville admin</span></div>
+        </article>
+        
+        <article class="wait-card done" data-priority="DONE">
+          <div class="card-top"><span class="index">09</span><span class="priority priority-done">DONE</span></div>
+          <h2>Ledger last live harvest (then session died)</h2>
+          <div class="rule"></div>
+          <div class="fact"><span class="label">Owner</span><strong>Ledger</strong></div>
+          <div class="fact"><span class="label">Resolved</span><span>cash.json LIVE · $14,164.46 · Wed Sep 23 ~9:15a CT screenshots</span></div>
+        </article>
+  </main>
+
+  <nav class="nav glass" aria-label="Desk plates">
+    <a href="desk-index.html">Desk</a><a href="desk-waiting.html" class="here">Waiting</a><a href="desk-leave-card.html">Leave card</a><a href="desk-lock-packet.html">Lock packet</a><a href="desk-travel.html">Travel</a><a href="desk-wallet.html">Wallet</a><a href="desk-admin.html">Admin</a><a href="desk-cash.html">Cash</a><a href="desk-gallery.html">Gallery</a>
+  </nav>
+
+  <footer class="footer glass">
+    <div class="cap">Atlas packet · known facts only · no money · lock packet flight ref verified: WN557 #BCFO7F</div>
+    <div class="stamp">WardOS · Desk dark camo<br/>MOCK · as-of Sat Sep 19 2026 CT<br/>Sun TABLET-TEST · Mon 8am LIVE</div>
+  </footer>
+</div>
+</body>
+</html>

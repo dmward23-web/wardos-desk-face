@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=1080"/>
+<title>WardOS-Sunday-Money · Kids & Co-parent · Sat Sep 26 2026</title><style>
+@font-face{font-family:InterDisplay;src:url("file:///workspace/fonts/InterDisplay-Regular.ttf");font-weight:400;font-style:normal}
+@font-face{font-family:InterDisplay;src:url("file:///workspace/fonts/InterDisplay-Medium.ttf");font-weight:500;font-style:normal}
+@font-face{font-family:InterDisplay;src:url("file:///workspace/fonts/InterDisplay-SemiBold.ttf");font-weight:600;font-style:normal}
+@font-face{font-family:InterDisplay;src:url("file:///workspace/fonts/InterDisplay-Bold.ttf");font-weight:700;font-style:normal}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;font-family:InterDisplay,Inter,-apple-system,Helvetica,sans-serif;color:#e8eaed;background:#252a32;-webkit-font-smoothing:antialiased}
+.panel{width:1080px;height:1920px;padding:18px 22px 14px;display:flex;flex-direction:column;gap:12px;position:relative;overflow:hidden;
+  background-color:#252a32;
+  background-image:
+    linear-gradient(165deg,rgba(90,96,108,.42) 0%,rgba(28,32,38,.30) 42%,rgba(10,12,16,.35) 100%),
+    radial-gradient(ellipse 90% 70% at 50% 40%,transparent 30%,rgba(0,0,0,.30) 100%),
+    url("file:///workspace/wardos-kit/chrome/camo-glass-tile-desk.png");
+  background-size:auto,auto,520px 520px;background-position:center,center,0 0;background-repeat:no-repeat,no-repeat,repeat;
+  border:1px solid rgba(255,255,255,.10)}
+.panel::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.14) 0%,transparent 22%,transparent 74%,rgba(0,0,0,.24) 100%),
+    radial-gradient(ellipse 65% 45% at 16% 10%,rgba(255,255,255,.13) 0%,transparent 55%);
+  mix-blend-mode:soft-light;opacity:.9}
+.panel>*{position:relative;z-index:2}
+.glass{backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  background:rgba(22,26,34,.82);border:1px solid rgba(255,255,255,.13);
+  box-shadow:0 1px 0 rgba(255,255,255,.16) inset,0 10px 28px rgba(0,0,0,.28);border-radius:14px}
+
+.hdr{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:10px 14px}
+.brand img{display:block;height:48px;width:auto}
+.eyebrow{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#a8b0bc;margin-top:4px}
+.title{font-size:30px;font-weight:700;letter-spacing:-.035em;color:#fff;margin-top:1px;line-height:1.05}
+.asof{font-size:12px;font-weight:500;color:#a8b0bc;margin-top:3px;line-height:1.3}
+.chip{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:8px 12px;border-radius:999px;
+  background:rgba(18,22,28,.92);border:1px solid rgba(255,92,92,.55);color:#ff8a8a;align-self:flex-start;white-space:nowrap}
+
+.bluf{padding:16px 18px 14px;position:relative;overflow:hidden}
+.bluf .lab{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#a8b0bc}
+.bluf .hero{font-size:28px;font-weight:700;letter-spacing:-.03em;line-height:1.2;color:#fff;margin-top:8px;max-width:980px}
+.bluf .sub{font-size:15px;font-weight:500;color:#a8b0bc;margin-top:8px;line-height:1.35}
+.bluf .row-chips{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:12px}
+.stamp{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:7px 11px;border-radius:6px;
+  background:rgba(255,210,77,.12);border:1px dashed rgba(255,210,77,.55);color:#ffd24d}
+.gate-chip{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:7px 12px;border-radius:999px;
+  background:rgba(255,92,92,.14);border:1px solid rgba(255,92,92,.5);color:#ff5c5c}
+.ctx{font-size:11px;font-weight:600;letter-spacing:.04em;padding:7px 11px;border-radius:999px;
+  background:rgba(18,22,28,.9);border:1px solid rgba(255,255,255,.16);color:#a8b0bc}
+
+.ars{padding:12px 14px 14px;flex:1 1 auto;min-height:0;display:flex;flex-direction:column}
+.ars .sec{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#a8b0bc;margin-bottom:10px}
+.ar-card{display:flex;gap:12px;align-items:flex-start;padding:14px 14px;border-radius:12px;margin-bottom:8px;
+  background:rgba(10,12,16,.55);border:1px solid rgba(255,255,255,.1)}
+.ar-card:last-child{margin-bottom:0}
+.ar-card .rank{width:28px;height:28px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;
+  font-size:13px;font-weight:700;background:rgba(18,22,28,.9);border:1px solid rgba(255,255,255,.2);color:#a8b0bc;margin-top:2px}
+.ar-card .main{flex:1;min-width:0}
+.ar-card .nm{font-size:17px;font-weight:700;color:#e8eaed;line-height:1.25}
+.ar-card .meta{font-size:13px;font-weight:500;color:#a8b0bc;margin-top:5px;line-height:1.4}
+.ar-card .right{text-align:right;flex-shrink:0;min-width:150px}
+.ar-card .amt{font-size:24px;font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums;color:#fff;line-height:1.1}
+.ar-card .due{font-size:12px;font-weight:600;color:#a8b0bc;margin-top:4px;white-space:nowrap}
+.badge{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  padding:4px 8px;border-radius:999px;margin-top:6px}
+
+.ar-card.open{border-color:rgba(255,210,77,.4);background:rgba(255,210,77,.07)}
+.ar-card.open .rank{border-color:rgba(255,210,77,.55);color:#ffd24d;background:rgba(255,210,77,.1)}
+.ar-card.open .amt{color:#ffd24d}
+.ar-card.open .badge{background:rgba(255,210,77,.14);border:1px solid rgba(255,210,77,.5);color:#ffd24d}
+
+.ar-card.pass{border-color:rgba(255,255,255,.14);background:rgba(10,12,16,.45)}
+.ar-card.pass .amt{color:#c8cdd6}
+.ar-card.pass .badge{background:rgba(18,22,28,.8);border:1px solid rgba(255,255,255,.2);color:#a8b0bc}
+
+.ar-card.mute{opacity:.55}
+.ar-card.mute .nm,.ar-card.mute .amt{color:#a8b0bc;font-weight:600}
+.ar-card.mute .amt{font-size:18px}
+.ar-card.mute .badge{background:rgba(18,22,28,.8);border:1px solid rgba(255,255,255,.12);color:#a8b0bc}
+
+.rule-bar{padding:12px 14px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.chiplet{font-size:12px;font-weight:700;letter-spacing:.04em;padding:7px 11px;border-radius:999px;
+  background:rgba(18,22,28,.9);border:1px solid rgba(255,255,255,.16);color:#c8cdd6}
+.chiplet.warn{border-color:rgba(255,210,77,.4);color:#ffd24d}
+.chiplet.dead{border-color:rgba(255,92,92,.45);color:#ff5c5c}
+
+.caption{font-size:14px;font-weight:600;color:#d0d5dc;line-height:1.4;padding:10px 14px}
+.ftr{margin-top:auto;display:flex;justify-content:space-between;align-items:flex-end;gap:12px;font-size:11px;font-weight:500;color:#a8b0bc;padding-top:6px;border-top:1px solid rgba(255,255,255,.14)}
+.ftr .note{max-width:68%;line-height:1.35}
+</style></head>
+<body><div class="panel">
+
+  <div class="hdr glass">
+    <div>
+      <div class="brand"><img src="file:///workspace/wardos-kit/chrome/wardos-mark-header.png" height="48" alt="WardOS"/></div>
+      <div class="eyebrow">WARDOS-SUNDAY-MONEY · INSTRUMENT</div>
+      <div class="title">Kids &amp; Co-parent</div>
+      <div class="asof">as-of locks 24–25 Sep + Dashboard STATUS</div>
+    </div>
+    <div class="chip">GATE CLOSED · ARs ≠ disc</div>
+  </div>
+
+  <div class="bluf glass">
+    <div class="lab">Co-parent books · open ARs only</div>
+    <div class="hero">Open ARs only — no chase copy</div>
+    <div class="sub">ARs are not disc · collection = Atlas clock</div>
+    <div class="row-chips">
+      <span class="gate-chip">GATE CLOSED</span>
+      <span class="stamp">OPEN AR ×2</span>
+      <span class="ctx">Nothing outbound from this plate</span>
+    </div>
+  </div>
+
+  <div class="ars glass">
+    <div class="sec">Open ARs · pass-through · ECONOMY footnote</div>
+
+    <div class="ar-card open">
+      <div class="rank">1</div>
+      <div class="main">
+        <div class="nm">Midwest Anxiety unreimbursed medical</div>
+        <div class="meta">decree 87/13 · Dan-paid $920 · NOTICE SENT 2026-09-24 ~9:38p CT · ack 87/13 · NO PAY</div>
+        <span class="badge">AR OPEN · Kristin</span>
+      </div>
+      <div class="right">
+        <div class="amt">$119.60</div>
+        <div class="due">due ≈2026-10-24</div>
+      </div>
+    </div>
+
+    <div class="ar-card open">
+      <div class="rank">2</div>
+      <div class="main">
+        <div class="nm">Urban Air Hayes day-of</div>
+        <div class="meta">OTD $421.37 · Atlas clock owns collection</div>
+        <span class="badge">AR OPEN · Kristin</span>
+      </div>
+      <div class="right">
+        <div class="amt">$259.33</div>
+        <div class="due">Atlas clock</div>
+      </div>
+    </div>
+
+    <div class="ar-card pass">
+      <div class="rank">3</div>
+      <div class="main">
+        <div class="nm">Ainsley vanity pass-through</div>
+        <div class="meta">Mom Venmo IN then Jessy OUT · NOT disc · NOT floor burn</div>
+        <span class="badge">PASS-THROUGH · TBD</span>
+      </div>
+      <div class="right">
+        <div class="amt">$150–$200</div>
+        <div class="due">TBD range</div>
+      </div>
+    </div>
+
+    <div class="ar-card mute">
+      <div class="rank">4</div>
+      <div class="main">
+        <div class="nm">College ECONOMY footnote only</div>
+        <div class="meta">Quest529 $3k/kid/yr · 2026=$0 · sleeves $80k×3 targets · balance UNKNOWN</div>
+        <span class="badge">FOOTNOTE · FROZEN</span>
+      </div>
+      <div class="right">
+        <div class="amt">2026=$0</div>
+        <div class="due">bal UNKNOWN</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="rule-bar glass">
+    <span class="chiplet warn">ARs ≠ disc</span>
+    <span class="chiplet">Atlas owns the clock</span>
+    <span class="chiplet dead">omit Harbor / Jill / CS·maint</span>
+  </div>
+
+  <div class="caption glass">
+    Books only. Atlas owns the clock. Nothing outbound from this plate.
+  </div>
+
+  <div class="ftr">
+    <span class="note">as-of Sat 26 Sep ~12:40p CT · AVAILABLE $14,114.46 STALE ASSUMED · GATE CLOSED · Ledger books · never invent</span>
+    <span>WardOS · Sunday-Money · Kids &amp; Co-parent</span>
+  </div>
+</div></body></html>

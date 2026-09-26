@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/>
+<meta name="viewport" content="width=1080"/>
+<title>WardOS Leave Card</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#252a32;
+font-family:Inter,SF Pro Display,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:#e8eaed;-webkit-font-smoothing:antialiased}
+.wrap{width:1080px;height:1920px;padding:48px 44px 40px;display:flex;flex-direction:column;gap:28px;
+background:
+ linear-gradient(165deg,rgba(90,96,108,.42) 0%,rgba(28,32,38,.30) 42%,rgba(10,12,16,.35) 100%),
+ radial-gradient(ellipse 80% 50% at 20% 0%,rgba(77,163,255,.18),transparent 55%),
+ #252a32;position:relative}
+.mark{font-size:22px;font-weight:900;letter-spacing:.28em;text-transform:uppercase;color:#7ec8ff}
+.chiprow{display:flex;gap:12px;flex-wrap:wrap}
+.chip{font-size:18px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:10px 16px;border-radius:999px;border:1px solid #3a4a60;background:#0f1520;color:#9aa8ba}
+.chip.live{color:#7dffd4;border-color:#2a5a48;background:#0c1a16}
+.chip.red{color:#ff8a7a;border-color:#6a3030;background:#2a1212}
+.chip.amber{color:#ffc14d;border-color:#6a5420;background:#2a2208}
+h1{font-size:64px;font-weight:900;letter-spacing:-.03em;line-height:1.05;color:#fff;margin-top:8px}
+.sub{font-size:24px;color:#9aa8ba;margin-top:10px;font-weight:600}
+.loud{margin-top:8px;padding:36px 32px;border-radius:28px;background:linear-gradient(160deg,#121820,#0a1018);border:1px solid rgba(255,255,255,.14);box-shadow:inset 0 1px 0 rgba(255,255,255,.1)}
+.loud .k{font-size:18px;font-weight:900;letter-spacing:.18em;text-transform:uppercase;color:#6ddeb5}
+.loud .when{font-size:72px;font-weight:900;letter-spacing:-.03em;color:#fff;margin-top:12px;line-height:1}
+.loud .when em{font-style:normal;color:#6ddeb5}
+.loud .place{font-size:32px;font-weight:750;color:#b8f0d0;margin-top:14px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.cell{padding:24px 22px;border-radius:22px;background:rgba(14,18,24,.85);border:1px solid #243448}
+.cell .k{font-size:16px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#7a8799}
+.cell .v{font-size:34px;font-weight:900;color:#fff;margin-top:10px;line-height:1.15}
+.cell .s{font-size:20px;color:#9aa8ba;margin-top:8px}
+.cell.warn .v{color:#ffc14d}
+.cell.red .v{color:#ff8a7a}
+.cell.ok .v{color:#7dffd4}
+.taps{padding:26px 24px;border-radius:22px;background:rgba(14,18,24,.85);border:1px solid #243448;flex:1}
+.taps .k{font-size:16px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#7a8799;margin-bottom:14px}
+.taps li{list-style:none;font-size:28px;font-weight:700;color:#e8eaed;padding:14px 0;border-top:1px solid #243448;line-height:1.25}
+.taps li:first-of-type{border-top:none}
+.next{padding:28px 26px;border-radius:24px;background:linear-gradient(135deg,#1a2838,#0f1824);border:1px solid #2a4a6a}
+.next .k{font-size:16px;font-weight:900;letter-spacing:.18em;text-transform:uppercase;color:#4da3ff}
+.next .v{font-size:36px;font-weight:900;color:#fff;margin-top:10px;line-height:1.2}
+.foot{display:flex;justify-content:space-between;align-items:flex-end;margin-top:auto;padding-top:12px}
+.foot .l{font-size:20px;font-weight:700;color:#9aa8ba}
+.foot .r{font-size:18px;font-weight:800;letter-spacing:.08em;color:#5a6678;text-align:right}
+</style></head><body>
+<div class="wrap">
+  <div>
+    <div class="mark">WardOS</div>
+    <div class="chiprow" style="margin-top:16px">
+      <span class="chip live">TABLET-TEST</span>
+      <span class="chip">STYLE A · LEAVE</span>
+      <span class="chip amber">GATE CLOSED</span>
+      <span class="chip red">KILL RED</span>
+    </div>
+    <h1>Leave card</h1>
+    <div class="sub">as-of Mon Sep 21 · 1:47p CT · known only · no invent</div>
+  </div>
+
+  <div class="loud">
+    <div class="k">LOUDEST LEAVE</div>
+    <div class="when">Fri Sep 25 · <em>6:50a</em></div>
+    <div class="place">Harbor Cove → BNA · WN557 · #BCFO7F</div>
+  </div>
+
+  <div class="grid">
+    <div class="cell ok">
+      <div class="k">Cash LIVE</div>
+      <div class="v">$14,164.46</div>
+      <div class="s">FREEZE disc $0</div>
+    </div>
+    <div class="cell red">
+      <div class="k">Kill to $20k</div>
+      <div class="v">$5,687.64</div>
+      <div class="s">Mission24 · 401k HOLD 6%</div>
+    </div>
+    <div class="cell">
+      <div class="k">Kids</div>
+      <div class="v">Mom → Fri 3:00</div>
+      <div class="s">Dan week after</div>
+    </div>
+    <div class="cell warn">
+      <div class="k">Tax EST</div>
+      <div class="v">32% → 24%</div>
+      <div class="s">max 401k after floor</div>
+    </div>
+  </div>
+
+  <div class="taps">
+    <div class="k">Your taps</div>
+    <ul>
+      <li>Costco Hisense pickup Thu Sep 24 · Harbor Cove · window call Wed night</li>
+      <li>UA Glow add-ons ×4 + pizza · last-yes by Thu Sep 24</li>
+      <li>CVS Rx chain Sat Sep 26 · leave 10:30a</li>
+    </ul>
+  </div>
+
+  <div class="next">
+    <div class="k">One next</div>
+    <div class="v">Costco Schedule Pickup · soft · when you have a minute</div>
+  </div>
+
+  <div class="foot">
+    <div class="l">WardOS · Atlas owns glass · Dan last-yes spend/send/book</div>
+    <div class="r">FRESH GEN<br/>1:47p CT</div>
+  </div>
+</div>
+</body></html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=1080"/>
+<title>WardOS-Sunday-Money · Travel Burn · Sat Sep 26 2026</title><style>
+@font-face{font-family:InterDisplay;src:url("file:///workspace/fonts/InterDisplay-Regular.ttf");font-weight:400;font-style:normal}
+@font-face{font-family:InterDisplay;src:url("file:///workspace/fonts/InterDisplay-Medium.ttf");font-weight:500;font-style:normal}
+@font-face{font-family:InterDisplay;src:url("file:///workspace/fonts/InterDisplay-SemiBold.ttf");font-weight:600;font-style:normal}
+@font-face{font-family:InterDisplay;src:url("file:///workspace/fonts/InterDisplay-Bold.ttf");font-weight:700;font-style:normal}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;font-family:InterDisplay,Inter,-apple-system,Helvetica,sans-serif;color:#e8eaed;background:#252a32;-webkit-font-smoothing:antialiased}
+.panel{width:1080px;height:1920px;padding:18px 22px 14px;display:flex;flex-direction:column;gap:12px;position:relative;overflow:hidden;
+  background-color:#252a32;
+  background-image:
+    linear-gradient(165deg,rgba(90,96,108,.42) 0%,rgba(28,32,38,.30) 42%,rgba(10,12,16,.35) 100%),
+    radial-gradient(ellipse 90% 70% at 50% 40%,transparent 30%,rgba(0,0,0,.30) 100%),
+    url("file:///workspace/wardos-kit/chrome/camo-glass-tile-desk.png");
+  background-size:auto,auto,520px 520px;background-position:center,center,0 0;background-repeat:no-repeat,no-repeat,repeat;
+  border:1px solid rgba(255,255,255,.10)}
+.panel::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.14) 0%,transparent 22%,transparent 74%,rgba(0,0,0,.24) 100%),
+    radial-gradient(ellipse 65% 45% at 16% 10%,rgba(255,255,255,.13) 0%,transparent 55%);
+  mix-blend-mode:soft-light;opacity:.9}
+.panel>*{position:relative;z-index:2}
+.glass{backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  background:rgba(22,26,34,.82);border:1px solid rgba(255,255,255,.13);
+  box-shadow:0 1px 0 rgba(255,255,255,.16) inset,0 10px 28px rgba(0,0,0,.28);border-radius:14px}
+
+.hdr{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:10px 14px}
+.brand img{display:block;height:48px;width:auto}
+.eyebrow{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#a8b0bc;margin-top:4px}
+.title{font-size:30px;font-weight:700;letter-spacing:-.035em;color:#fff;margin-top:1px;line-height:1.05}
+.asof{font-size:12px;font-weight:500;color:#a8b0bc;margin-top:3px;line-height:1.3}
+.chip{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:8px 12px;border-radius:999px;
+  background:rgba(18,22,28,.92);border:1px solid rgba(255,92,92,.55);color:#ff8a8a;align-self:flex-start;white-space:nowrap}
+
+.bluf{padding:16px 18px 14px;position:relative;overflow:hidden}
+.bluf .lab{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#a8b0bc}
+.bluf .hero{font-size:24px;font-weight:700;letter-spacing:-.03em;line-height:1.25;color:#fff;margin-top:8px;max-width:980px}
+.bluf .row-chips{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:12px}
+.stamp{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:7px 11px;border-radius:6px;
+  background:rgba(255,210,77,.12);border:1px dashed rgba(255,210,77,.55);color:#ffd24d}
+.gate-chip{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:7px 12px;border-radius:999px;
+  background:rgba(255,92,92,.14);border:1px solid rgba(255,92,92,.5);color:#ff5c5c}
+.ctx{font-size:11px;font-weight:600;letter-spacing:.04em;padding:7px 11px;border-radius:999px;
+  background:rgba(18,22,28,.9);border:1px solid rgba(255,255,255,.16);color:#a8b0bc}
+
+.gauge-card{padding:18px 18px 20px;flex:1 1 auto;min-height:0;display:flex;flex-direction:column}
+.gauge-card .sec{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#a8b0bc;margin-bottom:14px}
+.left-hero{text-align:center;padding:8px 0 18px}
+.left-k{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#a8b0bc}
+.left-v{font-size:96px;font-weight:700;letter-spacing:-.05em;line-height:1;color:#2ab87a;margin-top:6px;font-variant-numeric:tabular-nums}
+.left-v .dol{font-size:48px;color:#a8b0bc;vertical-align:22px;margin-right:2px}
+.left-s{font-size:16px;font-weight:600;color:#d0d5dc;margin-top:8px}
+
+.bar-wrap{margin-top:8px}
+.bar-meta{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px;font-size:13px;font-weight:600;color:#a8b0bc}
+.bar-meta strong{color:#fff;font-variant-numeric:tabular-nums}
+.bar-rail{position:relative;height:28px;border-radius:10px;overflow:hidden;
+  background:#0c0e12;border:1px solid rgba(255,255,255,.18);
+  box-shadow:0 0 0 1px rgba(0,0,0,.4) inset}
+.bar-fill{position:absolute;left:0;top:0;bottom:0;width:100%;
+  background:linear-gradient(90deg,#0d5c3a 0%,#22a66a 100%);opacity:.95}
+.bar-labels{display:flex;justify-content:space-between;margin-top:8px;font-size:12px;font-weight:600;color:#a8b0bc;font-variant-numeric:tabular-nums}
+
+.triple{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:18px}
+.t-cell{padding:14px 12px;border-radius:12px;background:rgba(10,12,16,.55);border:1px solid rgba(255,255,255,.1);text-align:center}
+.t-k{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#a8b0bc}
+.t-v{font-size:28px;font-weight:700;letter-spacing:-.03em;color:#fff;margin-top:6px;font-variant-numeric:tabular-nums}
+.t-v.green{color:#2ab87a}
+.t-v.mute{color:#a8b0bc}
+
+.cut-rule{margin-top:18px;padding:16px 16px;border-radius:12px;
+  background:rgba(255,92,92,.08);border:1px solid rgba(255,92,92,.4)}
+.cut-k{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#ff8a8a}
+.cut-v{font-size:20px;font-weight:700;color:#fff;margin-top:8px;line-height:1.3}
+.cut-s{font-size:14px;font-weight:500;color:#b0b8c4;margin-top:8px;line-height:1.4}
+
+.mission-note{padding:14px 16px}
+.mn-k{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#a8b0bc;margin-bottom:8px}
+.mn-v{font-size:15px;font-weight:600;color:#d0d5dc;line-height:1.4}
+
+.soft-bar{padding:12px 14px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.ar{font-size:12px;font-weight:700;letter-spacing:.04em;padding:7px 11px;border-radius:999px;
+  background:rgba(18,22,28,.9);border:1px solid rgba(255,255,255,.16);color:#c8cdd6;font-variant-numeric:tabular-nums}
+.ar.dead{border-color:rgba(255,92,92,.45);color:#ff5c5c}
+.ar.ok{border-color:rgba(42,182,122,.4);color:#2ab87a}
+.ar.hold{border-color:rgba(255,210,77,.4);color:#ffd24d}
+.ar.mute{opacity:.65;font-weight:500;font-size:11px}
+
+.caption{font-size:14px;font-weight:600;color:#d0d5dc;line-height:1.4;padding:10px 14px}
+.ftr{margin-top:auto;display:flex;justify-content:space-between;align-items:flex-end;gap:12px;font-size:11px;font-weight:500;color:#a8b0bc;padding-top:6px;border-top:1px solid rgba(255,255,255,.14)}
+.ftr .note{max-width:68%;line-height:1.35}
+</style></head>
+<body><div class="panel">
+
+  <div class="hdr glass">
+    <div>
+      <div class="brand"><img src="file:///workspace/wardos-kit/chrome/wardos-mark-header.png" height="48" alt="WardOS"/></div>
+      <div class="eyebrow">WARDOS-SUNDAY-MONEY · INSTRUMENT</div>
+      <div class="title">Travel Burn</div>
+      <div class="asof">as-of Dashboard September envelopes 25 Sep nightly · Ledger books</div>
+    </div>
+    <div class="chip">GATE CLOSED · cut if path slips</div>
+  </div>
+
+  <div class="bluf glass">
+    <div class="lab">Sep travel envelope · MCI↔BNA</div>
+    <div class="hero">Sep envelope $400 · booked $0 · left $400</div>
+    <div class="row-chips">
+      <span class="gate-chip">CUT TRAVEL IF CASH PATH SLIPS</span>
+      <span class="stamp">BOOKED $0 · BOOK TRUTH</span>
+      <span class="ctx">under gate = last-yes only</span>
+    </div>
+  </div>
+
+  <div class="gauge-card glass">
+    <div class="sec">Envelope gauge · remaining</div>
+    <div class="left-hero">
+      <div class="left-k">LEFT</div>
+      <div class="left-v"><span class="dol">$</span>400</div>
+      <div class="left-s">of $400 plan · 100% remaining</div>
+    </div>
+
+    <div class="bar-wrap">
+      <div class="bar-meta"><span>remaining bar</span><strong>100% left</strong></div>
+      <div class="bar-rail"><div class="bar-fill"></div></div>
+      <div class="bar-labels"><span>booked $0</span><span>cap $400</span></div>
+    </div>
+
+    <div class="triple">
+      <div class="t-cell">
+        <div class="t-k">Plan</div>
+        <div class="t-v">$400</div>
+      </div>
+      <div class="t-cell">
+        <div class="t-k">Booked</div>
+        <div class="t-v mute">$0</div>
+      </div>
+      <div class="t-cell">
+        <div class="t-k">Left</div>
+        <div class="t-v green">$400</div>
+      </div>
+    </div>
+
+    <div class="cut-rule">
+      <div class="cut-k">Cut-rule chip</div>
+      <div class="cut-v">Cut travel if cash path slips · under gate = last-yes only</div>
+      <div class="cut-s">Cap is $400. Path slips → cut second.</div>
+    </div>
+  </div>
+
+  <div class="mission-note glass">
+    <div class="mn-k">Mission note</div>
+    <div class="mn-v">Weekly flights pattern — keep custody + Erin week intact · no invented itinerary $</div>
+  </div>
+
+  <div class="soft-bar glass">
+    <span class="ar mute">do not invent YTD burn</span>
+    <span class="ar ok">booked-to-date $0 is book truth</span>
+    <span class="ar hold">no invented itinerary $</span>
+    <span class="ar dead">GATE CLOSED</span>
+  </div>
+
+  <div class="caption glass">
+    Cap is $400. Path slips → cut second.
+  </div>
+
+  <div class="ftr">
+    <span class="note">as-of Sat 26 Sep ~12:40p CT · AVAILABLE $14,114.46 STALE ASSUMED · GATE CLOSED · Ledger books · never invent</span>
+    <span>WardOS · Sunday-Money · Travel Burn</span>
+  </div>
+</div></body></html>

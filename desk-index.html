@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="manifest" href="manifest.webmanifest" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="WardOS Desk" />
+<meta name="theme-color" content="#252a32" />
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1920" />
+<title>WardOS · Desk · PIN Home</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    width: 1920px; height: 1200px; overflow: hidden;
+    background: #2a2e34; color: #e8eaed;
+    font-family: "Inter Display", "Inter", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .panel {
+    width: 1920px; height: 1200px;
+    padding: 22px 32px 16px;
+    display: flex; flex-direction: column; gap: 16px;
+    position: relative; overflow: hidden;
+    background-color: #2a2e34;
+    background-image:
+      linear-gradient(165deg, rgba(90,96,108,0.42) 0%, rgba(40,44,50,0.28) 45%, rgba(22,24,28,0.30) 100%),
+      url("camo-glass-tile-desk.png");
+    background-size: auto, 420px 420px;
+    background-position: center, 0 0;
+    background-repeat: no-repeat, repeat;
+    border: 1px solid rgba(255,255,255,0.10);
+  }
+  .panel::before {
+    content: "";
+    position: absolute; inset: 0; pointer-events: none; z-index: 0;
+    background:
+      linear-gradient(180deg, rgba(255,255,255,0.14) 0%, transparent 28%, transparent 72%, rgba(0,0,0,0.24) 100%),
+      radial-gradient(ellipse 70% 50% at 18% 12%, rgba(255,255,255,0.13) 0%, transparent 55%),
+      radial-gradient(ellipse 50% 40% at 88% 78%, rgba(255,255,255,0.05) 0%, transparent 60%);
+    mix-blend-mode: soft-light;
+    opacity: 0.85;
+  }
+  .panel::after {
+    content: "";
+    position: absolute; inset: 0; pointer-events: none; z-index: 0;
+    background:
+      linear-gradient(118deg, transparent 0 34%, rgba(255,255,255,0.08) 34% 38%, transparent 38% 62%, rgba(255,255,255,0.04) 62% 64%, transparent 64%);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.14),
+      inset 0 -1px 0 rgba(0,0,0,0.28),
+      inset 1px 0 0 rgba(255,255,255,0.06),
+      inset -1px 0 0 rgba(0,0,0,0.22);
+  }
+  .panel > * { position: relative; z-index: 2; }
+  /* UNITY LOCK · Desk dark camo glass cards (shade of House template) */
+  .hdr, .bluf, .card, .tile, .side .card, .recommend, .gate, .nav, .ftr, .strip, .lane, .row-card {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  .hdr {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 18px; border-radius: 16px; background: rgba(28,32,38,0.68); border: 1px solid rgba(255,255,255,0.12); box-shadow: 0 1px 0 rgba(255,255,255,0.10) inset, 0 8px 24px rgba(0,0,0,0.22); flex-shrink: 0;
+  }
+  .eyebrow {
+    font-size: 15px; font-weight: 700; letter-spacing: 0.22em;
+    text-transform: uppercase; color: #4da3ff; margin-bottom: 4px;
+  }
+  .title { font-size: 34px; font-weight: 700; letter-spacing: -0.02em; color: #fff; }
+  .tags { display: flex; gap: 10px; align-items: center; }
+  .tag {
+    font-size: 14px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+    color: #a8b0bc; background: rgba(30,34,42,0.65); border: 1px dashed rgba(255,255,255,0.22);
+    padding: 8px 14px; border-radius: 8px;
+  }
+  .tag-pin { color: #b8d4f0; border-color: rgba(180,200,220,0.35); background: rgba(40,48,58,0.72); border-style: solid; }
+
+  /* STALE cash banner · amber/red loud · last-live stamp held · session died */
+  .live-banner {
+    display: flex; justify-content: space-between; gap: 16px; align-items: flex-start;
+    margin: 14px 18px 0; padding: 14px 16px; border-radius: 14px;
+    background: linear-gradient(135deg, rgba(20,60,48,.92), rgba(12,28,24,.95));
+    border: 1px solid rgba(125,255,212,.35);
+  }
+  .live-banner .sb-k { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: #7dffd4; opacity: .85; }
+  .live-banner .sb-main { font-size: 16px; font-weight: 650; color: #e8fff6; margin-top: 4px; }
+  .live-banner .sb-main em { font-style: normal; color: #7dffd4; }
+  .live-banner .sb-main .amber { color: #ffd24d; font-style: normal; }
+  .live-banner .sb-sub { font-size: 13px; color: #9eb0a8; margin-top: 4px; }
+  .live-banner .sb-badge {
+    flex: 0 0 auto; align-self: center; padding: 8px 12px; border-radius: 999px;
+    background: rgba(125,255,212,.16); color: #7dffd4; font-weight: 800; letter-spacing: .06em; font-size: 12px;
+  }
+  .stale-banner {
+    flex-shrink: 0;
+    display: flex; align-items: center; justify-content: space-between; gap: 18px;
+    padding: 14px 20px; border-radius: 14px;
+    background: linear-gradient(90deg, #2a1208 0%, #3a1a0c 40%, #1a0c08 100%);
+    border: 3px solid #ff8a3d;
+    box-shadow: 0 0 0 4px rgba(255,138,61,0.28), 0 12px 32px rgba(0,0,0,0.45);
+  }
+  .stale-banner .sb-k {
+    font-size: 15px; font-weight: 900; letter-spacing: 0.22em; text-transform: uppercase;
+    color: #ffb06a;
+  }
+  .stale-banner .sb-main {
+    font-size: 22px; font-weight: 850; letter-spacing: -0.01em; color: #fff;
+  }
+  .stale-banner .sb-main em { font-style: normal; color: #ff8a3d; }
+  .stale-banner .sb-main .amber { color: #ffd24d; font-style: normal; }
+  .stale-banner .sb-sub {
+    font-size: 14px; font-weight: 650; color: #d4b89a; margin-top: 2px;
+  }
+  .stale-banner .sb-badge {
+    flex-shrink: 0;
+    font-size: 18px; font-weight: 900; letter-spacing: 0.14em; text-transform: uppercase;
+    color: #1a0a04; background: #ff8a3d;
+    padding: 12px 16px; border-radius: 10px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.45);
+  }
+
+  .live-chip { color:#7dffd4; }
+  .stale-chip {
+    font-size: 14px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
+    color: #ffb06a; background: #1a0c08; border: 1px solid #8a4a28;
+    padding: 8px 14px; border-radius: 8px;
+  }
+  .mock-chip {
+    font-size: 14px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
+    color: #b8d4f0; background: #0c141c; border: 1px solid #3a4a5a;
+    padding: 8px 14px; border-radius: 8px;
+  }
+  .bluf {
+    background: linear-gradient(145deg, rgba(28,32,38,0.72) 0%, rgba(18,20,24,0.78) 100%); border: 1px solid rgba(255,255,255,0.12); box-shadow: 0 1px 0 rgba(255,255,255,0.10) inset, 0 8px 28px rgba(0,0,0,0.28);
+    border: 1px solid #243448; border-radius: 18px; padding: 18px 26px;
+    position: relative; overflow: hidden;
+    display: flex; align-items: center; justify-content: space-between; gap: 24px;
+  }
+  .bluf::before {
+    content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, #4da3ff, #ff5c5c 50%, #ffc14d);
+  }
+  .bluf-left .lbl {
+    font-size: 14px; font-weight: 700; letter-spacing: 0.16em;
+    text-transform: uppercase; color: #7a8799;
+  }
+  .bluf-left .line { font-size: 22px; font-weight: 800; color: #fff; margin-top: 4px; }
+  .bluf-left .meta { font-size: 14px; color: #a8b0bc; margin-top: 4px; }
+  .avail-mini {
+    font-size: 40px; font-weight: 800; color: #fff; font-variant-numeric: tabular-nums;
+    letter-spacing: -0.02em;
+  }
+  .avail-mini .d { color: #8ec5ff; font-size: 26px; margin-right: 2px; }
+  .chips { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+  .chip {
+    font-size: 13px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase;
+    padding: 8px 12px; border-radius: 999px; border: 1px solid;
+  }
+  .chip-freeze { background: #3a1212; color: #ff7a7a; border-color: #7a2a2a; }
+  .chip-hold { background: #2a2208; color: #ffc14d; border-color: #6a5420; }
+  .tiles {
+    flex: 1; display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; min-height: 0;
+  }
+  .tile {
+    cursor: pointer;
+    text-decoration: none; color: inherit;
+    background: rgba(22,26,32,0.70); border: 1px solid rgba(255,255,255,0.12); box-shadow: 0 1px 0 rgba(255,255,255,0.08) inset, 0 6px 18px rgba(0,0,0,0.22); border-radius: 18px;
+    padding: 18px 14px; display: flex; flex-direction: column; gap: 10px;
+    position: relative; overflow: hidden;
+    min-height: 220px;
+  }
+  .tile::before {
+    content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  }
+  .tile-freeze::before { background: linear-gradient(90deg, #ff5c5c, #ff8a4c); }
+  .tile-cfo::before { background: linear-gradient(90deg, #7dffd4, #4da3ff); }
+  .tile-cash::before { background: linear-gradient(90deg, #4da3ff, #8ec5ff); }
+  .tile-autopay::before { background: linear-gradient(90deg, #ffc14d, #4da3ff); }
+  .tile-eoy::before { background: linear-gradient(90deg, #ff8a4c, #ffc14d); }
+  .tile-cards::before { background: linear-gradient(90deg, #ffc14d, #8ec5ff); }
+  .tile-envelopes::before { background: linear-gradient(90deg, #8ec5ff, #ffc14d); }
+  .tile-refresh::before { background: linear-gradient(90deg, #4da3ff, #6ddeb5); }
+  .tile-gallery::before { background: linear-gradient(90deg, #8ec5ff, #4da3ff); }
+  .tile-travel::before { background: linear-gradient(90deg, #6ddeb5, #4da3ff); }
+  .tile-body::before { background: linear-gradient(90deg, #6ddeb5, #8ec5ff); }
+  .tile-house::before { background: linear-gradient(90deg, #8ec5ff, #ffc14d); }
+  .tile-party::before { background: linear-gradient(90deg, #ffc14d, #ff8a4c); }
+  .tile-us::before { background: linear-gradient(90deg, #6ddeb5, #8ec5ff); }
+  .tile-kids::before { background: linear-gradient(90deg, #d7a3e8, #7de0ba 50%, #8ec5ff); }
+  .tile-waiting::before { background: linear-gradient(90deg, #ffc14d, #ff8a4c); }
+  .tile-leave::before { background: linear-gradient(90deg, #4da3ff, #6ddeb5); }
+  .tile-lock::before { background: linear-gradient(90deg, #ffc14d, #6ddeb5); }
+  .tile-wallet::before { background: linear-gradient(90deg, #8ec5ff, #6ddeb5); }
+  .tile-admin::before { background: linear-gradient(90deg, #ff8a4c, #8ec5ff); }
+  .tile-freeze { border-color: rgba(180,60,60,0.55); background: linear-gradient(180deg, rgba(60,20,20,0.75) 0%, rgba(22,26,32,0.70) 45%); }
+  .tile .kicker {
+    font-size: 13px; font-weight: 800; letter-spacing: 0.16em;
+    text-transform: uppercase; color: #7a8799;
+  }
+  .tile-freeze .kicker { color: #ff8a8a; }
+  .tile h2 { font-size: 22px; font-weight: 800; color: #fff; letter-spacing: -0.02em; }
+  .tile-freeze h2 { color: #ff7a7a; }
+  .tile .preview { font-size: 15px; font-weight: 700; color: #c5d0de; line-height: 1.35; margin-top: auto; }
+  .tile .preview strong { color: #8ec5ff; font-variant-numeric: tabular-nums; }
+  .tile .preview .amber { color: #ffc14d; }
+  .tile .preview .red { color: #ff8a8a; }
+  .tile .go {
+    font-size: 13px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase;
+    color: #4da3ff;
+  }
+  .tile-freeze .go { color: #ff7a7a; }
+  .house-note {
+    background: rgba(20,24,30,0.68); border: 1px solid rgba(255,255,255,0.10); box-shadow: 0 1px 0 rgba(255,255,255,0.08) inset, 0 6px 18px rgba(0,0,0,0.22); border-radius: 14px;
+    padding: 14px 18px; display: flex; align-items: center; justify-content: space-between; gap: 20px;
+  }
+  .house-note .t {
+    font-size: 16px; font-weight: 700; color: #9aa8ba; line-height: 1.4;
+  }
+  .house-note .t strong { color: #6ddeb5; }
+  .house-note .badge {
+    font-size: 13px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase;
+    color: #6ddeb5; background: #0c1612; border: 1px solid #2a5a40;
+    padding: 10px 14px; border-radius: 10px; white-space: nowrap;
+  }
+  .footer {
+    flex-shrink: 0; padding-top: 10px; border-top: 1px solid #1e2d42;
+    display: flex; justify-content: space-between; align-items: center; gap: 16px;
+  }
+  .footer .cap { font-size: 15px; font-weight: 600; color: #9aa8ba; max-width: 1200px; line-height: 1.35; }
+  .footer .stamp { font-size: 13px; font-weight: 700; letter-spacing: 0.06em; color: #5a6678; text-align: right; line-height: 1.45; }
+</style>
+</head>
+<body>
+  <div class="panel">
+    <header class="hdr">
+      <div>
+        <div class="eyebrow">WardOS · Desk · PIN</div>
+        <div class="title">WardOS · Desk · Financial + life lanes</div>
+      </div>
+      <div class="tags">
+        <span class="live-chip">LIVE · as-of Wed Sep 23 ~3:16p CT · LIVE Wells portal</span>
+        <span class="mock-chip">MOCK</span>
+        <span class="tag tag-pin">PIN required</span>
+        <span class="tag">LIVE Wells portal · signed_in session</span>
+      </div>
+    </header>
+
+    <div class="live-banner" role="status" aria-label="Cash packet LIVE · Wed Sep 23 ~3:16p CT Wells portal">
+      <div>
+        <div class="sb-k">Desk money · Ledger · LIVE Wells portal restamp</div>
+        <div class="sb-main"><em>LIVE</em> · as-of <span class="amber">Wed Sep 23 ~3:16p CT</span> · Wells portal · FREEZE disc $0</div>
+        <div class="sb-sub">Wells Everyday …6854 · AVAILABLE $14,164.46 · EOY gap $5,835.54 · GATE CLOSED · CFO glass primary · no invent</div>
+      </div>
+      <div class="sb-badge">LIVE</div>
+    </div>
+
+    <section class="bluf">
+      <div class="bluf-left">
+        <div class="lbl">Quick glance · LIVE Wells portal · Wed Sep 23 3:16p CT</div>
+        <div class="line">Wells Everyday …6854</div>
+        <div class="meta">LIVE Wells portal source · as-of 2026-09-23 15:16 CT · signed_in session</div>
+      </div>
+      <div class="avail-mini"><span class="d">$</span>14,164.46</div>
+      <div class="chips">
+        <span class="chip chip-freeze">DISC $0 / FREEZE</span>
+        <span class="chip chip-hold">EOY GAP $5,835.54</span>
+      </div>
+    </section>
+
+    <div class="tiles">
+      <a class="tile tile-cfo" href="desk-cfo.html">
+        <div class="kicker">00 · Money</div>
+        <h2>CFO Glass</h2>
+        <div class="preview">AVAILABLE <strong>$14,164.46</strong><br />gap <span class="amber">$5,835.54</span> · <span class="red">GATE CLOSED</span></div>
+        <div class="go">Open →</div>
+      </a>
+      <a class="tile tile-freeze" href="desk-freeze.html">
+        <div class="kicker">01</div>
+        <h2>FREEZE</h2>
+        <div class="preview">Ledger ~9/17 · disc <span class="red">$0</span><br /><span class="amber">OnTech blown</span> · AVAIL LIVE</div>
+        <div class="go">Open →</div>
+      </a>
+      <a class="tile tile-cash" href="desk-cash.html">
+        <div class="kicker">02</div>
+        <h2>Cash</h2>
+        <div class="preview">AVAILABLE <strong>$14,164.46</strong><br />gap $5,835.54 · GATE CLOSED</div>
+        <div class="go">Open →</div>
+      </a>
+      <a class="tile tile-envelopes" href="desk-envelopes.html">
+        <div class="kicker">03</div>
+        <h2>Envelopes</h2>
+        <div class="preview">Ledger ~9/17 · disc <span class="red">$0</span><br /><span class="amber">OnTech blown</span> · AVAIL LIVE</div>
+        <div class="go">Open →</div>
+      </a>
+      <a class="tile tile-autopay" href="desk-autopay.html">
+        <div class="kicker">04</div>
+        <h2>Autopay</h2>
+        <div class="preview">SW Priority …0694 <span class="amber">$5,283.69</span><br />Due 2026-10-02 · extra $0</div>
+        <div class="go">Open →</div>
+      </a>
+      <a class="tile tile-eoy" href="desk-eoy.html">
+        <div class="kicker">05</div>
+        <h2>EOY</h2>
+        <div class="preview">Path to $20k<br /><span class="amber">$5,835.54</span> gap · 70.8%</div>
+        <div class="go">Open →</div>
+      </a>
+      <a class="tile tile-cards" href="desk-cards.html">
+        <div class="kicker">06</div>
+        <h2>Cards</h2>
+        <div class="preview">SW known · others<br /><span class="amber">UNKNOWN</span> · TCL UNKNOWN</div>
+        <div class="go">Open →</div>
+      </a>
+      <a class="tile tile-refresh" href="desk-refresh.html">
+        <div class="kicker">07</div>
+        <h2>Refresh</h2>
+        <div class="preview">AVAILABLE → Ledger<br /><span class="amber">MOCK · not wired</span></div>
+        <div class="go">Open →</div>
+      </a>
+      <a class="tile tile-gallery" href="desk-gallery.html">
+        <div class="kicker">08</div>
+        <h2>Gallery</h2>
+        <div class="preview">Phone contact sheet<br /><span class="amber">8 plates · PIN</span></div>
+        <div class="go">Open →</div>
+      </a>
+      <a class="tile tile-travel" href="desk-travel.html">
+        <div class="kicker">09</div>
+        <h2>Travel</h2>
+        <div class="preview">Flight board · <strong>WN557</strong><br />check-in 24h <span class="amber">UNKNOWN</span></div>
+        <div class="go">Open →</div>
+      </a>
+      <a class="tile tile-body" href="desk-body.html">
+        <div class="kicker">10 · Vita</div>
+        <h2>Body</h2>
+        <div class="preview">SLEEP <span class="amber">MISSING</span> · RECOVERY <span class="amber">MISSING</span><br />Soft walk + 5-min mobility</div>
+        <div class="go">Open →</div>
+      </a>
+      <a class="tile tile-house" href="desk-house-alin.html">
+        <div class="kicker">11 · Alin</div>
+        <h2>House / Alin</h2>
+        <div class="preview"><strong>10</strong> known work items<br /><span class="amber">See punch plate</span></div>
+        <div class="go">Open →</div>
+      </a>
+      <a class="tile tile-party" href="desk-party.html">
+        <div class="kicker">12 · Hayes</div>
+        <h2>Party</h2>
+        <div class="preview"><strong>14 Yes</strong> · 4 add-ons<br /><span class="amber">Urban Air · Sep 25</span></div>
+        <div class="go">Open →</div>
+      </a>
+      <a class="tile tile-us" href="desk-us.html">
+        <div class="kicker">13 · Shared</div>
+        <h2>Us</h2>
+        <div class="preview"><strong>Nashville</strong> through Fri AM<br /><span class="amber">KC Oct 9–14 · Green Oct 18</span></div>
+        <div class="go">Open →</div>
+      </a>
+      <a class="tile tile-kids" href="desk-kids.html">
+        <div class="kicker">14 · House bridge</div>
+        <h2>Kids</h2>
+        <div class="preview"><strong>Ainsley</strong> · Hayes · Harris<br /><span class="amber">Swim · birthday · flag</span></div>
+        <div class="go">Open →</div>
+      </a>
+
+      <a class="tile tile-waiting" href="desk-waiting.html">
+        <div class="kicker">15 · Atlas</div>
+        <h2>Waiting-on</h2>
+        <div class="preview"><strong>P0 Wells OPEN</strong> · session dead<br /><span class="amber">ParentSquare · Hisense · no $</span></div>
+        <div class="go">Open →</div>
+      </a>
+      <a class="tile tile-leave" href="desk-leave-card.html">
+        <div class="kicker">16 · Style A</div>
+        <h2>Leave card</h2>
+        <div class="preview">Fri Sep 25 <strong>6:50a</strong><br />Harbor Cove · WN557</div>
+        <div class="go">Open →</div>
+      </a>
+      <a class="tile tile-lock" href="desk-lock-packet.html">
+        <div class="kicker">17 · Style B</div>
+        <h2>Lock packet</h2>
+        <div class="preview">Fri load-day stack<br /><span class="amber">leave · handoff · UA</span></div>
+        <div class="go">Open →</div>
+      </a>
+      <a class="tile tile-wallet" href="desk-wallet.html">
+        <div class="kicker">18</div>
+        <h2>Wallet</h2>
+        <div class="preview">DL · ins · HSA · Apple · Target<br /><span class="amber">NO PANs</span></div>
+        <div class="go">Open →</div>
+      </a>
+      <a class="tile tile-admin" href="desk-admin.html">
+        <div class="kicker">19</div>
+        <h2>Admin</h2>
+        <div class="preview">Oil+TPMS · Yukon tag · 8332<br /><span class="amber">labels only</span></div>
+        <div class="go">Open →</div>
+      </a>
+
+    </div>
+
+    <div class="house-note">
+      <p class="t"><strong>House is no-PIN.</strong> Soft white/grey glass · family-safe · no money, no FREEZE, no Ledger. Cash lives only behind this Desk PIN layer.</p>
+      <span class="badge">House ≠ Desk</span>
+    </div>
+
+    <footer class="footer">
+      <p class="cap">WardOS Desk · dark camo · SoT plates from atlas-packet · Waiting / Leave / Lock / Wallet / Admin wired · cash LIVE (Wells portal 3:16p CT) · FREEZE disc $0 · hub MOCK→Sun TABLET-TEST→Mon 8am LIVE.</p>
+      <div class="stamp">WardOS · Desk PIN<br />cash LIVE · Wed Sep 23 ~3:16p CT · Wells portal · TABLET-TEST</div>
+    </footer>
+  </div>
+</body>
+</html>

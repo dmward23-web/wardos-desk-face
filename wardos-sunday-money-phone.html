@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=1080"/>
+<title>WardOS-Sunday-Money · TEMPLATE · Wed Sep 23 2026</title><style>
+@font-face{font-family:InterDisplay;src:url("file:///workspace/fonts/InterDisplay-Regular.ttf");font-weight:400;font-style:normal}
+@font-face{font-family:InterDisplay;src:url("file:///workspace/fonts/InterDisplay-Medium.ttf");font-weight:500;font-style:normal}
+@font-face{font-family:InterDisplay;src:url("file:///workspace/fonts/InterDisplay-SemiBold.ttf");font-weight:600;font-style:normal}
+@font-face{font-family:InterDisplay;src:url("file:///workspace/fonts/InterDisplay-Bold.ttf");font-weight:700;font-style:normal}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;font-family:InterDisplay,Inter,-apple-system,Helvetica,sans-serif;color:#e8eaed;background:#252a32;-webkit-font-smoothing:antialiased}
+.panel{width:1080px;height:1920px;padding:20px 24px 16px;display:flex;flex-direction:column;gap:10px;position:relative;overflow:hidden;
+  background-color:#252a32;
+  background-image:
+    linear-gradient(165deg,rgba(90,96,108,.42) 0%,rgba(28,32,38,.30) 42%,rgba(10,12,16,.35) 100%),
+    radial-gradient(ellipse 90% 70% at 50% 40%,transparent 30%,rgba(0,0,0,.30) 100%),
+    url("file:///workspace/wardos-kit/chrome/camo-glass-tile-desk.png");
+  background-size:auto,auto,520px 520px;background-position:center,center,0 0;background-repeat:no-repeat,no-repeat,repeat;
+  border:1px solid rgba(255,255,255,.10)}
+.panel::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.14) 0%,transparent 22%,transparent 74%,rgba(0,0,0,.24) 100%),
+    radial-gradient(ellipse 65% 45% at 16% 10%,rgba(255,255,255,.13) 0%,transparent 55%);
+  mix-blend-mode:soft-light;opacity:.9}
+.panel>*{position:relative;z-index:2}
+.glass{backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  background:rgba(22,26,34,.82);border:1px solid rgba(255,255,255,.13);
+  box-shadow:0 1px 0 rgba(255,255,255,.16) inset,0 10px 28px rgba(0,0,0,.28);border-radius:14px}
+.hdr{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:12px 14px}
+.brand img{display:block;height:58px;width:auto}
+.eyebrow{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#a8b0bc;margin-top:6px}
+.title{font-size:34px;font-weight:700;letter-spacing:-.035em;color:#fff;margin-top:2px;line-height:1.05}
+.asof{font-size:12px;font-weight:500;color:#a8b0bc;margin-top:4px;line-height:1.3}
+.chip{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:9px 13px;border-radius:999px;
+  background:rgba(18,22,28,.92);border:1px solid rgba(255,255,255,.42);color:#f2f4f7;align-self:flex-start}
+.where{font-size:14px;font-weight:600;color:#a8b0bc;line-height:1.3;padding:0 2px}
+.hero{padding:20px 18px;flex:0 0 auto;min-height:220px;display:flex;flex-direction:column;justify-content:center}
+.hero .k{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#a8b0bc}
+.hero .v{font-size:36px;font-weight:700;margin-top:8px;line-height:1.15;color:#fff;letter-spacing:-.03em}
+.hero .s{font-size:16px;font-weight:500;color:#b0b8c4;margin-top:10px;line-height:1.35}
+.card{padding:12px 14px}
+.h{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:6px;color:#a8b0bc}
+.p1 .h{color:#ff8f7a}.watch .h{color:#9ec5ff}.wait .h{color:#c9b6ff}.decide .h{color:#ffc14d}.cash .h{color:#ffb080}.route .h{color:#b8c0cc}.proof .h{color:#ffb080}.body .h{color:#9ec5ff}.mind .h{color:#c9b6ff}.next .h{color:#ffc14d}
+.li{font-size:15px;font-weight:600;line-height:1.32;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.li:last-child{border-bottom:none}
+.tap{color:#ffb4a6;font-weight:700}.amber{color:#ffd24d}.red{color:#ff5c5c}.mute{color:#a8b0bc}
+.day{font-size:11px;font-weight:700;color:#9ec5ff;margin-top:6px;margin-bottom:2px}
+.day:first-of-type{margin-top:0}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.caption{font-size:14px;font-weight:600;color:#d0d5dc;line-height:1.4;padding:12px 14px}
+.ftr{margin-top:auto;display:flex;justify-content:space-between;align-items:flex-end;gap:12px;font-size:11px;font-weight:500;color:#a8b0bc;padding-top:8px;border-top:1px solid rgba(255,255,255,.14)}
+.ftr .note{max-width:64%;line-height:1.35}
+.badge{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#ffd24d;padding:0 2px}
+.num{font-size:32px;font-weight:700;letter-spacing:-.02em;line-height:1.1}
+.sub{font-size:14px;font-weight:500;color:#a8b0bc;margin-top:6px;line-height:1.3}
+
+.hero{min-height:400px;padding:22px}
+.hero .lab{font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#a8b0bc}
+.hero .acct{font-size:15px;font-weight:500;color:#a8b0bc;margin-top:6px}
+.hero .avail{font-size:92px;font-weight:700;letter-spacing:-.04em;line-height:1;color:#fff;margin-top:14px;font-variant-numeric:tabular-nums}
+.hero .avail .dol{font-size:52px;color:#a8b0bc;vertical-align:18px;margin-right:2px}
+.hero .gate{margin-top:18px;font-size:24px;font-weight:700;color:#fff;line-height:1.25}
+.hero .gate .closed{color:#ff5c5c}
+.hero .meta{margin-top:12px;font-size:17px;font-weight:500;color:#c8cdd6;line-height:1.35}
+.hero .kill{margin-top:10px;font-size:22px;font-weight:700;color:#ff5c5c}
+.call{padding:14px 16px;border-color:rgba(255,92,92,.35)}
+.call .k{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#ff8a8a}
+.call .v{font-size:22px;font-weight:700;margin-top:6px;line-height:1.25;color:#fff}
+.call .s{font-size:15px;font-weight:500;color:#c9b0a0;margin-top:6px;line-height:1.35}
+.tax{padding:12px 16px}
+.tax .k{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#c9b6ff}
+.tax .v{font-size:16px;font-weight:600;margin-top:6px;line-height:1.35;color:#e8eaed}
+.read{padding:14px 16px}
+.read .k{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#a8b0bc}
+.read .v{font-size:18px;font-weight:600;margin-top:6px;line-height:1.35;color:#fff}
+.li{font-size:16px;padding:8px 0}
+</style></head>
+<body><div class="panel">
+  <div class="hdr glass">
+    <div>
+      <div class="brand"><img src="file:///workspace/wardos-kit/chrome/wardos-mark-header.png" height="58" alt="WardOS"/></div>
+      <div class="eyebrow">WARDOS-SUNDAY-MONEY · TEMPLATE MASTER</div>
+      <div class="title">Sunday Money</div>
+      <div class="asof">as-of Wed Sep 23 ~9:15a CT · LIVE · Wells Everyday …6854</div>
+    </div>
+    <div class="chip">LIVE</div>
+  </div>
+  <div class="hero glass">
+    <div class="lab">Available</div>
+    <div class="acct">Wells Everyday …6854 · LIVE</div>
+    <div class="avail"><span class="dol">$</span>14,164.46</div>
+    <div class="gate"><span class="closed">GATE CLOSED</span> · HOLD lean · ask Ledger before buys</div>
+    <div class="meta">Disc $15k <span class="amber">UNDER</span> → FREEZE · disc $0</div>
+    <div class="kill">EOY $20k gap $5,835.54 · kill RED</div>
+  </div>
+  <div class="call glass">
+    <div class="k">Call</div>
+    <div class="v"><span class="red">GATE CLOSED</span> · HOLD lean</div>
+    <div class="s">Ask Ledger before any buy. Overlays stay off until the floor is green.</div>
+  </div>
+  <div class="row">
+    <div class="card glass">
+      <div class="h">$15k Disc Gate</div>
+      <div class="num amber">UNDER</div>
+      <div class="sub">FREEZE · disc $0</div>
+    </div>
+    <div class="card glass">
+      <div class="h">$20k EOY Floor</div>
+      <div class="num red">$5,835.54</div>
+      <div class="sub">GAP · kill RED</div>
+    </div>
+  </div>
+  <div class="card glass proof">
+    <div class="h">Proof that changes the call</div>
+    <div class="li">SW Autopay stmt <span class="amber">$5,283.69</span> due 10/02 · extra $0 · Priority …0694</div>
+    <div class="li mute">bal ~$10,318.74 · rem stmt ~$5,283.69 if space</div>
+    <div class="li"><span class="amber">OPEN</span> Jacobs/Concur AR <span class="amber">$1,970.10</span> · NOT in AVAILABLE</div>
+    <div class="li">Citi Costco …5112 provisional SECURITY CREDIT <span class="amber">−$587.15</span></div>
+    <div class="li mute">dispute ACCIDENT/LEGIT · Atlas withdraw PARKED</div>
+  </div>
+  <div class="tax glass">
+    <div class="k">Tax · one line</div>
+    <div class="v">Midwest Anxiety Dan-paid YTD $920</div>
+  </div>
+  <div class="read glass">
+    <div class="k">One-line read</div>
+    <div class="v">Available $14,164 live. Gate closed, lean hold. Ask Ledger before you buy anything.</div>
+  </div>
+  <div class="ftr">
+    <span class="note">as-of Wed Sep 23 ~9:15a CT · LIVE · Ledger screenshots via Atlas · never invent</span>
+    <span>WardOS-Sunday-Money · TEMPLATE</span>
+  </div>
+</div></body></html>

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=1080"/>
+<title>WardOS-Sunday-Money · This Week Cliffs · Sat Sep 26 2026</title><style>
+@font-face{font-family:InterDisplay;src:url("file:///workspace/fonts/InterDisplay-Regular.ttf");font-weight:400;font-style:normal}
+@font-face{font-family:InterDisplay;src:url("file:///workspace/fonts/InterDisplay-Medium.ttf");font-weight:500;font-style:normal}
+@font-face{font-family:InterDisplay;src:url("file:///workspace/fonts/InterDisplay-SemiBold.ttf");font-weight:600;font-style:normal}
+@font-face{font-family:InterDisplay;src:url("file:///workspace/fonts/InterDisplay-Bold.ttf");font-weight:700;font-style:normal}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;font-family:InterDisplay,Inter,-apple-system,Helvetica,sans-serif;color:#e8eaed;background:#252a32;-webkit-font-smoothing:antialiased}
+.panel{width:1080px;height:1920px;padding:18px 22px 14px;display:flex;flex-direction:column;gap:12px;position:relative;overflow:hidden;
+  background-color:#252a32;
+  background-image:
+    linear-gradient(165deg,rgba(90,96,108,.42) 0%,rgba(28,32,38,.30) 42%,rgba(10,12,16,.35) 100%),
+    radial-gradient(ellipse 90% 70% at 50% 40%,transparent 30%,rgba(0,0,0,.30) 100%),
+    url("file:///workspace/wardos-kit/chrome/camo-glass-tile-desk.png");
+  background-size:auto,auto,520px 520px;background-position:center,center,0 0;background-repeat:no-repeat,no-repeat,repeat;
+  border:1px solid rgba(255,255,255,.10)}
+.panel::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.14) 0%,transparent 22%,transparent 74%,rgba(0,0,0,.24) 100%),
+    radial-gradient(ellipse 65% 45% at 16% 10%,rgba(255,255,255,.13) 0%,transparent 55%);
+  mix-blend-mode:soft-light;opacity:.9}
+.panel>*{position:relative;z-index:2}
+.glass{backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  background:rgba(22,26,34,.82);border:1px solid rgba(255,255,255,.13);
+  box-shadow:0 1px 0 rgba(255,255,255,.16) inset,0 10px 28px rgba(0,0,0,.28);border-radius:14px}
+
+.hdr{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:10px 14px}
+.brand img{display:block;height:48px;width:auto}
+.eyebrow{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#a8b0bc;margin-top:4px}
+.title{font-size:30px;font-weight:700;letter-spacing:-.035em;color:#fff;margin-top:1px;line-height:1.05}
+.asof{font-size:12px;font-weight:500;color:#a8b0bc;margin-top:3px;line-height:1.3}
+.chip{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:8px 12px;border-radius:999px;
+  background:rgba(18,22,28,.92);border:1px solid rgba(255,92,92,.55);color:#ff8a8a;align-self:flex-start;white-space:nowrap}
+
+.bluf{padding:16px 18px 14px;position:relative;overflow:hidden}
+.bluf-top{display:flex;justify-content:space-between;align-items:flex-start;gap:14px}
+.bluf .lab{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#a8b0bc}
+.bluf .hero{font-size:28px;font-weight:700;letter-spacing:-.03em;line-height:1.15;color:#fff;margin-top:8px;max-width:720px}
+.bluf .row-chips{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:12px}
+.stamp{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:7px 11px;border-radius:6px;
+  background:rgba(255,210,77,.12);border:1px dashed rgba(255,210,77,.55);color:#ffd24d}
+.gate-chip{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:7px 12px;border-radius:999px;
+  background:rgba(255,92,92,.14);border:1px solid rgba(255,92,92,.5);color:#ff5c5c}
+.ctx{font-size:11px;font-weight:600;letter-spacing:.04em;padding:7px 11px;border-radius:999px;
+  background:rgba(18,22,28,.9);border:1px solid rgba(255,255,255,.16);color:#a8b0bc}
+
+.mini-climb{width:92px;flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:6px}
+.mini-rail{position:relative;width:36px;height:120px;border-radius:10px;overflow:hidden;
+  border:1px solid rgba(255,255,255,.18);background:#0c0e12;
+  box-shadow:0 0 0 1px rgba(0,0,0,.4) inset}
+.mini-rail .zr{position:absolute;left:0;right:0;bottom:0;height:60%;background:linear-gradient(0deg,#2a0a0a,#a82828);opacity:.95}
+.mini-rail .za{position:absolute;left:0;right:0;bottom:60%;height:20%;background:linear-gradient(0deg,#8a5e0a,#d4a017);opacity:.92}
+.mini-rail .zg{position:absolute;left:0;right:0;bottom:80%;height:20%;background:linear-gradient(0deg,#0d5c3a,#22a66a);opacity:.92}
+.mini-rail .mk{position:absolute;left:-3px;right:-3px;bottom:56.4458%;height:3px;background:#fff;
+  box-shadow:0 0 8px rgba(255,92,92,.7);border-radius:2px;z-index:3}
+.mini-rail .fl{position:absolute;left:0;right:0;bottom:80%;height:2px;background:rgba(42,182,122,.9);z-index:2}
+.mini-lab{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#a8b0bc;text-align:center;line-height:1.25}
+.mini-lab strong{display:block;color:#ff8a8a;font-size:12px;margin-top:2px}
+
+.cliffs{padding:12px 14px 14px;flex:1 1 auto;min-height:0;display:flex;flex-direction:column}
+.cliffs .sec{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#a8b0bc;margin-bottom:10px}
+.cliff{display:flex;gap:12px;align-items:flex-start;padding:12px 12px;border-radius:12px;margin-bottom:8px;
+  background:rgba(10,12,16,.55);border:1px solid rgba(255,255,255,.1)}
+.cliff:last-child{margin-bottom:0}
+.cliff .rank{width:28px;height:28px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;
+  font-size:13px;font-weight:700;background:rgba(18,22,28,.9);border:1px solid rgba(255,255,255,.2);color:#a8b0bc;margin-top:2px}
+.cliff .main{flex:1;min-width:0}
+.cliff .nm{font-size:16px;font-weight:700;color:#e8eaed;line-height:1.25}
+.cliff .meta{font-size:13px;font-weight:500;color:#a8b0bc;margin-top:4px;line-height:1.35}
+.cliff .right{text-align:right;flex-shrink:0}
+.cliff .amt{font-size:22px;font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums;color:#fff;line-height:1.1}
+.cliff .due{font-size:12px;font-weight:600;color:#a8b0bc;margin-top:4px;white-space:nowrap}
+.badge{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  padding:4px 8px;border-radius:999px;margin-top:6px}
+
+.cliff.kill{border-color:rgba(255,92,92,.45);background:rgba(255,92,92,.08)}
+.cliff.kill .rank{border-color:rgba(255,92,92,.6);color:#ff8a8a;background:rgba(255,92,92,.12)}
+.cliff.kill .amt{color:#ff5c5c}
+.cliff.kill .badge{background:rgba(255,92,92,.18);border:1px solid rgba(255,92,92,.5);color:#ff5c5c}
+
+.cliff.amber{border-color:rgba(255,210,77,.4);background:rgba(255,210,77,.07)}
+.cliff.amber .rank{border-color:rgba(255,210,77,.55);color:#ffd24d;background:rgba(255,210,77,.1)}
+.cliff.amber .amt{color:#ffd24d}
+.cliff.amber .badge{background:rgba(255,210,77,.14);border:1px solid rgba(255,210,77,.5);color:#ffd24d}
+
+.cliff.hold{border-color:rgba(255,210,77,.28);background:rgba(10,12,16,.45)}
+.cliff.hold .amt{color:#ffd24d}
+.cliff.hold .badge{background:rgba(255,210,77,.1);border:1px solid rgba(255,210,77,.35);color:#ffd24d}
+
+.cliff.blocked{opacity:.85}
+.cliff.blocked .badge{background:rgba(255,92,92,.12);border:1px solid rgba(255,92,92,.4);color:#ff8a8a}
+
+.cliff.mute{opacity:.55}
+.cliff.mute .nm,.cliff.mute .amt{color:#a8b0bc;font-weight:600}
+.cliff.mute .amt{font-size:18px}
+.cliff.mute .badge{background:rgba(18,22,28,.8);border:1px solid rgba(255,255,255,.12);color:#a8b0bc}
+
+.gate-bar{padding:12px 14px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.ar{font-size:12px;font-weight:700;letter-spacing:.04em;padding:7px 11px;border-radius:999px;
+  background:rgba(18,22,28,.9);border:1px solid rgba(255,255,255,.16);color:#c8cdd6;font-variant-numeric:tabular-nums}
+.ar.dead{border-color:rgba(255,92,92,.45);color:#ff5c5c}
+.ar.hold{border-color:rgba(255,210,77,.4);color:#ffd24d}
+
+.caption{font-size:14px;font-weight:600;color:#d0d5dc;line-height:1.4;padding:10px 14px}
+.ftr{margin-top:auto;display:flex;justify-content:space-between;align-items:flex-end;gap:12px;font-size:11px;font-weight:500;color:#a8b0bc;padding-top:6px;border-top:1px solid rgba(255,255,255,.14)}
+.ftr .note{max-width:68%;line-height:1.35}
+</style></head>
+<body><div class="panel">
+
+  <div class="hdr glass">
+    <div>
+      <div class="brand"><img src="file:///workspace/wardos-kit/chrome/wardos-mark-header.png" height="48" alt="WardOS"/></div>
+      <div class="eyebrow">WARDOS-SUNDAY-MONEY · INSTRUMENT</div>
+      <div class="title">This Week Cliffs</div>
+      <div class="asof">as-of Sat 26 Sep ~12:40p CT · Ledger books</div>
+    </div>
+    <div class="chip">GATE CLOSED · disc $0</div>
+  </div>
+
+  <div class="bluf glass">
+    <div class="bluf-top">
+      <div>
+        <div class="lab">Cash cliffs · kill the floor path</div>
+        <div class="hero">Next cash cliffs that can kill the floor path</div>
+        <div class="row-chips">
+          <span class="gate-chip">GATE CLOSED · disc $0</span>
+          <span class="stamp">STALE ASSUMED</span>
+          <span class="ctx">Wells DEAD · last LIVE $14,164.46 23 Sep − Venmo Erin $50 · overlays OFF</span>
+        </div>
+      </div>
+      <div class="mini-climb">
+        <div class="mini-rail">
+          <div class="zr"></div><div class="za"></div><div class="zg"></div>
+          <div class="fl"></div>
+          <div class="mk"></div>
+        </div>
+        <div class="mini-lab">NOW<strong>$14,114.46</strong>56.4% · floor $20k</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cliffs glass">
+    <div class="sec">Ordered cliffs · kill / amber / hold / mute</div>
+
+    <div class="cliff kill">
+      <div class="rank">1</div>
+      <div class="main">
+        <div class="nm">SW Priority …7537 stmt Autopay</div>
+        <div class="meta">bal $10,318.74 · EXTRA $0 · statement only</div>
+        <span class="badge">KILL</span>
+      </div>
+      <div class="right">
+        <div class="amt">$5,283.69</div>
+        <div class="due">due 2026-10-02</div>
+      </div>
+    </div>
+
+    <div class="cliff amber">
+      <div class="rank">2</div>
+      <div class="main">
+        <div class="nm">Autopay DATE pick PENDING Sunday</div>
+        <div class="meta">Amounts locked · date is the only open pick</div>
+        <span class="badge">AMBER · PENDING</span>
+      </div>
+      <div class="right">
+        <div class="amt">$4,998/mo</div>
+        <div class="due">locked</div>
+      </div>
+    </div>
+
+    <div class="cliff amber">
+      <div class="rank">3</div>
+      <div class="main">
+        <div class="nm">Uber One renew</div>
+        <div class="meta">KILL CANDIDATE (Atlas) · no charge yet</div>
+        <span class="badge">KILL CANDIDATE</span>
+      </div>
+      <div class="right">
+        <div class="amt">$9.99</div>
+        <div class="due">on 2026-10-02</div>
+      </div>
+    </div>
+
+    <div class="cliff mute">
+      <div class="rank">4</div>
+      <div class="main">
+        <div class="nm">Guild Autopay stmt</div>
+        <div class="meta">loan …1173 · $0 extra · do not double-count vs AVAILABLE</div>
+        <span class="badge">MUTE · FOOTNOTE</span>
+      </div>
+      <div class="right">
+        <div class="amt">$3,589.57</div>
+        <div class="due">draw 1st</div>
+      </div>
+    </div>
+
+    <div class="cliff hold">
+      <div class="rank">5</div>
+      <div class="main">
+        <div class="nm">Hayes gift</div>
+        <div class="meta">last-yes only if path still clears $20k</div>
+        <span class="badge">HOLD</span>
+      </div>
+      <div class="right">
+        <div class="amt">$150</div>
+        <div class="due">due 2026-10-06</div>
+      </div>
+    </div>
+
+    <div class="cliff hold blocked">
+      <div class="rank">6</div>
+      <div class="main">
+        <div class="nm">Erin golf Titleist</div>
+        <div class="meta">last-yes · blocked under gate/floor</div>
+        <span class="badge">HOLD · BLOCKED</span>
+      </div>
+      <div class="right">
+        <div class="amt">$1,000</div>
+        <div class="due">due 2026-10-26</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="gate-bar glass">
+    <span class="ar dead">max extra SW payoff $0</span>
+    <span class="ar hold">until live A0 + path green</span>
+    <span class="ar">GATE CLOSED · disc $0</span>
+  </div>
+
+  <div class="caption glass">
+    Cliffs first. Extra payoff is dead until the floor path is green.
+  </div>
+
+  <div class="ftr">
+    <span class="note">as-of Sat 26 Sep ~12:40p CT · AVAILABLE $14,114.46 STALE ASSUMED · GATE CLOSED · Ledger books · never invent</span>
+    <span>WardOS · Sunday-Money · This Week Cliffs</span>
+  </div>
+</div></body></html>

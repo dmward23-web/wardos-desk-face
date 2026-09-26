@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1920" />
+<meta name="theme-color" content="#2a2e34" />
+<meta name="description" content="Board-OS Desk · three kid board links · PIN dark camo glass · known only · no invent" />
+<title>BOARD-OS · DESK · KIDS</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    width: 1920px; height: 1200px; overflow: hidden;
+    background: #2a2e34; color: #e8eaed;
+    font-family: "Inter Display", "Inter", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .panel {
+    width: 1920px; height: 1200px;
+    padding: 28px 36px 22px;
+    display: flex; flex-direction: column; gap: 16px;
+    position: relative; overflow: hidden;
+    background-color: #2a2e34;
+    background-image:
+      linear-gradient(165deg, rgba(90,96,108,0.42) 0%, rgba(40,44,50,0.28) 45%, rgba(22,24,28,0.30) 100%),
+      url("camo-glass-tile-desk.png");
+    background-size: auto, 420px 420px;
+    background-position: center, 0 0;
+    background-repeat: no-repeat, repeat;
+    border: 1px solid rgba(255,255,255,0.10);
+  }
+  .panel::before {
+    content: "";
+    position: absolute; inset: 0; pointer-events: none; z-index: 0;
+    background:
+      linear-gradient(180deg, rgba(255,255,255,0.14) 0%, transparent 28%, transparent 72%, rgba(0,0,0,0.24) 100%),
+      radial-gradient(ellipse 70% 50% at 18% 12%, rgba(255,255,255,0.13) 0%, transparent 55%),
+      radial-gradient(ellipse 50% 40% at 88% 78%, rgba(255,255,255,0.05) 0%, transparent 60%);
+    mix-blend-mode: soft-light;
+    opacity: 0.85;
+  }
+  .panel::after {
+    content: "";
+    position: absolute; inset: 0; pointer-events: none; z-index: 0;
+    background:
+      linear-gradient(118deg, transparent 0 34%, rgba(255,255,255,0.08) 34% 38%, transparent 38% 62%, rgba(255,255,255,0.04) 62% 64%, transparent 64%);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.14),
+      inset 0 -1px 0 rgba(0,0,0,0.28),
+      inset 1px 0 0 rgba(255,255,255,0.06),
+      inset -1px 0 0 rgba(0,0,0,0.22);
+  }
+  .panel > * { position: relative; z-index: 2; }
+  /* UNITY LOCK · Desk dark camo glass cards (shade of House template) */
+  .hdr, .bluf, .card, .tile, .side .card, .recommend, .gate, .nav, .ftr, .strip, .lane, .row-card {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  .hdr { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 14px 18px; border-radius: 16px; background: rgba(28,32,38,0.68); border: 1px solid rgba(255,255,255,0.12); box-shadow: 0 1px 0 rgba(255,255,255,0.10) inset, 0 8px 24px rgba(0,0,0,0.22); flex-shrink: 0; }
+  .eyebrow { font-size: 15px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: #4da3ff; margin-bottom: 4px; }
+  .title { font-size: 34px; font-weight: 700; letter-spacing: -.02em; color: #fff; }
+  .tags { display: flex; gap: 10px; align-items: center; }
+  .tag { font-size: 14px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #a8b0bc; background: rgba(30,34,42,0.65); border: 1px dashed rgba(255,255,255,0.22); padding: 8px 14px; border-radius: 8px; }
+  .tag-pin { color: #b8d4f0; border-color: rgba(180,200,220,0.35); background: rgba(40,48,58,0.72); border-style: solid; }
+  .stale { font-size: 14px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: #ffc14d; background: #2a2208; border: 1px solid #6a5420; padding: 8px 14px; border-radius: 8px; }
+  .bluf { background: linear-gradient(145deg, rgba(28,32,38,0.72) 0%, rgba(18,20,24,0.78) 100%); border: 1px solid rgba(255,255,255,0.12); box-shadow: 0 1px 0 rgba(255,255,255,0.10) inset, 0 8px 28px rgba(0,0,0,0.28); border: 1px solid #243448; border-radius: 18px; padding: 18px 26px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+  .bluf::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #4da3ff, #6ddeb5 50%, #ffc14d); }
+  .bluf .lbl { font-size: 14px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: #7a8799; }
+  .bluf .line { font-size: 22px; font-weight: 800; color: #fff; margin-top: 4px; }
+  .bluf .meta { font-size: 14px; color: #a8b0bc; margin-top: 4px; }
+  .chips { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+  .chip { font-size: 13px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; padding: 8px 12px; border-radius: 999px; border: 1px solid; }
+  .chip-ainsley { background: #25152e; color: #d7a3e8; border-color: #704889; }
+  .chip-hayes { background: #102a23; color: #7de0ba; border-color: #2e7b62; }
+  .chip-harris { background: #12233a; color: #8ec5ff; border-color: #37648f; }
+  .boards { flex: 1; min-height: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .board { min-height: 0; display: flex; flex-direction: column; gap: 14px; padding: 20px 20px 18px; border-radius: 18px; text-decoration: none; color: inherit; background: rgba(22,26,32,0.70); border: 1px solid rgba(255,255,255,0.12); box-shadow: 0 1px 0 rgba(255,255,255,0.08) inset, 0 6px 18px rgba(0,0,0,0.22); position: relative; overflow: hidden; transition: transform .15s ease, border-color .15s ease; }
+  .board:hover { transform: translateY(-2px); }
+  .board::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 4px; }
+  .board-ainsley::before { background: linear-gradient(90deg, #b468c8, #d7a3e8); }
+  .board-hayes::before { background: linear-gradient(90deg, #2a9a78, #7de0ba); }
+  .board-harris::before { background: linear-gradient(90deg, #3a6fc0, #8ec5ff); }
+  .board-ainsley { border-color: #523762; background: linear-gradient(180deg, #160f1d 0%, #0c131c 42%); }
+  .board-hayes { border-color: #285745; background: linear-gradient(180deg, #0c1c18 0%, #0c131c 42%); }
+  .board-harris { border-color: #2c4c72; background: linear-gradient(180deg, #0d1727 0%, #0c131c 42%); }
+  .board-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+  .board-kicker { font-size: 13px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: #7a8799; }
+  .board-name { font-size: 36px; font-weight: 800; letter-spacing: -.04em; color: #fff; margin-top: 5px; }
+  .board-ainsley .board-name { color: #d7a3e8; }
+  .board-hayes .board-name { color: #7de0ba; }
+  .board-harris .board-name { color: #8ec5ff; }
+  .house-chip { font-size: 11px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: #a8b0bc; background: #141c28; border: 1px solid #3a4a60; padding: 7px 9px; border-radius: 999px; white-space: nowrap; }
+  .hot { margin-top: 4px; padding: 18px; border-radius: 14px; border: 1px solid; }
+  .board-ainsley .hot { background: #25152e; border-color: #704889; }
+  .board-hayes .hot { background: #102a23; border-color: #2e7b62; }
+  .board-harris .hot { background: #12233a; border-color: #37648f; }
+  .hot-label { font-size: 11px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; color: #9aa8ba; }
+  .hot-line { font-size: 25px; font-weight: 800; line-height: 1.18; color: #fff; margin-top: 8px; }
+  .hot-note { font-size: 15px; color: #b7c3d0; line-height: 1.4; margin-top: 8px; }
+  .known { display: flex; flex-direction: column; gap: 9px; margin-top: auto; padding-top: 16px; border-top: 1px solid #1e2d42; }
+  .known-line { font-size: 16px; font-weight: 700; color: #c5d0de; line-height: 1.35; }
+  .known-line span { color: #7a8799; font-size: 12px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; display: block; margin-bottom: 2px; }
+  .open { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 4px; padding-top: 14px; border-top: 1px solid #1e2d42; color: #4da3ff; font-size: 14px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+  .board-ainsley .open { color: #d7a3e8; }
+  .board-hayes .open { color: #7de0ba; }
+  .board-harris .open { color: #8ec5ff; }
+  .footer { flex-shrink: 0; padding-top: 10px; border-top: 1px solid #1e2d42; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+  .footer .cap { font-size: 15px; font-weight: 600; color: #9aa8ba; max-width: 1250px; line-height: 1.35; }
+  .footer .cap strong { color: #6ddeb5; }
+  .footer .stamp { font-size: 13px; font-weight: 700; letter-spacing: .06em; color: #5a6678; text-align: right; line-height: 1.45; }
+</style>
+</head>
+<body>
+  <div class="panel">
+    <header class="hdr">
+      <div>
+        <div class="eyebrow">Board-OS · Desk · PIN</div>
+        <div class="title">Kids · three House boards</div>
+      </div>
+      <div class="tags">
+        <span class="stale">KNOWN ONLY · NO INVENT</span>
+        <span class="tag tag-pin">PIN layer</span>
+        <span class="tag">HOUSE BRIDGE</span>
+      </div>
+    </header>
+<div style="margin:8px 0;padding:10px 14px;border-radius:10px;background:#2a2208;border:1px dashed #6a5420;color:#ffc14d;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;font-size:13px;">School · UNKNOWN · Weather · UNKNOWN · custody with mom → Fri 3:00 CT</div>
+
+    <section class="bluf">
+      <div>
+        <div class="lbl">Quick glance · family lane</div>
+        <div class="line">Three kid boards, one clean jump</div>
+        <div class="meta">Desk overview only · tap a card to open the matching no-PIN House board</div>
+      </div>
+      <div class="chips" aria-label="Kid boards">
+        <span class="chip chip-ainsley">Ainsley</span>
+        <span class="chip chip-hayes">Hayes</span>
+        <span class="chip chip-harris">Harris</span>
+      </div>
+    </section>
+
+    <main class="boards" aria-label="Kid boards">
+      <a class="board board-ainsley" href="../house-face/kid-ainsley.html">
+        <div class="board-head">
+          <div><div class="board-kicker">House face · board 01</div><div class="board-name">Ainsley</div></div>
+          <span class="house-chip">No PIN</span>
+        </div>
+        <div class="hot">
+          <div class="hot-label">Hottest line</div>
+          <div class="hot-line">Thu Sep 24 · Swim 5:00</div>
+          <div class="hot-note">Ainsley · swim is the loudest known line on the board.</div>
+        </div>
+        <div class="known">
+          <div class="known-line"><span>Known on board</span>Tue 22 · 5:00 swim</div>
+          <div class="known-line"><span>Next handoff</span>Fri 25 · 3:00 → Dan week</div>
+        </div>
+        <div class="open"><span>Open Ainsley House board</span><span>↗</span></div>
+      </a>
+
+      <a class="board board-hayes" href="../house-face/kid-hayes.html">
+        <div class="board-head">
+          <div><div class="board-kicker">House face · board 02</div><div class="board-name">Hayes</div></div>
+          <span class="house-chip">No PIN</span>
+        </div>
+        <div class="hot">
+          <div class="hot-label">Hottest line</div>
+          <div class="hot-line">Fri Sep 25 · Birthday</div>
+          <div class="hot-note">Urban Air Glow · 4–6p · OP. Friday is the known birthday line.</div>
+        </div>
+        <div class="known">
+          <div class="known-line"><span>Known on board</span>Flag · ~5:15 today</div>
+          <div class="known-line"><span>Party line</span>Urban Air Glow · Fri 25 · 4–6p · OP</div>
+        </div>
+        <div class="open"><span>Open Hayes House board</span><span>↗</span></div>
+      </a>
+
+      <a class="board board-harris" href="../house-face/kid-harris.html">
+        <div class="board-head">
+          <div><div class="board-kicker">House face · board 03</div><div class="board-name">Harris</div></div>
+          <span class="house-chip">No PIN</span>
+        </div>
+        <div class="hot">
+          <div class="hot-label">Hottest line</div>
+          <div class="hot-line">Sat Sep 19 · Flag ~11:00</div>
+          <div class="hot-note">Harris · Flag is the loudest known line on the board today.</div>
+        </div>
+        <div class="known">
+          <div class="known-line"><span>Known on board</span>Wed 23 · 5:30 flag</div>
+          <div class="known-line"><span>Next handoff</span>Fri 25 · 3:00 → Dan week</div>
+        </div>
+        <div class="open"><span>Open Harris House board</span><span>↗</span></div>
+      </a>
+    </main>
+
+    <footer class="footer">
+      <p class="cap"><strong>House ≠ Desk.</strong> These are links into the family-safe House face; no money, no financial packet, no invented schedule.</p>
+      <div class="stamp">Desk · Kids bridge<br />PIN chrome · as-of 2026-09-19</div>
+    </footer>
+  </div>
+</body>
+</html>

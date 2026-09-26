@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=1080"/>
+<title>WardOS-Sunday-Money · Cards · Sat Sep 26 2026</title><style>
+@font-face{font-family:InterDisplay;src:url("file:///workspace/fonts/InterDisplay-Regular.ttf");font-weight:400;font-style:normal}
+@font-face{font-family:InterDisplay;src:url("file:///workspace/fonts/InterDisplay-Medium.ttf");font-weight:500;font-style:normal}
+@font-face{font-family:InterDisplay;src:url("file:///workspace/fonts/InterDisplay-SemiBold.ttf");font-weight:600;font-style:normal}
+@font-face{font-family:InterDisplay;src:url("file:///workspace/fonts/InterDisplay-Bold.ttf");font-weight:700;font-style:normal}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;font-family:InterDisplay,Inter,-apple-system,Helvetica,sans-serif;color:#e8eaed;background:#252a32;-webkit-font-smoothing:antialiased}
+.panel{width:1080px;height:1920px;padding:18px 22px 14px;display:flex;flex-direction:column;gap:12px;position:relative;overflow:hidden;
+  background-color:#252a32;
+  background-image:
+    linear-gradient(165deg,rgba(90,96,108,.42) 0%,rgba(28,32,38,.30) 42%,rgba(10,12,16,.35) 100%),
+    radial-gradient(ellipse 90% 70% at 50% 40%,transparent 30%,rgba(0,0,0,.30) 100%),
+    url("file:///workspace/wardos-kit/chrome/camo-glass-tile-desk.png");
+  background-size:auto,auto,520px 520px;background-position:center,center,0 0;background-repeat:no-repeat,no-repeat,repeat;
+  border:1px solid rgba(255,255,255,.10)}
+.panel::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.14) 0%,transparent 22%,transparent 74%,rgba(0,0,0,.24) 100%),
+    radial-gradient(ellipse 65% 45% at 16% 10%,rgba(255,255,255,.13) 0%,transparent 55%);
+  mix-blend-mode:soft-light;opacity:.9}
+.panel>*{position:relative;z-index:2}
+.glass{backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  background:rgba(22,26,34,.82);border:1px solid rgba(255,255,255,.13);
+  box-shadow:0 1px 0 rgba(255,255,255,.16) inset,0 10px 28px rgba(0,0,0,.28);border-radius:14px}
+
+.hdr{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:10px 14px}
+.brand img{display:block;height:48px;width:auto}
+.eyebrow{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#a8b0bc;margin-top:4px}
+.title{font-size:30px;font-weight:700;letter-spacing:-.035em;color:#fff;margin-top:1px;line-height:1.05}
+.asof{font-size:12px;font-weight:500;color:#a8b0bc;margin-top:3px;line-height:1.3}
+.chip{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:8px 12px;border-radius:999px;
+  background:rgba(18,22,28,.92);border:1px solid rgba(255,92,92,.55);color:#ff8a8a;align-self:flex-start;white-space:nowrap}
+
+.bluf{padding:16px 18px 14px;position:relative;overflow:hidden}
+.bluf .lab{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#a8b0bc}
+.bluf .hero{font-size:26px;font-weight:700;letter-spacing:-.03em;line-height:1.2;color:#fff;margin-top:8px;max-width:980px}
+.bluf .row-chips{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:12px}
+.stamp{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:7px 11px;border-radius:6px;
+  background:rgba(255,210,77,.12);border:1px dashed rgba(255,210,77,.55);color:#ffd24d}
+.gate-chip{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:7px 12px;border-radius:999px;
+  background:rgba(255,92,92,.14);border:1px solid rgba(255,92,92,.5);color:#ff5c5c}
+.ctx{font-size:11px;font-weight:600;letter-spacing:.04em;padding:7px 11px;border-radius:999px;
+  background:rgba(18,22,28,.9);border:1px solid rgba(255,255,255,.16);color:#a8b0bc}
+
+.cards{padding:12px 14px 14px;flex:1 1 auto;min-height:0;display:flex;flex-direction:column}
+.cards .sec{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#a8b0bc;margin-bottom:10px}
+.card{display:flex;gap:12px;align-items:flex-start;padding:14px 14px;border-radius:12px;margin-bottom:8px;
+  background:rgba(10,12,16,.55);border:1px solid rgba(255,255,255,.1)}
+.card:last-child{margin-bottom:0}
+.card .rank{width:28px;height:28px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;
+  font-size:13px;font-weight:700;background:rgba(18,22,28,.9);border:1px solid rgba(255,255,255,.2);color:#a8b0bc;margin-top:2px}
+.card .main{flex:1;min-width:0}
+.card .nm{font-size:17px;font-weight:700;color:#e8eaed;line-height:1.25}
+.card .meta{font-size:13px;font-weight:500;color:#a8b0bc;margin-top:5px;line-height:1.4}
+.card .right{text-align:right;flex-shrink:0;min-width:140px}
+.card .amt{font-size:24px;font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums;color:#fff;line-height:1.1}
+.card .due{font-size:12px;font-weight:600;color:#a8b0bc;margin-top:4px;white-space:nowrap}
+.badge{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  padding:4px 8px;border-radius:999px;margin-top:6px}
+
+.card.kill{border-color:rgba(255,92,92,.45);background:rgba(255,92,92,.08)}
+.card.kill .rank{border-color:rgba(255,92,92,.6);color:#ff8a8a;background:rgba(255,92,92,.12)}
+.card.kill .amt{color:#ff5c5c}
+.card.kill .badge{background:rgba(255,92,92,.18);border:1px solid rgba(255,92,92,.5);color:#ff5c5c}
+
+.card.amber{border-color:rgba(255,210,77,.4);background:rgba(255,210,77,.07)}
+.card.amber .rank{border-color:rgba(255,210,77,.55);color:#ffd24d;background:rgba(255,210,77,.1)}
+.card.amber .amt{color:#ffd24d}
+.card.amber .badge{background:rgba(255,210,77,.14);border:1px solid rgba(255,210,77,.5);color:#ffd24d}
+
+.card.hold{border-color:rgba(255,210,77,.28);background:rgba(10,12,16,.45)}
+.card.hold .amt{color:#ffd24d}
+.card.hold .badge{background:rgba(255,210,77,.1);border:1px solid rgba(255,210,77,.35);color:#ffd24d}
+
+.card.mute{opacity:.65}
+.card.mute .nm,.card.mute .amt{color:#a8b0bc;font-weight:600}
+.card.mute .amt{font-size:20px}
+.card.mute .badge{background:rgba(18,22,28,.8);border:1px solid rgba(255,255,255,.12);color:#a8b0bc}
+
+.card.ok{border-color:rgba(42,182,122,.3);background:rgba(13,40,28,.25)}
+.card.ok .rank{border-color:rgba(42,182,122,.5);color:#2ab87a;background:rgba(42,182,122,.1)}
+.card.ok .amt{color:#2ab87a}
+.card.ok .badge{background:rgba(42,182,122,.12);border:1px solid rgba(42,182,122,.4);color:#2ab87a}
+
+.soft-bar{padding:12px 14px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.ar{font-size:12px;font-weight:700;letter-spacing:.04em;padding:7px 11px;border-radius:999px;
+  background:rgba(18,22,28,.9);border:1px solid rgba(255,255,255,.16);color:#c8cdd6;font-variant-numeric:tabular-nums}
+.ar.dead{border-color:rgba(255,92,92,.45);color:#ff5c5c}
+.ar.hold{border-color:rgba(255,210,77,.4);color:#ffd24d}
+.ar.ok{border-color:rgba(42,182,122,.4);color:#2ab87a}
+
+.caption{font-size:14px;font-weight:600;color:#d0d5dc;line-height:1.4;padding:10px 14px}
+.ftr{margin-top:auto;display:flex;justify-content:space-between;align-items:flex-end;gap:12px;font-size:11px;font-weight:500;color:#a8b0bc;padding-top:6px;border-top:1px solid rgba(255,255,255,.14)}
+.ftr .note{max-width:68%;line-height:1.35}
+</style></head>
+<body><div class="panel">
+
+  <div class="hdr glass">
+    <div>
+      <div class="brand"><img src="file:///workspace/wardos-kit/chrome/wardos-mark-header.png" height="48" alt="WardOS"/></div>
+      <div class="eyebrow">WARDOS-SUNDAY-MONEY · INSTRUMENT</div>
+      <div class="title">Cards</div>
+      <div class="asof">as-of Assumptions card block 25 Sep desk + Dashboard 25 Sep nightly · STALE where noted</div>
+    </div>
+    <div class="chip">GATE CLOSED · no disc card spend</div>
+  </div>
+
+  <div class="bluf glass">
+    <div class="lab">Card instrument · statement discipline</div>
+    <div class="hero">SW is the drag · Apple flip still open · Costco payable HOLD</div>
+    <div class="row-chips">
+      <span class="gate-chip">GATE CLOSED · disc $0</span>
+      <span class="stamp">STALE where noted</span>
+      <span class="ctx">No disc card spend · interest target $0</span>
+    </div>
+  </div>
+
+  <div class="cards glass">
+    <div class="sec">Card lines · kill / amber / hold / mute</div>
+
+    <div class="card kill">
+      <div class="rank">1</div>
+      <div class="main">
+        <div class="nm">SW Priority …7537</div>
+        <div class="meta">bal $10,318.74 · stmt Autopay · EXTRA $0 · statement only</div>
+        <span class="badge">KILL · DRAG</span>
+      </div>
+      <div class="right">
+        <div class="amt">$5,283.69</div>
+        <div class="due">due 2026-10-02</div>
+      </div>
+    </div>
+
+    <div class="card amber">
+      <div class="rank">2</div>
+      <div class="main">
+        <div class="nm">Apple Card</div>
+        <div class="meta">Autopay ON Minimum Due from Wells …6854 · Sep 30 skipped · FLIP → Statement Balance · Atlas todo open</div>
+        <span class="badge">FLIP OPEN</span>
+      </div>
+      <div class="right">
+        <div class="amt">$0.00</div>
+        <div class="due">bal · flip pending</div>
+      </div>
+    </div>
+
+    <div class="card hold">
+      <div class="rank">3</div>
+      <div class="main">
+        <div class="nm">Costco Anywhere …5112</div>
+        <div class="meta">replace …8432 · bal UNKNOWN · OFD 24 Sep · Hisense/Citi · no click Citi links · LAST-YES 9/25 EXEC HELD</div>
+        <span class="badge">OPEN HOLD</span>
+      </div>
+      <div class="right">
+        <div class="amt">$587.15</div>
+        <div class="due">payable · HOLD</div>
+      </div>
+    </div>
+
+    <div class="card mute">
+      <div class="rank">4</div>
+      <div class="main">
+        <div class="nm">Capital One</div>
+        <div class="meta">watchdog only · no spend lane</div>
+        <span class="badge">WATCHDOG</span>
+      </div>
+      <div class="right">
+        <div class="amt">$0</div>
+        <div class="due">watch only</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="soft-bar glass">
+    <span class="ar ok">card interest target $0</span>
+    <span class="ar hold">do not invent Costco live bal</span>
+    <span class="ar dead">GATE CLOSED · no disc card spend</span>
+  </div>
+
+  <div class="caption glass">
+    Statement only on SW. Apple to statement. Costco HOLD — don’t touch the dispute.
+  </div>
+
+  <div class="ftr">
+    <span class="note">as-of Sat 26 Sep ~12:40p CT · AVAILABLE $14,114.46 STALE ASSUMED · GATE CLOSED · Ledger books · never invent</span>
+    <span>WardOS · Sunday-Money · Cards</span>
+  </div>
+</div></body></html>

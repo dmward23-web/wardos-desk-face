@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1920" />
+<title>Desk · CFO Glass · WardOS</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    width: 1920px; height: 1200px; overflow: hidden;
+    background: #2a2e34; color: #e8eaed;
+    font-family: "Inter Display", "Inter", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .panel {
+    width: 1920px; height: 1200px;
+    padding: 16px 28px 12px;
+    display: flex; flex-direction: column; gap: 10px;
+    position: relative; overflow: hidden;
+    background-color: #2a2e34;
+    background-image:
+      linear-gradient(165deg, rgba(90,96,108,0.42) 0%, rgba(40,44,50,0.28) 45%, rgba(22,24,28,0.30) 100%),
+      url("camo-glass-tile-desk.png");
+    background-size: auto, 420px 420px;
+    background-position: center, 0 0;
+    background-repeat: no-repeat, repeat;
+    border: 1px solid rgba(255,255,255,0.10);
+  }
+  .panel::before {
+    content: "";
+    position: absolute; inset: 0; pointer-events: none; z-index: 0;
+    background:
+      linear-gradient(180deg, rgba(255,255,255,0.14) 0%, transparent 28%, transparent 72%, rgba(0,0,0,0.24) 100%),
+      radial-gradient(ellipse 70% 50% at 18% 12%, rgba(255,255,255,0.13) 0%, transparent 55%),
+      radial-gradient(ellipse 50% 40% at 88% 78%, rgba(255,255,255,0.05) 0%, transparent 60%);
+    mix-blend-mode: soft-light; opacity: 0.85;
+  }
+  .panel::after {
+    content: "";
+    position: absolute; inset: 0; pointer-events: none; z-index: 0;
+    background: linear-gradient(118deg, transparent 0 34%, rgba(255,255,255,0.08) 34% 38%, transparent 38% 62%, rgba(255,255,255,0.04) 62% 64%, transparent 64%);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.14), inset 0 -1px 0 rgba(0,0,0,0.28), inset 1px 0 0 rgba(255,255,255,0.06), inset -1px 0 0 rgba(0,0,0,0.22);
+  }
+  .panel > * { position: relative; z-index: 2; }
+  .hdr, .bluf, .card, .sec, .nav, .manage, .chip-row {
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  }
+  .hdr {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 16px; border-radius: 14px; background: rgba(28,32,38,0.68);
+    border: 1px solid rgba(255,255,255,0.12);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.10) inset, 0 8px 24px rgba(0,0,0,0.22); flex-shrink: 0;
+  }
+  .hdr-left { display: flex; align-items: center; gap: 0; min-width: 0; }
+  .back {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 15px; font-weight: 700; color: #7ec8ff; text-decoration: none;
+    margin-right: 18px; padding: 8px 12px; border-radius: 10px;
+    background: rgba(20,40,60,0.55); border: 1px solid rgba(126,200,255,0.25);
+  }
+  .back .chev { font-size: 22px; line-height: 1; }
+  .eyebrow {
+    font-size: 13px; font-weight: 700; letter-spacing: 0.22em;
+    text-transform: uppercase; color: #4da3ff; margin-bottom: 2px; text-decoration: none; display: block;
+  }
+  .title { font-size: 28px; font-weight: 700; letter-spacing: -0.02em; color: #fff; }
+  .tags { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+  .tag {
+    font-size: 12px; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase;
+    color: #a8b0bc; background: rgba(30,34,42,0.65); border: 1px dashed rgba(255,255,255,0.22);
+    padding: 6px 10px; border-radius: 8px;
+  }
+  .tag-pin { color: #b8d4f0; border-color: rgba(180,200,220,0.35); background: rgba(40,48,58,0.72); border-style: solid; }
+  .live-chip {
+    font-size: 12px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase;
+    color: #7dffd4; background: rgba(20,60,48,0.75); border: 1px solid rgba(125,255,212,0.35);
+    padding: 6px 12px; border-radius: 8px;
+  }
+  .gate-chip {
+    font-size: 12px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase;
+    color: #ff8a8a; background: rgba(60,16,16,0.85); border: 1px solid rgba(255,90,90,0.45);
+    padding: 6px 12px; border-radius: 8px;
+  }
+
+  .bluf {
+    display: flex; align-items: center; justify-content: space-between; gap: 20px;
+    padding: 12px 18px; border-radius: 14px;
+    background: linear-gradient(135deg, rgba(20,60,48,.92), rgba(12,28,24,.95));
+    border: 1px solid rgba(125,255,212,.35); flex-shrink: 0;
+  }
+  .bluf .lbl { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: #7dffd4; opacity: .9; }
+  .bluf .acct { font-size: 14px; color: #9eb0a8; margin-top: 2px; }
+  .bluf .avail { font-size: 42px; font-weight: 800; color: #fff; font-variant-numeric: tabular-nums; letter-spacing: -0.03em; }
+  .bluf .avail .d { font-size: 26px; color: #7dffd4; margin-right: 2px; }
+  .bluf .right { text-align: right; }
+  .bluf .gap { font-size: 22px; font-weight: 800; color: #ff9a6a; }
+  .bluf .gap em { font-style: normal; font-size: 12px; color: #ff8a8a; display: block; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 2px; }
+  .bluf .meta { font-size: 13px; color: #9eb0a8; margin-top: 4px; }
+  .chips { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; margin-top: 8px; }
+  .chip {
+    font-size: 11px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase;
+    padding: 5px 10px; border-radius: 999px; border: 1px solid;
+  }
+  .chip-freeze { color: #ff8a8a; background: rgba(80,20,20,.55); border-color: rgba(255,100,100,.4); }
+  .chip-gate { color: #ffd24d; background: rgba(60,40,10,.65); border-color: rgba(255,210,77,.4); }
+  .chip-off { color: #a8b0bc; background: rgba(30,34,42,.7); border-color: rgba(140,150,165,.35); }
+  .chip-live { color: #7dffd4; background: rgba(20,60,48,.55); border-color: rgba(125,255,212,.35); }
+
+  .grid {
+    flex: 1; min-height: 0;
+    display: grid; grid-template-columns: 1.15fr 1.15fr 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 10px;
+  }
+  .sec {
+    padding: 12px 14px; border-radius: 14px;
+    background: rgba(22,26,32,0.72); border: 1px solid rgba(255,255,255,0.10);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset; display: flex; flex-direction: column; gap: 8px; min-height: 0;
+  }
+  .sec h2 {
+    font-size: 12px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase;
+    color: #7ec8ff; display: flex; justify-content: space-between; align-items: baseline;
+  }
+  .sec h2 span { font-size: 11px; color: #5a6678; letter-spacing: 0.06em; font-weight: 700; }
+  .row {
+    display: flex; justify-content: space-between; align-items: baseline; gap: 10px;
+    font-size: 14px; font-weight: 650; color: #c8d0dc; line-height: 1.35;
+  }
+  .row .k { color: #a8b0bc; font-weight: 600; }
+  .row .v { font-variant-numeric: tabular-nums; color: #fff; font-weight: 750; text-align: right; }
+  .row .v.amber { color: #ffd24d; }
+  .row .v.red { color: #ff8a8a; }
+  .row .v.green { color: #7dffd4; }
+  .row .v.muted { color: #a8b0bc; }
+  .row .taglet {
+    font-size: 10px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase;
+    color: #7ec8ff; margin-left: 6px;
+  }
+  .note {
+    font-size: 12px; color: #6a7585; font-weight: 600; line-height: 1.4; margin-top: auto;
+  }
+  .note strong { color: #9aa8ba; }
+  .stamp-line {
+    font-size: 12px; color: #5a6678; font-weight: 600;
+    border-top: 1px dashed rgba(255,255,255,0.08); padding-top: 6px; margin-top: 2px;
+  }
+  .ov-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+  .ov {
+    padding: 6px 8px; border-radius: 8px; background: rgba(18,20,26,0.65);
+    border: 1px solid rgba(255,255,255,0.08); font-size: 12px; font-weight: 650; color: #c8d0dc;
+  }
+  .ov .off {
+    display: inline-block; margin-top: 3px; font-size: 10px; font-weight: 800; letter-spacing: .06em;
+    color: #a8b0bc; background: rgba(40,44,52,.8); border: 1px solid rgba(140,150,165,.3);
+    padding: 2px 6px; border-radius: 999px; text-transform: uppercase;
+  }
+  .manage {
+    flex-shrink: 0; padding: 10px 16px; border-radius: 12px;
+    background: rgba(40,20,12,0.72); border: 1px solid rgba(255,138,61,0.35);
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  }
+  .manage .t { font-size: 14px; font-weight: 700; color: #ffd24d; }
+  .manage .ops { display: flex; gap: 8px; flex-wrap: wrap; }
+  .manage .ops span {
+    font-size: 11px; font-weight: 800; letter-spacing: .05em; text-transform: uppercase;
+    color: #ffb080; background: rgba(60,30,12,.7); border: 1px solid rgba(255,160,80,.3);
+    padding: 4px 8px; border-radius: 6px;
+  }
+  .nav {
+    flex-shrink: 0; display: flex; flex-wrap: wrap; gap: 8px; padding: 8px 0 0;
+  }
+  .nav a {
+    font-size: 13px; font-weight: 700; color: #a8b0bc; text-decoration: none;
+    padding: 7px 12px; border-radius: 8px; background: rgba(20,24,30,0.65);
+    border: 1px solid rgba(255,255,255,0.10);
+  }
+  .nav a.here { color: #7ec8ff; border-color: #2a4a6a; background: #0f1a28; }
+  .footer {
+    flex-shrink: 0; padding-top: 6px; border-top: 1px solid #1e2d42;
+    display: flex; justify-content: space-between; align-items: center; gap: 16px;
+  }
+  .footer .cap { font-size: 13px; font-weight: 600; color: #9aa8ba; max-width: 1300px; line-height: 1.35; }
+  .footer .stamp { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; color: #5a6678; text-align: right; line-height: 1.4; }
+  .unk { color: #ff8a3d !important; }
+</style>
+</head>
+<body>
+  <div class="panel">
+    <header class="hdr">
+      <div class="hdr-left">
+        <a class="back" href="desk-index.html" aria-label="Back to Desk index"><span class="chev">‹</span> Desk</a>
+        <div>
+          <img src="../assets/wardos-mark-header.png" width="180" height="45" alt="WardOS" style="display:block;margin-bottom:4px" />
+          <a class="eyebrow" href="desk-index.html">Desk · PIN · Ledger CFO</a>
+          <div class="title">CFO Glass</div>
+        </div>
+      </div>
+      <div class="tags">
+        <span class="live-chip">LIVE · Wed Sep 23 ~3:16p CT · LIVE Wells portal</span>
+        <span class="gate-chip">GATE CLOSED</span>
+        <span class="tag tag-pin">Desk PIN · Money primary</span>
+        <span class="tag">Never invent · UNKNOWN loud</span>
+      </div>
+    </header>
+
+    <section class="bluf" role="status" aria-label="AVAILABLE and gate">
+      <div>
+        <div class="lbl">BLUF · Available</div>
+        <div class="acct">Wells Everyday …6854 · source LIVE Wells portal · signed_in session</div>
+        <div class="avail"><span class="d">$</span>14,164.46</div>
+      </div>
+      <div class="right">
+        <div class="gap"><em>Kill RED · gap to $20k</em>$5,835.54</div>
+        <div class="meta">70.8% of floor · disc $0 FREEZE</div>
+        <div class="chips">
+          <span class="chip chip-live">LIVE</span>
+          <span class="chip chip-freeze">DISC $0</span>
+          <span class="chip chip-gate">GATE CLOSED</span>
+          <span class="chip chip-off">OVERLAYS OFF</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="grid">
+      <section class="sec">
+        <h2>Cash flow <span>monthly lean</span></h2>
+        <div class="row"><span class="k">Income net/mo</span><span class="v">$13,094.53<span class="taglet">PROJECTED</span></span></div>
+        <div class="row"><span class="k">Basis</span><span class="v muted">6043.63×26/12</span></div>
+        <div class="row"><span class="k">After HSA</span><span class="v">$12,698.70<span class="taglet">ASSUMED</span></span></div>
+        <div class="row"><span class="k">HSA EE / yr</span><span class="v muted">$4,750</span></div>
+        <div class="row"><span class="k">CTL lean</span><span class="v">$10,973.89</span></div>
+        <div class="row"><span class="k">Directional</span><span class="v amber">$1,724.81</span></div>
+        <div class="row"><span class="k">Dining</span><span class="v">$0</span></div>
+        <p class="note"><strong>Priority claim:</strong> Wells $20k floor first. Oct SW cliff thins directional.</p>
+      </section>
+
+      <section class="sec">
+        <h2>Trends <span>honest stamps only</span></h2>
+        <div class="row"><span class="k">2026-09-16</span><span class="v">$14,914.36</span></div>
+        <div class="stamp-line">LAST LIVE session</div>
+        <div class="row"><span class="k">2026-09-21</span><span class="v">$14,312.36</span></div>
+        <div class="stamp-line">after Erin $690 tagged</div>
+        <div class="row"><span class="k">2026-09-23</span><span class="v green">$14,164.46</span></div>
+        <div class="stamp-line">LIVE Wells portal ~3:16p CT</div>
+        <div class="row" style="margin-top:6px"><span class="k">Gap → $20k</span><span class="v red">$5,835.54 RED</span></div>
+        <p class="note">Wells often <strong>DEAD → STOP-EARLY</strong>. Oct SW ~$5,283.69 thins directional. No invented daily.</p>
+      </section>
+
+      <section class="sec">
+        <h2>Variables <span>open cliffs</span></h2>
+        <div class="row"><span class="k">SW Autopay 10/02</span><span class="v amber">$5,283.69</span></div>
+        <div class="row"><span class="k">Costco OPEN payable</span><span class="v amber">$587.15</span></div>
+        <div class="row"><span class="k">Jacobs AR inbound</span><span class="v">$1,970.10</span></div>
+        <div class="row"><span class="k">Therapy P1 Dan</span><span class="v">~$1,044/mo</span></div>
+        <div class="row"><span class="k">CS+maint → May ’28</span><span class="v">$4,998/mo</span></div>
+        <div class="row"><span class="k">Guild stmt · extra</span><span class="v muted">~$3,589.57 · PAUSED</span></div>
+        <div class="row"><span class="k">SuperGrok Heavy</span><span class="v">$30/mo</span></div>
+        <p class="note">AR <strong>not</strong> in AVAILABLE. Costco = OPEN payable PENDING last-yes · <strong>not return</strong>. Nov/Dec SW ≤$1,550.</p>
+      </section>
+
+      <section class="sec">
+        <h2>Invest <span>locked facts</span></h2>
+        <div class="row"><span class="k">Fidelity IRA …5027</span><span class="v">$257,915.88</span></div>
+        <div class="stamp-line">as-of 2026-09-01 Plaid · FDRXX live <span class="unk">UNKNOWN</span></div>
+        <div class="row"><span class="k">Sunday LAST-YES</span><span class="v muted">80/20 FZROX/FZILX</span></div>
+        <div class="row"><span class="k">Vanguard 401k …0383</span><span class="v amber">6% HOLD</span></div>
+        <div class="stamp-line">bw $606.21 · YTD ~$10,912 · bal ~$11,415 · max $24,500 · GATE CLOSED</div>
+        <div class="row"><span class="k">HSA Sofia</span><span class="v green">$4,282.41</span></div>
+        <div class="stamp-line">LIVE 9/23 · prefer medical · don’t raid for Wells</div>
+        <p class="note">No SoFi. Other brokerage / 529 <span class="unk">UNKNOWN</span>.</p>
+      </section>
+
+      <section class="sec" style="grid-column: span 2;">
+        <h2>Savings overlays <span>ALL OFF / PAUSED under gate</span></h2>
+        <div class="ov-grid">
+          <div class="ov">Ring · target $10k · $350/mo · funded $0<br/><span class="off">PAUSED</span></div>
+          <div class="ov">Home projects · prior $18k · $300/mo · funded $0<br/><span class="off">PAUSED</span></div>
+          <div class="ov">S Fund · Phase 0 until floor green<br/><span class="off">PHASE 0</span></div>
+          <div class="ov">Hayes gift 10/06 · cap $150 (UA party cap $375 separate)<br/><span class="off">OVERLAY OFF</span></div>
+          <div class="ov">Erin golf 10/26 Titleist · cap $1,000<br/><span class="off">OFF until ≥15k + path + last-yes</span></div>
+          <div class="ov">Christmas kids · target <span class="unk">UNKNOWN</span> until list<br/><span class="off">OVERLAY OFF</span></div>
+          <div class="ov">Vacation non-custody · <span class="unk">UNKNOWN</span><br/><span class="off">OVERLAY OFF</span></div>
+          <div class="ov">Rule: gifts/experiences = <strong style="color:#ffd24d">post-floor only</strong><br/><span class="off">WELLS $20k FIRST</span></div>
+        </div>
+      </section>
+
+      <section class="sec" style="grid-column: span 2;">
+        <h2>CTL horizon + open watch <span>May 2028 cliff</span></h2>
+        <div class="row"><span class="k">2026 lean / dir</span><span class="v">$10,973.89 / $1,724.81</span></div>
+        <div class="row"><span class="k">2027 lean / dir</span><span class="v">$11,144.40 / $1,947.14</span></div>
+        <div class="row"><span class="k">2028 avg / dir</span><span class="v">$9,921.03 / $3,575.13</span></div>
+        <div class="row"><span class="k">2029 post-cliff</span><span class="v">$9,102.43 / $4,810.49</span></div>
+        <p class="note" style="margin-top:6px">
+          <strong>Watch:</strong> Costco payable · Jacobs AR · Goodwill donations tax pending · Dashboard LIVE Sheets write unlock · Wells portal stamp captured ~3:16p CT.<br/>
+          Command book id <code style="color:#7ec8ff">1Fu9m6FtJDs1m6uD65N5FMmhPIuTqIudT</code>
+        </p>
+      </section>
+    </div>
+
+    <div class="manage">
+      <div class="t">Manage Dan · standing ops · money is the weakness</div>
+      <div class="ops">
+        <span>askBeforeBuys</span>
+        <span>discFreeze</span>
+        <span>pushBackTemptation</span>
+        <span>neverSoftNarrate</span>
+        <span>lastYesBeforePaySendMove</span>
+        <span>scoresToAtlas</span>
+      </div>
+    </div>
+
+    <nav class="nav" aria-label="Desk financial">
+      <a href="desk-index.html">Desk home</a>
+      <a href="desk-cfo.html" class="here">CFO Glass</a>
+      <a href="desk-cash.html">Cash</a>
+      <a href="desk-eoy.html">EOY</a>
+      <a href="desk-cards.html">Cards</a>
+      <a href="desk-freeze.html">FREEZE</a>
+      <a href="desk-autopay.html">Autopay</a>
+      <a href="desk-envelopes.html">Envelopes</a>
+      <a href="desk-refresh.html">Refresh</a>
+    </nav>
+
+    <footer class="footer">
+      <p class="cap">Packet <code>data/cfo-glass.json</code> · AVAILABLE $14,164.46 · gap $5,835.54 · GATE CLOSED · overlays OFF. UNKNOWN loud: FDRXX live · Christmas · vacation · brokerage/529 · TCL · tax refund/owe.</p>
+      <div class="stamp">Desk · dark camo glass<br />LIVE · Wed Sep 23 ~3:16p CT · Wells portal · CFO restamp ~3:16p CT</div>
+    </footer>
+  </div>
+</body>
+</html>

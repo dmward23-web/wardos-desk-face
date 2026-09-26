@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1920" />
+<title>WardOS · Desk · Admin</title>
+<style>
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    width: 1920px; height: 1200px; overflow: hidden;
+    background: #2a2e34; color: #e8eaed;
+    font-family: "Inter Display", "Inter", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .panel {
+    width: 1920px; height: 1200px;
+    padding: 22px 32px 16px;
+    display: flex; flex-direction: column; gap: 14px;
+    position: relative; overflow: hidden;
+    background-color: #2a2e34;
+    background-image:
+      linear-gradient(165deg, rgba(90,96,108,0.42) 0%, rgba(40,44,50,0.28) 45%, rgba(22,24,28,0.30) 100%),
+      url("camo-glass-tile-desk.png");
+    background-size: auto, 420px 420px;
+    background-position: center, 0 0;
+    background-repeat: no-repeat, repeat;
+    border: 1px solid rgba(255,255,255,0.10);
+  }
+  .panel::before {
+    content: "";
+    position: absolute; inset: 0; pointer-events: none; z-index: 0;
+    background:
+      linear-gradient(180deg, rgba(255,255,255,0.14) 0%, transparent 28%, transparent 72%, rgba(0,0,0,0.24) 100%),
+      radial-gradient(ellipse 70% 50% at 18% 12%, rgba(255,255,255,0.13) 0%, transparent 55%),
+      radial-gradient(ellipse 50% 40% at 88% 78%, rgba(255,255,255,0.05) 0%, transparent 60%);
+    mix-blend-mode: soft-light; opacity: 0.85;
+  }
+  .panel::after {
+    content: "";
+    position: absolute; inset: 0; pointer-events: none; z-index: 0;
+    background:
+      linear-gradient(118deg, transparent 0 34%, rgba(255,255,255,0.08) 34% 38%, transparent 38% 62%, rgba(255,255,255,0.04) 62% 64%, transparent 64%);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.14),
+      inset 0 -1px 0 rgba(0,0,0,0.28),
+      inset 1px 0 0 rgba(255,255,255,0.06),
+      inset -1px 0 0 rgba(0,0,0,0.22);
+  }
+  .panel > * { position: relative; z-index: 2; }
+  .hdr, .bluf, .card, .row, .nav, .footer, .signal, .stack-item, .check {
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  }
+  .hdr { display:flex; align-items:center; justify-content:space-between; padding: 12px 18px; border-radius: 16px; background: rgba(28,32,38,0.68); border: 1px solid rgba(255,255,255,0.12); box-shadow: 0 1px 0 rgba(255,255,255,0.10) inset, 0 8px 24px rgba(0,0,0,0.22); flex-shrink:0; }
+  .hdr-left { display:flex; align-items:center; gap:0; min-width:0; }
+  .back { display:inline-flex; align-items:center; gap:6px; font-size:14px; font-weight:750; color:#7ec8ff; padding:8px 14px; border-radius:999px; min-height:40px; background:#0f1a28; border:1px solid #2a4a6a; text-decoration:none; flex-shrink:0; margin-right:14px; }
+  .back .chev { font-size:16px; color:#4da3ff; line-height:1; }
+  .eyebrow { font-size:15px; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:#4da3ff; margin-bottom:4px; text-decoration:none; display:block; }
+  .title { font-size:32px; font-weight:700; letter-spacing:-.02em; color:#fff; }
+  .tags { display:flex; gap:10px; align-items:center; flex-wrap:wrap; justify-content:flex-end; }
+  .tag,.stale,.mock { font-size:13px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; padding:8px 12px; border-radius:8px; }
+  .tag { color:#a8b0bc; background: rgba(30,34,42,0.65); border: 1px dashed rgba(255,255,255,0.22); }
+  .tag-pin { color: #b8d4f0; border-color: rgba(180,200,220,0.35); background: rgba(40,48,58,0.72); border-style: solid; }
+  .stale { color:#ffc14d; background:#2a2208; border:1px solid #6a5420; }
+  .mock { color:#7dffd4; background:#0c1a16; border:1px solid #2a5a48; }
+  .bluf { background: linear-gradient(145deg, rgba(28,32,38,0.72) 0%, rgba(18,20,24,0.78) 100%); border:1px solid #243448; border-radius:18px; padding:18px 24px; position:relative; overflow:hidden; display:flex; align-items:center; justify-content:space-between; gap:20px; flex-shrink:0; }
+  .bluf::before { content:""; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,#4da3ff,#6ddeb5 50%,#ffc14d); }
+  .bluf .lbl { font-size:13px; font-weight:800; letter-spacing:.16em; text-transform:uppercase; color:#7a8799; }
+  .bluf .line { font-size:24px; font-weight:850; color:#fff; margin-top:4px; }
+  .bluf .meta { font-size:14px; color:#a8b0bc; margin-top:4px; }
+  .nav { display:flex; flex-wrap:wrap; gap:8px; flex-shrink:0; }
+  .nav a { flex:1 1 90px; text-align:center; text-decoration:none; border:1px dashed #3a4a60; background:#0e1520; color:#7a8799; font-size:12px; font-weight:700; letter-spacing:.04em; padding:10px 6px; border-radius:12px; }
+  .nav a.here { border-style:solid; border-color:#2a4a6a; color:#7ec8ff; background:#0f1a28; }
+  .footer { flex-shrink:0; padding-top:8px; border-top:1px solid #1e2d42; display:flex; justify-content:space-between; align-items:center; gap:16px; }
+  .footer .cap { font-size:14px; font-weight:600; color:#9aa8ba; max-width:1300px; line-height:1.35; }
+  .footer .stamp { font-size:12px; font-weight:700; letter-spacing:.06em; color:#5a6678; text-align:right; line-height:1.45; }
+
+</style>
+</head>
+<body>
+<div class="panel">
+  <header class="hdr">
+    <div class="hdr-left">
+      <a class="back" href="desk-index.html" aria-label="Back to Desk"><span class="chev">‹</span> Desk</a>
+      <div>
+        <a class="eyebrow" href="desk-index.html">WardOS · Desk · PIN</a>
+        <div class="title">Admin · oil · tag · 8332</div>
+      </div>
+    </div>
+    <div class="tags">
+      <span class="mock">MOCK · WardOS</span>
+      <span class="stale">KNOWN ONLY</span>
+      <span class="tag tag-pin">PIN</span>
+    </div>
+  </header>
+  <section class="bluf">
+    <div>
+      <div class="lbl">Admin · labels only</div>
+      <div class="line">Oil + TPMS · Yukon tag · Form 8332</div>
+      <div class="meta">Harbor on ask for 8332 · label only · no draft on glass · no invent $</div>
+    </div>
+  </section>
+  <style>
+  .rows { flex:1; min-height:0; display:flex; flex-direction:column; gap:12px; }
+  .row { display:grid; grid-template-columns:220px 1fr 140px; gap:16px; align-items:center; padding:22px 24px; border-radius:16px; background: rgba(22,26,32,0.70); border:1px solid rgba(255,255,255,0.12); box-shadow: 0 1px 0 rgba(255,255,255,0.08) inset, 0 6px 18px rgba(0,0,0,0.22); }
+  .row .main { font-size:26px; font-weight:900; color:#8ec5ff; }
+  .row .stat { font-size:18px; font-weight:700; color:#fff; line-height:1.35; }
+  .row .asof { font-size:13px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:#7a8799; text-align:right; }
+</style>
+  <div class="rows" aria-label="Admin items">      <div class="row">
+        <div class="main">oil + TPMS</div>
+        <div class="stat">Express Oil + TPMS · amount UNKNOWN</div>
+        <div class="asof">Tue Sep 15</div>
+      </div>
+      <div class="row">
+        <div class="main">Yukon tag</div>
+        <div class="stat">State Farm VIN/plate/renewal → Atlas · UNKNOWN</div>
+        <div class="asof">open</div>
+      </div>
+      <div class="row">
+        <div class="main">Form 8332</div>
+        <div class="stat">Harbor on ask · label only · no draft</div>
+        <div class="asof">standing</div>
+      </div>
+</div>
+
+  <nav class="nav" aria-label="Desk plates">
+    <a href="desk-index.html">Desk</a>
+    <a href="desk-waiting.html">Waiting</a>
+    <a href="desk-leave-card.html">Leave card</a>
+    <a href="desk-lock-packet.html">Lock packet</a>
+    <a href="desk-travel.html">Travel</a>
+    <a href="desk-wallet.html">Wallet</a>
+    <a href="desk-admin.html" class="here">Admin</a>
+    <a href="desk-cash.html">Cash</a>
+    <a href="desk-gallery.html">Gallery</a>
+  </nav>
+  <footer class="footer">
+    <p class="cap">Admin labels · Express Oil+TPMS amount UNKNOWN · Yukon tag/VIN UNKNOWN · Form 8332 Harbor on ask label only.</p>
+    <div class="stamp">WardOS · Desk dark camo<br />MOCK · as-of Sat Sep 19 2026 CT<br />Flip · Sun TABLET-TEST · Mon 8am LIVE</div>
+  </footer>
+</div>
+</body>
+</html>

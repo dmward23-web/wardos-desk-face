@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080" />
+<title>WardOS · Mode A Kit · FROZEN</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;font-family:Inter,-apple-system,Helvetica,sans-serif;color:#f2f4f6;background:#0e1116;-webkit-font-smoothing:antialiased}
+.panel{width:1080px;height:1920px;padding:24px 28px 20px;display:flex;flex-direction:column;gap:12px;
+  background:linear-gradient(165deg,#12151c,#1a1f28 55%,#141820)}
+.hdr{display:flex;justify-content:space-between;align-items:flex-start}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#8b95a5;margin-top:6px}
+.title{font-size:36px;font-weight:800;letter-spacing:-.03em;margin-top:2px}
+.asof{font-size:13px;font-weight:600;color:#8b95a5;margin-top:4px}
+.chip{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:10px 14px;border-radius:999px;background:#1a3a2a;border:1px solid #7dffd4;color:#7dffd4}
+.bluf{background:linear-gradient(105deg,#1c2028,#243044);border:1px solid rgba(125,210,180,.35);border-radius:14px;padding:16px 18px}
+.bluf .k{font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#7dffd4}
+.bluf .v{font-size:24px;font-weight:800;margin-top:6px;line-height:1.25}
+.bluf .s{font-size:15px;font-weight:650;color:#a8b8c8;margin-top:8px;line-height:1.35}
+.card{background:rgba(22,26,32,.94);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:12px 14px}
+.h{font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;margin-bottom:8px}
+.seats .h{color:#9ec5ff}.cad .h{color:#c9b6ff}.ban .h{color:#ff8f7a}.yes .h{color:#ffc14d}.wr .h{color:#7dffd4}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.seat{background:rgba(30,36,44,.9);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:10px 12px}
+.seat .n{font-size:18px;font-weight:800}
+.seat .r{font-size:13px;font-weight:600;color:#8b95a5;margin-top:2px;line-height:1.25}
+.li{font-size:16px;font-weight:700;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.06);line-height:1.3}
+.li:last-child{border-bottom:none}
+.amber{color:#ffd24d}.ok{color:#7dffd4}.mute{color:#8b95a5}
+.ftr{margin-top:auto;display:flex;justify-content:space-between;font-size:12px;font-weight:650;color:#8b95a5;padding-top:8px;border-top:1px solid rgba(255,255,255,.1)}
+</style>
+</head>
+<body>
+<div class="panel">
+  <div class="hdr">
+    <div>
+      <img src="../assets/wardos-mark-header.png" width="300" height="75" alt="WardOS" />
+      <div class="eyebrow">WRIGHT KIT · PRIVATE DESK</div>
+      <div class="title">Mode A Kit</div>
+      <div class="asof">FROZEN 22 Sep 2026 · Wright source · known only</div>
+    </div>
+    <div class="chip">FROZEN</div>
+  </div>
+
+  <div class="bluf">
+    <div class="k">Charter</div>
+    <div class="v">One human · Atlas King · he is not the operator</div>
+    <div class="s">Last-yes · leave-only calendar · money only in Ledger · quiet collapse · default new bots = 0</div>
+  </div>
+
+  <div class="card seats">
+    <div class="h">Seats · six only</div>
+    <div class="grid">
+      <div class="seat"><div class="n">Atlas</div><div class="r">CoS · King</div></div>
+      <div class="seat"><div class="n">Harbor</div><div class="r">Counsel</div></div>
+      <div class="seat"><div class="n">Ledger</div><div class="r">Money</div></div>
+      <div class="seat"><div class="n">Vita</div><div class="r">Body + mind</div></div>
+      <div class="seat"><div class="n">Prism</div><div class="r">Picture-only</div></div>
+      <div class="seat"><div class="n">Alfred</div><div class="r">Auditor · not CoS</div></div>
+    </div>
+  </div>
+
+  <div class="card cad">
+    <div class="h">Cadence</div>
+    <div class="li">Atlas · morning / leaves</div>
+    <div class="li">Vita · body</div>
+    <div class="li">Ledger · money</div>
+    <div class="li">Harbor · drafts</div>
+    <div class="li">Alfred · on request</div>
+    <div class="li">Prism · on ask</div>
+  </div>
+
+  <div class="card ban">
+    <div class="h">Lane bans</div>
+    <div class="li">No second CoS</div>
+    <div class="li">Bots fix bots</div>
+    <div class="li">Specialists don’t write calendar</div>
+    <div class="li">Kids-clean</div>
+  </div>
+
+  <div class="card yes">
+    <div class="h">Last-yes only</div>
+    <div class="li">Send · pay · book · contact</div>
+  </div>
+
+  <div class="card wr">
+    <div class="h">Wright 2026</div>
+    <div class="li"><span class="ok">Kit only</span> · <span class="amber">$0</span></div>
+    <div class="li">Day-7 win · hours returned</div>
+    <div class="li mute">Mode B 1 Jan 2027 only if Daniel names a person</div>
+  </div>
+
+  <div class="ftr">
+    <span>One plate · no mood board</span>
+    <span>WardOS private · not Plumb</span>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080" />
+<title>WardOS · TAX / 401k</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;font-family:Inter,-apple-system,Helvetica,sans-serif;color:#f2f4f6;background:#0e1116;-webkit-font-smoothing:antialiased}
+.panel{width:1080px;height:1920px;padding:24px 28px 20px;display:flex;flex-direction:column;gap:11px;
+  background:linear-gradient(165deg,#12151c,#1a1f28 55%,#141820)}
+.hdr{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#8b95a5;margin-top:6px}
+.title{font-size:38px;font-weight:800;letter-spacing:-.03em;margin-top:2px}
+.asof{font-size:13px;font-weight:600;color:#8b95a5;margin-top:4px}
+.chips{display:flex;flex-direction:column;gap:8px;align-items:flex-end}
+.chip{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:9px 12px;border-radius:999px;background:#2a2e36;border:1px solid #5a5e66}
+.chip.gate{background:#3a1820;border-color:#ff5c5c;color:#ffb0b0}
+.bluf{background:linear-gradient(105deg,#1c2028,#2a1820);border:1px solid rgba(255,92,92,.5);border-radius:14px;padding:16px 18px}
+.bluf .k{font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#ff8a8a}
+.bluf .v{font-size:26px;font-weight:800;margin-top:6px;line-height:1.2}
+.bluf .s{font-size:15px;font-weight:650;color:#c9b0a0;margin-top:6px;line-height:1.35}
+.card{background:rgba(22,26,32,.94);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:12px 14px}
+.h{font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;margin-bottom:6px}
+.cash .h{color:#ff8f7a}.br .h{color:#ffc14d}.k401 .h{color:#7dffd4}.more .h{color:#9ec5ff}.rules .h{color:#c9b6ff}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.num{font-size:28px;font-weight:800}.num.big{font-size:32px}
+.sub{font-size:13px;font-weight:600;color:#8b95a5;margin-top:2px;line-height:1.25}
+.li{font-size:16px;font-weight:700;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.06);line-height:1.28}
+.li:last-child{border-bottom:none}
+.red{color:#ff5c5c}.amber{color:#ffd24d}.ok{color:#7dffd4}.mute{color:#8b95a5}
+.ftr{margin-top:auto;display:flex;justify-content:space-between;font-size:11px;font-weight:650;color:#8b95a5;padding-top:8px;border-top:1px solid rgba(255,255,255,.1)}
+</style>
+</head>
+<body>
+<div class="panel">
+  <div class="hdr">
+    <div>
+      <img src="../assets/wardos-mark-header.png" width="300" height="75" alt="WardOS" />
+      <div class="eyebrow">DESK · LEDGER PACKET · EST NOT FILING</div>
+      <div class="title">TAX / 401k</div>
+      <div class="asof">as-of Mon Sep 21 ~1:41p CT · known only</div>
+    </div>
+    <div class="chips">
+      <div class="chip">TABLET-TEST</div>
+      <div class="chip gate">GATE CLOSED</div>
+    </div>
+  </div>
+
+  <div class="bluf">
+    <div class="k">BLUF · Mission24</div>
+    <div class="v">HOLD 401k at <span class="amber">6%</span> · GATE CLOSED</div>
+    <div class="s">Open only after AVAILABLE ≥ $15k <strong>and</strong> $20k YE green · then MAX EE toward $24,500 · 32% → 24%</div>
+  </div>
+
+  <div class="card cash">
+    <div class="h">Cash</div>
+    <div class="row">
+      <div>
+        <div class="num big">$14,164.46</div>
+        <div class="sub">AVAILABLE · disc $0</div>
+      </div>
+      <div>
+        <div class="num big red">$5,835.54</div>
+        <div class="sub">Gap to $20k · RED</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="card br">
+      <div class="h">Bracket EST</div>
+      <div class="li">Stay 6% · <span class="red">32%</span></div>
+      <div class="li">TI ~$204k</div>
+      <div class="li">After max · <span class="ok">24%</span></div>
+      <div class="li">TI ~$195k</div>
+      <div class="li amber">Fed save ~$2.9k EST</div>
+    </div>
+    <div class="card k401">
+      <div class="h">401k · Jacobs/Vanguard …0383</div>
+      <div class="li">Rate <span class="amber">6% HOLD</span></div>
+      <div class="li">EE YTD ~$10,912</div>
+      <div class="li">Bal ~$11,415</div>
+      <div class="li red">NOT maxed</div>
+      <div class="li">EE max target $24,500</div>
+    </div>
+  </div>
+
+  <div class="card more">
+    <div class="h">Also on this path</div>
+    <div class="li">HSA · fill leftover when cash allows</div>
+    <div class="li">Kids · even-year Ainsley+Hayes (2) · 8332 if needed</div>
+    <div class="li amber">Refund / owe · UNKNOWN · need stubs</div>
+    <div class="li">TN nights ~189 · KS domicile stands</div>
+  </div>
+
+  <div class="card rules">
+    <div class="h">Rules</div>
+    <div class="li">Never raid retirement</div>
+    <div class="li">You approve before any Vanguard click</div>
+    <div class="li mute">EST / not filing · no invent</div>
+  </div>
+
+  <div class="ftr">
+    <span>WardOS · glass first</span>
+    <span>Atlas → Dan · Ledger SoT</span>
+  </div>
+</div>
+</body>
+</html>

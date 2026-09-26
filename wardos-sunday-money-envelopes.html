@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=1080"/>
+<title>WardOS-Sunday-Money · September Envelopes · Sat Sep 26 2026</title><style>
+@font-face{font-family:InterDisplay;src:url("file:///workspace/fonts/InterDisplay-Regular.ttf");font-weight:400;font-style:normal}
+@font-face{font-family:InterDisplay;src:url("file:///workspace/fonts/InterDisplay-Medium.ttf");font-weight:500;font-style:normal}
+@font-face{font-family:InterDisplay;src:url("file:///workspace/fonts/InterDisplay-SemiBold.ttf");font-weight:600;font-style:normal}
+@font-face{font-family:InterDisplay;src:url("file:///workspace/fonts/InterDisplay-Bold.ttf");font-weight:700;font-style:normal}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;font-family:InterDisplay,Inter,-apple-system,Helvetica,sans-serif;color:#e8eaed;background:#252a32;-webkit-font-smoothing:antialiased}
+.panel{width:1080px;height:1920px;padding:16px 20px 12px;display:flex;flex-direction:column;gap:8px;position:relative;overflow:hidden;
+  background-color:#252a32;
+  background-image:
+    linear-gradient(165deg,rgba(90,96,108,.42) 0%,rgba(28,32,38,.30) 42%,rgba(10,12,16,.35) 100%),
+    radial-gradient(ellipse 90% 70% at 50% 40%,transparent 30%,rgba(0,0,0,.30) 100%),
+    url("file:///workspace/wardos-kit/chrome/camo-glass-tile-desk.png");
+  background-size:auto,auto,520px 520px;background-position:center,center,0 0;background-repeat:no-repeat,no-repeat,repeat;
+  border:1px solid rgba(255,255,255,.10)}
+.panel::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.14) 0%,transparent 22%,transparent 74%,rgba(0,0,0,.24) 100%),
+    radial-gradient(ellipse 65% 45% at 16% 10%,rgba(255,255,255,.13) 0%,transparent 55%);
+  mix-blend-mode:soft-light;opacity:.9}
+.panel>*{position:relative;z-index:2}
+.glass{backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  background:rgba(22,26,34,.82);border:1px solid rgba(255,255,255,.13);
+  box-shadow:0 1px 0 rgba(255,255,255,.16) inset,0 10px 28px rgba(0,0,0,.28);border-radius:14px}
+
+.hdr{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:8px 12px}
+.brand img{display:block;height:44px;width:auto}
+.eyebrow{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#a8b0bc;margin-top:3px}
+.title{font-size:28px;font-weight:700;letter-spacing:-.035em;color:#fff;margin-top:1px;line-height:1.05}
+.asof{font-size:11px;font-weight:500;color:#a8b0bc;margin-top:2px;line-height:1.3}
+.chip{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:7px 11px;border-radius:999px;
+  background:rgba(18,22,28,.92);border:1px solid rgba(255,92,92,.55);color:#ff8a8a;align-self:flex-start;white-space:nowrap}
+
+.bluf{padding:12px 14px 10px;position:relative;overflow:hidden}
+.bluf .lab{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#a8b0bc}
+.bluf .hero{font-size:20px;font-weight:700;letter-spacing:-.03em;line-height:1.25;color:#fff;margin-top:5px}
+.bluf .net{font-size:13px;font-weight:500;color:#a8b0bc;margin-top:6px;line-height:1.35}
+.bluf .net strong{color:#ff8a8a}
+.bluf .row-chips{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:8px}
+.stamp{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:6px 9px;border-radius:6px;
+  background:rgba(255,210,77,.12);border:1px dashed rgba(255,210,77,.55);color:#ffd24d}
+.gate-chip{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:6px 10px;border-radius:999px;
+  background:rgba(255,92,92,.14);border:1px solid rgba(255,92,92,.5);color:#ff5c5c}
+.ctx{font-size:10px;font-weight:600;letter-spacing:.04em;padding:6px 9px;border-radius:999px;
+  background:rgba(18,22,28,.9);border:1px solid rgba(255,255,255,.16);color:#a8b0bc}
+
+.totals{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.t-cell{padding:10px 12px;border-radius:12px;background:rgba(10,12,16,.55);border:1px solid rgba(255,255,255,.1);text-align:center}
+.t-k{font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#a8b0bc}
+.t-v{font-size:22px;font-weight:700;letter-spacing:-.03em;color:#fff;margin-top:4px;font-variant-numeric:tabular-nums}
+.t-v.green{color:#2ab87a}
+.t-v.amber{color:#ffd24d}
+
+.rows{padding:8px 10px 10px;flex:1 1 auto;min-height:0;display:flex;flex-direction:column}
+.rows .sec{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#a8b0bc;margin-bottom:6px}
+.row{display:grid;grid-template-columns:28px 1fr 88px 88px 72px 64px;gap:6px;align-items:center;
+  padding:6px 8px;border-radius:8px;margin-bottom:3px;
+  background:rgba(10,12,16,.45);border:1px solid rgba(255,255,255,.07)}
+.row:last-child{margin-bottom:0}
+.row .rk{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:11px;font-weight:700;background:rgba(18,22,28,.9);border:1px solid rgba(255,255,255,.18);color:#a8b0bc}
+.row .nm{font-size:13px;font-weight:700;color:#e8eaed;line-height:1.15}
+.row .note{font-size:10px;font-weight:500;color:#8a93a0;margin-top:2px;line-height:1.25}
+.row .amt{font-size:13px;font-weight:700;font-variant-numeric:tabular-nums;color:#fff;text-align:right}
+.row .amt.mute{color:#a8b0bc;font-weight:600}
+.row .amt.left{color:#2ab87a}
+.row .pct-wrap{display:flex;flex-direction:column;align-items:flex-end;gap:3px}
+.row .pct{font-size:11px;font-weight:700;color:#a8b0bc;font-variant-numeric:tabular-nums}
+.pct-bar{width:56px;height:5px;border-radius:3px;background:rgba(255,255,255,.08);overflow:hidden}
+.pct-fill{height:100%;border-radius:3px;background:#22a66a}
+.pct-fill.amber{background:#d4a017}
+.pct-fill.zero{background:transparent}
+
+.row.hard{border-color:rgba(255,92,92,.45);background:rgba(255,92,92,.1)}
+.row.hard .rk{border-color:rgba(255,92,92,.6);color:#ff8a8a;background:rgba(255,92,92,.12)}
+.row.hard .nm{color:#ff8a8a}
+.row.hard .amt{color:#ff5c5c}
+.row.hard .pct{color:#ff5c5c}
+
+.row.paused{opacity:.55}
+.row.paused .nm,.row.paused .amt{color:#a8b0bc}
+.row.paused .rk{opacity:.7}
+
+.row.hot{border-color:rgba(255,210,77,.28);background:rgba(255,210,77,.05)}
+.row.hot .pct{color:#ffd24d}
+.row.hot .pct-fill{background:#d4a017}
+
+.colh{display:grid;grid-template-columns:28px 1fr 88px 88px 72px 64px;gap:6px;padding:0 8px 4px;
+  font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#6b7380}
+.colh span:nth-child(n+3){text-align:right}
+
+.soft-bar{padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.ar{font-size:11px;font-weight:700;letter-spacing:.04em;padding:5px 9px;border-radius:999px;
+  background:rgba(18,22,28,.9);border:1px solid rgba(255,255,255,.16);color:#c8cdd6;font-variant-numeric:tabular-nums}
+.ar.dead{border-color:rgba(255,92,92,.45);color:#ff5c5c}
+.ar.hold{border-color:rgba(255,210,77,.4);color:#ffd24d}
+.ar.mute{opacity:.55;font-weight:500;font-size:10px}
+
+.caption{font-size:13px;font-weight:600;color:#d0d5dc;line-height:1.35;padding:8px 12px}
+.ftr{margin-top:auto;display:flex;justify-content:space-between;align-items:flex-end;gap:12px;font-size:10px;font-weight:500;color:#a8b0bc;padding-top:4px;border-top:1px solid rgba(255,255,255,.14)}
+.ftr .note{max-width:70%;line-height:1.3}
+</style></head>
+<body><div class="panel">
+
+  <div class="hdr glass">
+    <div>
+      <div class="brand"><img src="file:///workspace/wardos-kit/chrome/wardos-mark-header.png" height="44" alt="WardOS"/></div>
+      <div class="eyebrow">WARDOS-SUNDAY-MONEY · INSTRUMENT</div>
+      <div class="title">September Envelopes</div>
+      <div class="asof">Dashboard Sep envelopes nightly 25 Sep ~9:19p CT</div>
+    </div>
+    <div class="chip">GATE CLOSED · overlays OFF</div>
+  </div>
+
+  <div class="bluf glass">
+    <div class="lab">Envelope total · Sep books</div>
+    <div class="hero">plan $12,633.00 · booked $272.90 · left $12,360.10</div>
+    <div class="net">Typical net − envelopes: <strong>$481.68</strong> (negative = cuts required to hit +30%; ring + home-project already paused)</div>
+    <div class="row-chips">
+      <span class="gate-chip">DINING HARD $0</span>
+      <span class="gate-chip">RING FUND $0</span>
+      <span class="gate-chip">HOME-PROJECT $0</span>
+      <span class="stamp">OVERLAYS OFF</span>
+      <span class="ctx">GATE CLOSED</span>
+    </div>
+  </div>
+
+  <div class="totals">
+    <div class="t-cell glass">
+      <div class="t-k">Plan</div>
+      <div class="t-v">$12,633.00</div>
+    </div>
+    <div class="t-cell glass">
+      <div class="t-k">Booked</div>
+      <div class="t-v amber">$272.90</div>
+    </div>
+    <div class="t-cell glass">
+      <div class="t-k">Left</div>
+      <div class="t-v green">$12,360.10</div>
+    </div>
+  </div>
+
+  <div class="rows glass">
+    <div class="sec">13 lines · plan / booked / left / %</div>
+    <div class="colh"><span>#</span><span>Envelope</span><span>Plan</span><span>Booked</span><span>Left</span><span>%</span></div>
+
+    <div class="row">
+      <div class="rk">1</div>
+      <div>
+        <div class="nm">Housing (mortgage + utils)</div>
+        <div class="note">Guild $4,000 already reserved in available; utils still to post</div>
+      </div>
+      <div class="amt">$4,450.00</div>
+      <div class="amt mute">$0.00</div>
+      <div class="amt left">$4,450.00</div>
+      <div class="pct-wrap"><span class="pct">0.0%</span><div class="pct-bar"><div class="pct-fill zero" style="width:0%"></div></div></div>
+    </div>
+
+    <div class="row">
+      <div class="rk">2</div>
+      <div>
+        <div class="nm">Child support ordered</div>
+        <div class="note">2nd + 16th only</div>
+      </div>
+      <div class="amt">$4,998.00</div>
+      <div class="amt mute">$0.00</div>
+      <div class="amt left">$4,998.00</div>
+      <div class="pct-wrap"><span class="pct">0.0%</span><div class="pct-bar"><div class="pct-fill zero" style="width:0%"></div></div></div>
+    </div>
+
+    <div class="row hot">
+      <div class="rk">3</div>
+      <div>
+        <div class="nm">Kids extra</div>
+        <div class="note"></div>
+      </div>
+      <div class="amt">$400.00</div>
+      <div class="amt">$147.90</div>
+      <div class="amt left">$252.10</div>
+      <div class="pct-wrap"><span class="pct">37.0%</span><div class="pct-bar"><div class="pct-fill amber" style="width:37%"></div></div></div>
+    </div>
+
+    <div class="row">
+      <div class="rk">4</div>
+      <div>
+        <div class="nm">Travel MCI↔BNA</div>
+        <div class="note"></div>
+      </div>
+      <div class="amt">$400.00</div>
+      <div class="amt mute">$0.00</div>
+      <div class="amt left">$400.00</div>
+      <div class="pct-wrap"><span class="pct">0.0%</span><div class="pct-bar"><div class="pct-fill zero" style="width:0%"></div></div></div>
+    </div>
+
+    <div class="row">
+      <div class="rk">5</div>
+      <div>
+        <div class="nm">Food + household</div>
+        <div class="note"></div>
+      </div>
+      <div class="amt">$850.00</div>
+      <div class="amt">$50.00</div>
+      <div class="amt left">$800.00</div>
+      <div class="pct-wrap"><span class="pct">5.9%</span><div class="pct-bar"><div class="pct-fill" style="width:5.9%"></div></div></div>
+    </div>
+
+    <div class="row hard">
+      <div class="rk">6</div>
+      <div>
+        <div class="nm">Dining out · HARD $0</div>
+        <div class="note">24 Sep Uber Eats Old Hickory $57.58 = gift card (Dan LOCK) · $0 card/Wells · breach reversed</div>
+      </div>
+      <div class="amt">$0.00</div>
+      <div class="amt">$0.00</div>
+      <div class="amt">$0.00</div>
+      <div class="pct-wrap"><span class="pct">HARD</span><div class="pct-bar"><div class="pct-fill zero" style="width:0%"></div></div></div>
+    </div>
+
+    <div class="row">
+      <div class="rk">7</div>
+      <div>
+        <div class="nm">Gas</div>
+        <div class="note"></div>
+      </div>
+      <div class="amt">$475.00</div>
+      <div class="amt mute">$0.00</div>
+      <div class="amt left">$475.00</div>
+      <div class="pct-wrap"><span class="pct">0.0%</span><div class="pct-bar"><div class="pct-fill zero" style="width:0%"></div></div></div>
+    </div>
+
+    <div class="row">
+      <div class="rk">8</div>
+      <div>
+        <div class="nm">Home services</div>
+        <div class="note">Cleaners 8 Sep amount UNKNOWN</div>
+      </div>
+      <div class="amt">$400.00</div>
+      <div class="amt mute">$0.00</div>
+      <div class="amt left">$400.00</div>
+      <div class="pct-wrap"><span class="pct">0.0%</span><div class="pct-bar"><div class="pct-fill zero" style="width:0%"></div></div></div>
+    </div>
+
+    <div class="row">
+      <div class="rk">9</div>
+      <div>
+        <div class="nm">Blended / Erin net</div>
+        <div class="note">second cut if path slips</div>
+      </div>
+      <div class="amt">$500.00</div>
+      <div class="amt">$75.00</div>
+      <div class="amt left">$425.00</div>
+      <div class="pct-wrap"><span class="pct">15%</span><div class="pct-bar"><div class="pct-fill amber" style="width:15%"></div></div></div>
+    </div>
+
+    <div class="row">
+      <div class="rk">10</div>
+      <div>
+        <div class="nm">Subscriptions</div>
+        <div class="note">kill Spotify dupes (Atlas)</div>
+      </div>
+      <div class="amt">$160.00</div>
+      <div class="amt mute">$0.00</div>
+      <div class="amt left">$160.00</div>
+      <div class="pct-wrap"><span class="pct">0.0%</span><div class="pct-bar"><div class="pct-fill zero" style="width:0%"></div></div></div>
+    </div>
+
+    <div class="row">
+      <div class="rk">11</div>
+      <div>
+        <div class="nm">Card interest</div>
+        <div class="note">target $0 · SW APR is the leak</div>
+      </div>
+      <div class="amt mute">$0.00</div>
+      <div class="amt mute">$0.00</div>
+      <div class="amt mute">$0.00</div>
+      <div class="pct-wrap"><span class="pct">0.0%</span><div class="pct-bar"><div class="pct-fill zero" style="width:0%"></div></div></div>
+    </div>
+
+    <div class="row paused">
+      <div class="rk">12</div>
+      <div>
+        <div class="nm">Ring fund transfer</div>
+        <div class="note">paused until cash path on track (was $350)</div>
+      </div>
+      <div class="amt">$0.00</div>
+      <div class="amt">$0.00</div>
+      <div class="amt">$0.00</div>
+      <div class="pct-wrap"><span class="pct">PAUSED</span><div class="pct-bar"><div class="pct-fill zero" style="width:0%"></div></div></div>
+    </div>
+
+    <div class="row paused">
+      <div class="rk">13</div>
+      <div>
+        <div class="nm">Home-project fund</div>
+        <div class="note">paused until cash path on track (was $300)</div>
+      </div>
+      <div class="amt">$0.00</div>
+      <div class="amt">$0.00</div>
+      <div class="amt">$0.00</div>
+      <div class="pct-wrap"><span class="pct">PAUSED</span><div class="pct-bar"><div class="pct-fill zero" style="width:0%"></div></div></div>
+    </div>
+  </div>
+
+  <div class="soft-bar glass">
+    <span class="ar mute">no invented cleaner $</span>
+    <span class="ar mute">no Spotify live charges</span>
+    <span class="ar mute">no Guild principal as envelope</span>
+    <span class="ar hold">Venmo Erin Heaters $50 ≠ Sep line</span>
+    <span class="ar dead">Hy-Vee PENDING not a row</span>
+  </div>
+
+  <div class="caption glass">
+    Living first. Dining stays zero. Overlays stay off.
+  </div>
+
+  <div class="ftr">
+    <span class="note">as-of Sat 26 Sep ~12:40p CT · AVAILABLE $14,114.46 STALE ASSUMED · GATE CLOSED · Ledger books · never invent</span>
+    <span>WardOS · Sunday-Money · Envelopes</span>
+  </div>
+</div></body></html>

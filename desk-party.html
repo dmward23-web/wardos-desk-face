@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1920" />
+<title>Desk · Hayes Urban Air · Board-OS</title>
+<style>
+  * { box-sizing:border-box; margin:0; padding:0; }
+  html, body {
+    width: 1920px; height: 1200px; overflow: hidden;
+    background: #2a2e34; color: #e8eaed;
+    font-family: "Inter Display", "Inter", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+    .panel {
+    width: 1920px; height: 1200px;
+    padding: 28px 36px 22px;
+    display: flex; flex-direction: column; gap: 16px;
+    position: relative; overflow: hidden;
+    background-color: #2a2e34;
+    background-image:
+      linear-gradient(165deg, rgba(90,96,108,0.42) 0%, rgba(40,44,50,0.28) 45%, rgba(22,24,28,0.30) 100%),
+      url("camo-glass-tile-desk.png");
+    background-size: auto, 420px 420px;
+    background-position: center, 0 0;
+    background-repeat: no-repeat, repeat;
+    border: 1px solid rgba(255,255,255,0.10);
+  }
+  .panel::before {
+    content: "";
+    position: absolute; inset: 0; pointer-events: none; z-index: 0;
+    background:
+      linear-gradient(180deg, rgba(255,255,255,0.14) 0%, transparent 28%, transparent 72%, rgba(0,0,0,0.24) 100%),
+      radial-gradient(ellipse 70% 50% at 18% 12%, rgba(255,255,255,0.13) 0%, transparent 55%),
+      radial-gradient(ellipse 50% 40% at 88% 78%, rgba(255,255,255,0.05) 0%, transparent 60%);
+    mix-blend-mode: soft-light;
+    opacity: 0.85;
+  }
+  .panel::after {
+    content: "";
+    position: absolute; inset: 0; pointer-events: none; z-index: 0;
+    background:
+      linear-gradient(118deg, transparent 0 34%, rgba(255,255,255,0.08) 34% 38%, transparent 38% 62%, rgba(255,255,255,0.04) 62% 64%, transparent 64%);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.14),
+      inset 0 -1px 0 rgba(0,0,0,0.28),
+      inset 1px 0 0 rgba(255,255,255,0.06),
+      inset -1px 0 0 rgba(0,0,0,0.22);
+  }
+  .panel > * { position: relative; z-index: 2; }
+  /* UNITY LOCK · Desk dark camo glass cards (shade of House template) */
+  .hdr, .bluf, .card, .tile, .hero, .work-card, .signal, .nav, .footer, .source, .guard {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+  .hdr { display:flex; align-items:center; justify-content:space-between; padding: 14px 18px; border-radius: 16px; background: rgba(28,32,38,0.68); border: 1px solid rgba(255,255,255,0.12); box-shadow: 0 1px 0 rgba(255,255,255,0.10) inset, 0 8px 24px rgba(0,0,0,0.22); flex-shrink:0; }
+  .hdr-left { display:flex; align-items:center; min-width:0; }
+  .back { display:inline-flex; align-items:center; gap:6px; font-size:14px; font-weight:750; color:#7ec8ff; padding:8px 14px; border-radius:999px; min-height:40px; background:#0f1a28; border:1px solid #2a4a6a; text-decoration:none; flex-shrink:0; margin-right:14px; }
+  .back .chev { font-size:16px; color:#4da3ff; line-height:1; }
+  .eyebrow { font-size:15px; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:#4da3ff; margin-bottom:4px; text-decoration:none; }
+  .title { font-size:34px; font-weight:700; letter-spacing:-.02em; color:#fff; }
+  .tags { display:flex; gap:10px; align-items:center; }
+  .tag,.stale { font-size:14px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; padding:8px 14px; border-radius:8px; }
+  .tag { color:#a8b0bc; background: rgba(30,34,42,0.65); border: 1px dashed rgba(255,255,255,0.22); }
+  .tag-pin { color: #b8d4f0; border-color: rgba(180,200,220,0.35); background: rgba(40,48,58,0.72); border-style: solid; }
+  .stale { color:#ffc14d; background:#2a2208; border:1px solid #6a5420; }
+  .hero { display:grid; grid-template-columns:1.12fr .88fr; gap:16px; background: linear-gradient(145deg, rgba(28,32,38,0.72) 0%, rgba(18,20,24,0.78) 100%); border: 1px solid rgba(255,255,255,0.12); box-shadow: 0 1px 0 rgba(255,255,255,0.10) inset, 0 8px 28px rgba(0,0,0,0.28); border:1px solid #243448; border-radius:20px; padding:22px 30px; position:relative; overflow:hidden; flex-shrink:0; }
+  .hero:before { content:""; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,#4da3ff,#6ddeb5 50%,#ffc14d); }
+  .hero-label,.card-label { font-size:14px; font-weight:800; letter-spacing:.18em; text-transform:uppercase; color:#7a8799; }
+  .hero h1 { font-size:50px; line-height:1.05; margin:9px 0 8px; color:#fff; letter-spacing:-.03em; }
+  .hero h1 .accent { color:#6ddeb5; }
+  .hero .sub { font-size:19px; font-weight:650; color:#9aa8ba; line-height:1.35; }
+  .hero-right { display:grid; grid-template-columns:1fr 1fr; gap:12px; align-content:center; }
+  .signal { background:#0a1118; border:1px solid #243448; border-radius:14px; padding:16px 18px; }
+  .signal .k { font-size:13px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:#7a8799; margin-bottom:7px; }
+  .signal .v { font-size:30px; font-weight:900; color:#8ec5ff; font-variant-numeric:tabular-nums; }
+  .signal .s { margin-top:4px; font-size:14px; font-weight:600; color:#9aa8ba; }
+  .signal.yes .v { color:#6ddeb5; }
+  .signal.warn .v { color:#ffc14d; }
+  .facts { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; flex-shrink:0; }
+  .fact { background: rgba(22,26,32,0.70); border: 1px solid rgba(255,255,255,0.12); box-shadow: 0 1px 0 rgba(255,255,255,0.08) inset, 0 6px 18px rgba(0,0,0,0.22); border-radius:16px; padding:16px 20px; min-height:126px; position:relative; overflow:hidden; }
+  .fact:before { content:""; position:absolute; top:0; left:0; right:0; height:3px; background:#6ddeb5; }
+  .fact.pending:before { background:#ffc14d; }
+  .fact.no:before { background:#ff5c5c; }
+  .fact .label { font-size:13px; font-weight:800; letter-spacing:.16em; text-transform:uppercase; color:#6ddeb5; }
+  .fact.pending .label { color:#ffc14d; }
+  .fact.no .label { color:#ff8a8a; }
+  .fact .main { margin-top:10px; font-size:31px; font-weight:900; color:#fff; line-height:1.05; }
+  .fact .sub { margin-top:6px; font-size:15px; font-weight:600; color:#9aa8ba; line-height:1.3; }
+  .roster { flex:1; min-height:0; background: rgba(22,26,32,0.70); border: 1px solid rgba(255,255,255,0.12); box-shadow: 0 1px 0 rgba(255,255,255,0.08) inset, 0 6px 18px rgba(0,0,0,0.22); border-radius:16px; padding:16px 22px; overflow:hidden; }
+  .card-head { display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:10px; }
+  .card-head h2 { font-size:17px; font-weight:900; letter-spacing:.16em; text-transform:uppercase; color:#c5d0de; }
+  .card-head .sub { font-size:14px; font-weight:700; color:#6b7788; }
+  .groups { display:grid; grid-template-columns:1.3fr 1fr 1fr; gap:14px; }
+  .group { background:#0a1118; border:1px solid #1a2738; border-radius:12px; padding:12px 14px; min-height:142px; }
+  .group-h { display:flex; align-items:center; gap:9px; margin-bottom:10px; }
+  .g-tag { font-size:12px; font-weight:800; letter-spacing:.13em; text-transform:uppercase; padding:6px 10px; border-radius:8px; border:1px solid; }
+  .g-yes { background:#0c1a14; color:#6ddeb5; border-color:#2a5a40; }
+  .g-pend { background:#1a1608; color:#ffc14d; border-color:#6a5420; }
+  .g-no { background:#1a0c0c; color:#ff8a8a; border-color:#6a2828; }
+  .g-count { font-size:14px; font-weight:700; color:#6b7788; font-variant-numeric:tabular-nums; }
+  .names { display:flex; flex-wrap:wrap; gap:7px; }
+  .name { font-size:14px; font-weight:700; padding:7px 10px; border-radius:999px; border:1px solid; letter-spacing:.01em; }
+  .name-yes { background:#0a1410; color:#b8f0d0; border-color:#1e4a34; }
+  .name-pend { background:#141008; color:#ffd88a; border-color:#4a3a12; }
+  .name-no { background:#140c0c; color:#ffb0b0; border-color:#4a2020; }
+  .bottom { display:grid; grid-template-columns:1.2fr .8fr; gap:12px; flex-shrink:0; }
+  .source,.guard { background: rgba(22,26,32,0.70); border: 1px solid rgba(255,255,255,0.12); box-shadow: 0 1px 0 rgba(255,255,255,0.08) inset, 0 6px 18px rgba(0,0,0,0.22); border-radius:16px; padding:14px 20px; }
+  .source .label,.guard .label { font-size:13px; font-weight:900; letter-spacing:.16em; text-transform:uppercase; color:#7a8799; }
+  .source p { margin-top:6px; font-size:16px; font-weight:600; color:#9aa8ba; }
+  .source a { color:#8ec5ff; font-weight:800; text-decoration:none; }
+  .guard { background:linear-gradient(145deg,#141008 0%,#0c131c 100%); border-color:#4a3a12; }
+  .guard .label { color:#ffc14d; }
+  .guard p { margin-top:6px; font-size:16px; font-weight:800; line-height:1.25; color:#ffd88a; }
+  .nav { display:flex; flex-wrap:wrap; gap:8px; flex-shrink:0; }
+  .nav a { flex:1 1 100px; text-align:center; text-decoration:none; border:1px dashed #3a4a60; background:#0e1520; color:#7a8799; font-size:13px; font-weight:700; letter-spacing:.04em; padding:10px 8px; border-radius:12px; }
+  .nav a.here { border-style:solid; border-color:#2a4a6a; color:#7ec8ff; background:#0f1a28; }
+  .footer { flex-shrink:0; padding-top:8px; border-top:1px solid #1e2d42; display:flex; justify-content:space-between; align-items:center; gap:16px; }
+  .footer .cap { font-size:15px; font-weight:600; color:#9aa8ba; max-width:1280px; line-height:1.35; }
+  .footer .stamp { font-size:13px; font-weight:700; letter-spacing:.06em; color:#5a6678; text-align:right; line-height:1.45; }
+</style>
+</head>
+<body>
+<div class="panel">
+  <header class="hdr">
+    <div class="hdr-left">
+      <a class="back" href="desk-index.html" aria-label="Back to Desk index"><span class="chev">‹</span> Desk</a>
+      <div><a class="eyebrow" href="desk-index.html">Board-OS · Desk · PIN</a><div class="title">Hayes Urban Air</div></div>
+    </div>
+    <div class="tags"><span class="stale">RSVP AS-OF FRI SEP 18 NIGHT</span><span class="tag tag-pin">Desk PIN layer</span><span class="tag">KNOWN PLATE ONLY</span></div>
+  </header>
+
+  <section class="hero">
+    <div>
+      <div class="hero-label">Hayes birthday · prior headcount plate</div>
+      <h1><span class="accent">14 Yes</span> locked</h1>
+      <div class="sub">Fri Sep 25 · Urban Air · Groupon covers 10</div>
+    </div>
+    <div class="hero-right">
+      <div class="signal yes"><div class="k">Locked Yes</div><div class="v">14</div><div class="s">buy list basis</div></div>
+      <div class="signal warn"><div class="k">Add-ons</div><div class="v">4</div><div class="s">10 + 4 = 14</div></div>
+    </div>
+  </section>
+
+  <section class="facts" aria-label="Known RSVP counts">
+    <div class="fact"><div class="label">Yes locked</div><div class="main">14</div><div class="sub">Groupon covers 10 · 4 add-ons needed</div></div>
+    <div class="fact pending"><div class="label">Pending</div><div class="main">4</div><div class="sub">Not included in the locked buy basis</div></div>
+    <div class="fact no"><div class="label">No</div><div class="main">4</div><div class="sub">Stay off the buy list</div></div>
+  </section>
+
+  <section class="roster">
+    <div class="card-head"><h2>Name roster</h2><span class="sub">22 total · prior headcount plate</span></div>
+    <div class="groups">
+      <div class="group"><div class="group-h"><span class="g-tag g-yes">Yes locked</span><span class="g-count">14</span></div><div class="names">
+        <span class="name name-yes">Hayes</span><span class="name name-yes">Harris</span><span class="name name-yes">Ainsley</span><span class="name name-yes">Liv</span><span class="name name-yes">Max</span><span class="name name-yes">Carter</span><span class="name name-yes">Reid</span><span class="name name-yes">Theo</span><span class="name name-yes">Riley</span><span class="name name-yes">Luke Yakle</span><span class="name name-yes">Oscar Yakle</span><span class="name name-yes">Austin Perdew</span><span class="name name-yes">Landon Stephens</span><span class="name name-yes">Oliver Olson</span>
+      </div></div>
+      <div class="group"><div class="group-h"><span class="g-tag g-pend">Pending</span><span class="g-count">4</span></div><div class="names"><span class="name name-pend">Decker</span><span class="name name-pend">Arsen</span><span class="name name-pend">Amay</span><span class="name name-pend">Owen</span></div></div>
+      <div class="group"><div class="group-h"><span class="g-tag g-no">No</span><span class="g-count">4</span></div><div class="names"><span class="name name-no">Jack Stephenson</span><span class="name name-no">Weston Edelen</span><span class="name name-no">Henry Rockefeller</span><span class="name name-no">Arlo Lenox</span></div></div>
+    </div>
+  </section>
+
+  <section class="bottom">
+    <div class="source"><div class="label">Known action posture</div><p>Recommendation only: <strong>buy 4 add-ons</strong> for the 14 locked Yes. No purchase is executed here. <a href="../../party-events-panel.html">See prior party panel →</a></p></div>
+    <div class="guard"><div class="label">Desk guard</div><p>Pending + No stay off the buy list.<br />No price or money invented.</p></div>
+  </section>
+
+  <nav class="nav" aria-label="Desk plates">
+    <a href="desk-index.html">Desk home</a><a href="desk-travel.html">Travel</a><a href="desk-body.html">Body / Vita</a><a href="desk-house-alin.html">House / Alin</a><a href="desk-party.html" class="here">Party</a><a href="desk-us.html">Us</a><a href="desk-cash.html">Cash</a><a href="desk-eoy.html">EOY</a><a href="desk-cards.html">Cards</a><a href="desk-freeze.html">FREEZE</a><a href="desk-autopay.html">Autopay</a><a href="desk-envelopes.html">Envelopes</a><a href="desk-refresh.html">Refresh</a><a href="desk-gallery.html">Gallery</a>
+  </nav>
+
+  <footer class="footer"><p class="cap">Hayes Urban Air · Fri Sep 25 · 14 Yes locked · Groupon 10 + 4 add-ons. Prior headcount facts only; controls are mock and not wired.</p><div class="stamp">Desk · dark camo glass<br />RSVP AS-OF FRI SEP 18 NIGHT</div></footer>
+</div>
+</body>
+</html>

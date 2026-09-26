@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=1080"/>
+<title>WardOS-Sunday-Money · Autopay Date Pick · Sat Sep 26 2026</title><style>
+@font-face{font-family:InterDisplay;src:url("file:///workspace/fonts/InterDisplay-Regular.ttf");font-weight:400;font-style:normal}
+@font-face{font-family:InterDisplay;src:url("file:///workspace/fonts/InterDisplay-Medium.ttf");font-weight:500;font-style:normal}
+@font-face{font-family:InterDisplay;src:url("file:///workspace/fonts/InterDisplay-SemiBold.ttf");font-weight:600;font-style:normal}
+@font-face{font-family:InterDisplay;src:url("file:///workspace/fonts/InterDisplay-Bold.ttf");font-weight:700;font-style:normal}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;font-family:InterDisplay,Inter,-apple-system,Helvetica,sans-serif;color:#e8eaed;background:#252a32;-webkit-font-smoothing:antialiased}
+.panel{width:1080px;height:1920px;padding:18px 22px 14px;display:flex;flex-direction:column;gap:12px;position:relative;overflow:hidden;
+  background-color:#252a32;
+  background-image:
+    linear-gradient(165deg,rgba(90,96,108,.42) 0%,rgba(28,32,38,.30) 42%,rgba(10,12,16,.35) 100%),
+    radial-gradient(ellipse 90% 70% at 50% 40%,transparent 30%,rgba(0,0,0,.30) 100%),
+    url("file:///workspace/wardos-kit/chrome/camo-glass-tile-desk.png");
+  background-size:auto,auto,520px 520px;background-position:center,center,0 0;background-repeat:no-repeat,no-repeat,repeat;
+  border:1px solid rgba(255,255,255,.10)}
+.panel::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.14) 0%,transparent 22%,transparent 74%,rgba(0,0,0,.24) 100%),
+    radial-gradient(ellipse 65% 45% at 16% 10%,rgba(255,255,255,.13) 0%,transparent 55%);
+  mix-blend-mode:soft-light;opacity:.9}
+.panel>*{position:relative;z-index:2}
+.glass{backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  background:rgba(22,26,34,.82);border:1px solid rgba(255,255,255,.13);
+  box-shadow:0 1px 0 rgba(255,255,255,.16) inset,0 10px 28px rgba(0,0,0,.28);border-radius:14px}
+
+.hdr{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:10px 14px}
+.brand img{display:block;height:48px;width:auto}
+.eyebrow{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#a8b0bc;margin-top:4px}
+.title{font-size:30px;font-weight:700;letter-spacing:-.035em;color:#fff;margin-top:1px;line-height:1.05}
+.asof{font-size:12px;font-weight:500;color:#a8b0bc;margin-top:3px;line-height:1.3}
+.chip{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:8px 12px;border-radius:999px;
+  background:rgba(18,22,28,.92);border:1px solid rgba(255,92,92,.55);color:#ff8a8a;align-self:flex-start;white-space:nowrap}
+
+.bluf{padding:18px 18px 16px;position:relative;overflow:hidden}
+.bluf .lab{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#a8b0bc}
+.bluf .hero{font-size:52px;font-weight:700;letter-spacing:-.04em;line-height:1.05;color:#ffd24d;margin-top:8px}
+.bluf .sub{font-size:18px;font-weight:600;color:#d0d5dc;margin-top:10px;line-height:1.35}
+.bluf .row-chips{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:14px}
+.stamp{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:7px 11px;border-radius:6px;
+  background:rgba(255,210,77,.12);border:1px dashed rgba(255,210,77,.55);color:#ffd24d}
+.gate-chip{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:7px 12px;border-radius:999px;
+  background:rgba(255,92,92,.14);border:1px solid rgba(255,92,92,.5);color:#ff5c5c}
+.ctx{font-size:11px;font-weight:600;letter-spacing:.04em;padding:7px 11px;border-radius:999px;
+  background:rgba(18,22,28,.9);border:1px solid rgba(255,255,255,.16);color:#a8b0bc}
+
+.body{padding:14px 16px;flex:1 1 auto;min-height:0;display:flex;flex-direction:column;gap:12px}
+.sec{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#a8b0bc;margin-bottom:2px}
+.block{padding:14px 16px;border-radius:12px;background:rgba(10,12,16,.55);border:1px solid rgba(255,255,255,.1)}
+.block.lock{border-color:rgba(42,182,122,.35);background:rgba(13,40,28,.35)}
+.block.warn{border-color:rgba(255,92,92,.4);background:rgba(255,92,92,.08)}
+.block.amber{border-color:rgba(255,210,77,.4);background:rgba(255,210,77,.08)}
+.bk{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#a8b0bc}
+.bv{font-size:28px;font-weight:700;letter-spacing:-.03em;color:#fff;margin-top:6px;line-height:1.15;font-variant-numeric:tabular-nums}
+.bv.big{font-size:40px;color:#2ab87a}
+.bv.strike{font-size:24px;color:#ff5c5c;text-decoration:line-through;text-decoration-thickness:2px}
+.bs{font-size:14px;font-weight:500;color:#b0b8c4;margin-top:6px;line-height:1.4}
+.bs strong{color:#e8eaed;font-weight:700}
+.line{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.07);font-size:15px;font-weight:600}
+.line:last-child{border-bottom:none}
+.line .nm{color:#e8eaed;flex:1;line-height:1.3}
+.line .amt{font-variant-numeric:tabular-nums;font-weight:700;color:#fff;white-space:nowrap}
+.line .tag{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#a8b0bc;margin-left:8px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pill{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  padding:6px 10px;border-radius:999px;background:rgba(18,22,28,.9);border:1px solid rgba(255,255,255,.16);color:#c8cdd6;margin-top:8px}
+.pill.ok{border-color:rgba(42,182,122,.45);color:#2ab87a}
+.pill.dead{border-color:rgba(255,92,92,.45);color:#ff5c5c}
+.pill.amber{border-color:rgba(255,210,77,.45);color:#ffd24d}
+.cite{font-size:12px;font-weight:500;color:#9aa3b0;margin-top:8px;line-height:1.35;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+
+.caption{font-size:14px;font-weight:600;color:#d0d5dc;line-height:1.4;padding:10px 14px}
+.ftr{margin-top:auto;display:flex;justify-content:space-between;align-items:flex-end;gap:12px;font-size:11px;font-weight:500;color:#a8b0bc;padding-top:6px;border-top:1px solid rgba(255,255,255,.14)}
+.ftr .note{max-width:68%;line-height:1.35}
+</style></head>
+<body><div class="panel">
+
+  <div class="hdr glass">
+    <div>
+      <div class="brand"><img src="file:///workspace/wardos-kit/chrome/wardos-mark-header.png" height="48" alt="WardOS"/></div>
+      <div class="eyebrow">WARDOS-SUNDAY-MONEY · INSTRUMENT</div>
+      <div class="title">Autopay Date Pick</div>
+      <div class="asof">as-of Sat 26 Sep ~12:40p CT · Ledger books</div>
+    </div>
+    <div class="chip">GATE CLOSED</div>
+  </div>
+
+  <div class="bluf glass">
+    <div class="lab">Decision instrument · date only</div>
+    <div class="hero">DATE PICK PENDING</div>
+    <div class="sub">Amounts LOCKED · no Wells change until Dan picks</div>
+    <div class="row-chips">
+      <span class="gate-chip">GATE CLOSED</span>
+      <span class="stamp">STALE ASSUMED</span>
+      <span class="ctx">Wells DEAD · last LIVE $14,164.46 23 Sep − Venmo Erin $50 · disc $0 · overlays OFF</span>
+    </div>
+  </div>
+
+  <div class="body glass">
+    <div class="sec">Amounts locked · keep</div>
+    <div class="block lock">
+      <div class="bk">Monthly locked total</div>
+      <div class="bv big">$4,998/mo</div>
+      <div class="bs">CS <strong>$1,902/mo</strong> ($951×2) + maint <strong>$3,096/mo</strong> ($1,548×2)</div>
+      <div class="bs">Half-bundle · Lore Zelle <strong>$2,499</strong> each · KEEP amounts</div>
+    </div>
+
+    <div class="grid2">
+      <div class="block">
+        <div class="bk">Destination</div>
+        <div class="bv" style="font-size:20px">Wells …6854</div>
+        <div class="bs">Zelle → <strong>KRISTIN WARD</strong></div>
+      </div>
+      <div class="block amber">
+        <div class="bk">Alfred stop</div>
+        <div class="bv" style="font-size:22px;color:#ffd24d">Sun 9/28</div>
+        <div class="bs">Pick stop for Dan on the date</div>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="bk">Schedule refs · locked practice</div>
+      <div class="line"><span class="nm">2nd of month</span><span class="amt">WFCS022JRX9Z</span></div>
+      <div class="line"><span class="nm">16th of month</span><span class="amt">WFCS022JRXB6</span></div>
+      <div class="bs" style="margin-top:8px">As-of 2026-09-26 ~10:10 CT · Dan <strong>EXACT-YES</strong> via Alfred · STALE practice confirmed May–Sep 2026 posts</div>
+    </div>
+
+    <div class="grid2">
+      <div class="block warn">
+        <div class="bk">Strike · wrong</div>
+        <div class="bv strike">DAN-NEEDS $2,014</div>
+        <div class="pill dead">DEAD / wrong</div>
+      </div>
+      <div class="block lock">
+        <div class="bk">Decree wins</div>
+        <div class="bv" style="font-size:18px;color:#2ab87a">JE 13nrJU…xzIEl</div>
+        <div class="cite">13nrJU-f1fRsDKV3nY2fdkkjnOWJxzIEl</div>
+        <div class="pill ok">wins</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="caption glass">
+    Amounts locked. Date is the only pick. Nothing moves on Wells until he says the day.
+  </div>
+
+  <div class="ftr">
+    <span class="note">as-of Sat 26 Sep ~12:40p CT · AVAILABLE $14,114.46 STALE ASSUMED · GATE CLOSED · Ledger books · never invent</span>
+    <span>WardOS · Sunday-Money · Autopay Date Pick</span>
+  </div>
+</div></body></html>

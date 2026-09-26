@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1920" />
+<title>Desk · Cash · WardOS</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    width: 1920px; height: 1200px; overflow: hidden;
+    background: #2a2e34; color: #e8eaed;
+    font-family: "Inter Display", "Inter", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .panel {
+    width: 1920px; height: 1200px;
+    padding: 22px 32px 16px;
+    display: flex; flex-direction: column; gap: 12px;
+    position: relative; overflow: hidden;
+    background-color: #2a2e34;
+    background-image:
+      linear-gradient(165deg, rgba(90,96,108,0.42) 0%, rgba(40,44,50,0.28) 45%, rgba(22,24,28,0.30) 100%),
+      url("camo-glass-tile-desk.png");
+    background-size: auto, 420px 420px;
+    background-position: center, 0 0;
+    background-repeat: no-repeat, repeat;
+    border: 1px solid rgba(255,255,255,0.10);
+  }
+  .panel::before {
+    content: "";
+    position: absolute; inset: 0; pointer-events: none; z-index: 0;
+    background:
+      linear-gradient(180deg, rgba(255,255,255,0.14) 0%, transparent 28%, transparent 72%, rgba(0,0,0,0.24) 100%),
+      radial-gradient(ellipse 70% 50% at 18% 12%, rgba(255,255,255,0.13) 0%, transparent 55%),
+      radial-gradient(ellipse 50% 40% at 88% 78%, rgba(255,255,255,0.05) 0%, transparent 60%);
+    mix-blend-mode: soft-light;
+    opacity: 0.85;
+  }
+  .panel::after {
+    content: "";
+    position: absolute; inset: 0; pointer-events: none; z-index: 0;
+    background:
+      linear-gradient(118deg, transparent 0 34%, rgba(255,255,255,0.08) 34% 38%, transparent 38% 62%, rgba(255,255,255,0.04) 62% 64%, transparent 64%);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.14),
+      inset 0 -1px 0 rgba(0,0,0,0.28),
+      inset 1px 0 0 rgba(255,255,255,0.06),
+      inset -1px 0 0 rgba(0,0,0,0.22);
+  }
+  .panel > * { position: relative; z-index: 2; }
+  /* UNITY LOCK · Desk dark camo glass cards (shade of House template) */
+  .hdr, .bluf, .card, .tile, .side .card, .recommend, .gate, .nav, .ftr, .strip, .lane, .row-card {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  .hdr {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 18px; border-radius: 16px; background: rgba(28,32,38,0.68); border: 1px solid rgba(255,255,255,0.12); box-shadow: 0 1px 0 rgba(255,255,255,0.10) inset, 0 8px 24px rgba(0,0,0,0.22); flex-shrink: 0;
+  }
+  .eyebrow {
+    font-size: 15px; font-weight: 700; letter-spacing: 0.22em;
+    text-transform: uppercase; color: #4da3ff; margin-bottom: 4px;
+  }
+  .title { font-size: 34px; font-weight: 700; letter-spacing: -0.02em; color: #fff; }
+  .tags { display: flex; gap: 10px; align-items: center; }
+  .tag {
+    font-size: 14px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+    color: #a8b0bc; background: rgba(30,34,42,0.65); border: 1px dashed rgba(255,255,255,0.22);
+    padding: 8px 14px; border-radius: 8px;
+  }
+  .tag-pin {
+    color: #b8d4f0; border-color: rgba(180,200,220,0.35); background: rgba(40,48,58,0.72); border-style: solid;
+  }
+
+  /* STALE cash banner · amber/red loud · last-live stamp held · session died (not forever-dead tone) */
+  .live-banner {
+    display: flex; justify-content: space-between; gap: 16px; align-items: flex-start;
+    margin: 14px 18px 0; padding: 14px 16px; border-radius: 14px;
+    background: linear-gradient(135deg, rgba(20,60,48,.92), rgba(12,28,24,.95));
+    border: 1px solid rgba(125,255,212,.35); box-shadow: 0 0 0 1px rgba(125,255,212,.08);
+  }
+  .live-banner .sb-k { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: #7dffd4; opacity: .85; }
+  .live-banner .sb-main { font-size: 16px; font-weight: 650; color: #e8fff6; margin-top: 4px; }
+  .live-banner .sb-main em { font-style: normal; color: #7dffd4; }
+  .live-banner .sb-main .amber { color: #ffd24d; font-style: normal; }
+  .live-banner .sb-sub { font-size: 13px; color: #9eb0a8; margin-top: 4px; }
+  .live-banner .sb-badge {
+    flex: 0 0 auto; align-self: center; padding: 8px 12px; border-radius: 999px;
+    background: rgba(125,255,212,.16); color: #7dffd4; font-weight: 800; letter-spacing: .06em; font-size: 12px;
+  }
+  .stale-banner {
+    flex-shrink: 0;
+    display: flex; align-items: center; justify-content: space-between; gap: 18px;
+    padding: 18px 22px; border-radius: 14px;
+    background: linear-gradient(90deg, #2a1208 0%, #3a1a0c 35%, #2a1608 70%, #1a0c08 100%);
+    border: 3px solid #ff8a3d;
+    box-shadow: 0 0 0 4px rgba(255,138,61,0.28), 0 12px 32px rgba(0,0,0,0.45);
+  }
+  .stale-banner .sb-k {
+    font-size: 15px; font-weight: 900; letter-spacing: 0.22em; text-transform: uppercase;
+    color: #ffb06a;
+  }
+  .stale-banner .sb-main {
+    font-size: 22px; font-weight: 850; letter-spacing: -0.01em; color: #fff;
+  }
+  .stale-banner .sb-main em { font-style: normal; color: #ff8a3d; }
+  .stale-banner .sb-main .amber { color: #ffd24d; font-style: normal; }
+  .stale-banner .sb-sub {
+    font-size: 14px; font-weight: 650; color: #d4b89a; margin-top: 2px;
+  }
+  .stale-banner .sb-badge {
+    flex-shrink: 0;
+    font-size: 18px; font-weight: 900; letter-spacing: 0.14em; text-transform: uppercase;
+    color: #1a0a04; background: #ff8a3d;
+    padding: 14px 18px; border-radius: 10px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.45);
+  }
+
+  .live-chip { color:#7dffd4; border-color: rgba(125,255,212,.4); }
+  .stale-chip {
+    font-size: 14px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
+    color: #ffb06a; background: #1a0c08; border: 1px solid #8a4a28;
+    padding: 8px 14px; border-radius: 8px;
+  }
+  .mock-chip {
+    font-size: 14px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
+    color: #b8d4f0; background: #0c141c; border: 1px solid #3a4a5a;
+    padding: 8px 14px; border-radius: 8px;
+  }
+  .grid {
+    flex: 1; display: grid; grid-template-columns: 1.35fr 1fr; gap: 18px; min-height: 0;
+  }
+  .bluf {
+    background: linear-gradient(145deg, rgba(28,32,38,0.72) 0%, rgba(18,20,24,0.78) 100%); border: 1px solid rgba(255,255,255,0.12); box-shadow: 0 1px 0 rgba(255,255,255,0.10) inset, 0 8px 28px rgba(0,0,0,0.28);
+    border: 1px solid #243448; border-radius: 20px; padding: 28px 30px 24px;
+    position: relative; overflow: hidden; display: flex; flex-direction: column;
+  }
+  .bluf::before {
+    content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, #ff5c5c, #ff8a4c 40%, #4da3ff);
+  }
+  .bluf-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+  .bluf-label {
+    font-size: 16px; font-weight: 700; letter-spacing: 0.18em;
+    text-transform: uppercase; color: #7a8799;
+  }
+  .acct { font-size: 18px; font-weight: 600; color: #9aa8ba; margin-top: 6px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; }
+  .chip {
+    font-size: 15px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase;
+    padding: 9px 14px; border-radius: 999px; border: 1px solid;
+  }
+  .chip-freeze {
+    background: #3a1212; color: #ff7a7a; border-color: #7a2a2a;
+    box-shadow: 0 0 18px rgba(255, 80, 80, 0.15);
+  }
+  .chip-hold { background: #2a2208; color: #ffc14d; border-color: #6a5420; }
+  .avail {
+    font-size: 88px; font-weight: 800; letter-spacing: -0.03em; line-height: 1;
+    color: #fff; font-variant-numeric: tabular-nums; margin: 18px 0 16px;
+  }
+  .avail .dollar { font-size: 52px; vertical-align: 16px; color: #8ec5ff; margin-right: 4px; }
+  .recommend {
+    display: flex; align-items: center; gap: 12px;
+    background: #141008; border: 1px solid #4a3a12; border-radius: 12px; padding: 14px 18px;
+  }
+  .recommend .dot {
+    width: 11px; height: 11px; border-radius: 50%; background: #ffc14d;
+    box-shadow: 0 0 10px #ffc14d; flex-shrink: 0;
+  }
+  .recommend p { font-size: 22px; font-weight: 700; color: #ffd88a; }
+  .meta-line { margin-top: auto; padding-top: 16px; font-size: 16px; color: #6b7788; line-height: 1.5; }
+  .meta-line strong { color: #ffc14d; font-weight: 800; letter-spacing: 0.06em; }
+  .side { display: flex; flex-direction: column; gap: 14px; }
+  .card {
+    background: rgba(22,26,32,0.70); border: 1px solid rgba(255,255,255,0.12); box-shadow: 0 1px 0 rgba(255,255,255,0.08) inset, 0 6px 18px rgba(0,0,0,0.22); border-radius: 16px; padding: 20px 22px;
+  }
+  .card-h {
+    display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px;
+  }
+  .card-h h2 {
+    font-size: 15px; font-weight: 800; letter-spacing: 0.16em;
+    text-transform: uppercase; color: #c5d0de;
+  }
+  .card-h .sub { font-size: 14px; font-weight: 600; color: #6b7788; }
+  .gates { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .gate { border-radius: 14px; padding: 16px; border: 1px solid; }
+  .gate-locked { background: #1a0c0c; border-color: #6a2828; }
+  .gate-floor { background: #0c1612; border-color: #2a5a40; }
+  .g-label {
+    font-size: 13px; font-weight: 800; letter-spacing: 0.14em;
+    text-transform: uppercase; margin-bottom: 8px;
+  }
+  .gate-locked .g-label { color: #ff8a8a; }
+  .gate-floor .g-label { color: #6ddeb5; }
+  .g-val {
+    font-size: 32px; font-weight: 800; font-variant-numeric: tabular-nums;
+    letter-spacing: -0.02em; margin-bottom: 4px;
+  }
+  .gate-locked .g-val { color: #ffb0b0; }
+  .gate-floor .g-val { color: #b8f0d0; }
+  .g-state { font-size: 16px; font-weight: 700; }
+  .gate-locked .g-state { color: #ff5c5c; }
+  .gate-floor .g-state { color: #7ec8a0; }
+  .gap-row { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; }
+  .gap-need { font-size: 26px; font-weight: 800; color: #ff9a6a; font-variant-numeric: tabular-nums; }
+  .gap-need em {
+    font-style: normal; font-size: 14px; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase; color: #a8b0bc; margin-right: 8px;
+  }
+  .gap-pct { font-size: 18px; font-weight: 700; color: #7ec8ff; }
+  .track {
+    height: 28px; background: #0a0e14; border: 1px solid #243448;
+    border-radius: 8px; overflow: hidden;
+  }
+  .fill {
+    height: 100%; width: 73.5168%;
+    background: linear-gradient(90deg, #1a5a9a 0%, #3d8bfd 55%, #6eb6ff 100%);
+    border-radius: 7px 0 0 7px;
+    box-shadow: inset 0 0 16px rgba(100, 180, 255, 0.25);
+  }
+  .markers {
+    display: flex; justify-content: space-between; margin-top: 8px;
+    font-size: 13px; font-weight: 600; color: #6b7788; font-variant-numeric: tabular-nums;
+  }
+  .markers .now { color: #7ec8ff; }
+  .markers .floor { color: #9ad4a8; }
+  .back {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 14px; font-weight: 750; color: #7ec8ff; letter-spacing: -0.01em;
+    padding: 8px 14px; border-radius: 999px; min-height: 40px;
+    background: #0f1a28; border: 1px solid #2a4a6a;
+    text-decoration: none; flex-shrink: 0; margin-right: 14px;
+  }
+  .back .chev { font-size: 16px; font-weight: 700; color: #4da3ff; line-height: 1; }
+  .hdr-left { display: flex; align-items: center; gap: 0; min-width: 0; }
+  .eyebrow a, a.eyebrow {
+    font-size: inherit; font-weight: inherit; letter-spacing: inherit;
+    text-transform: inherit; color: inherit; text-decoration: none;
+  }
+  .nav { display: flex; flex-wrap: wrap; gap: 8px; }
+  .nav a {
+    flex: 1 1 100px; text-align: center; text-decoration: none;
+    border: 1px dashed #3a4a60; background: #0e1520; color: #7a8799;
+    font-size: 13px; font-weight: 700; letter-spacing: 0.04em;
+    padding: 11px 8px; border-radius: 12px;
+  }
+  .nav a.here {
+    border-style: solid; border-color: #2a4a6a; color: #7ec8ff; background: #0f1a28;
+  }
+  .footer {
+    flex-shrink: 0; padding-top: 12px; border-top: 1px solid #1e2d42;
+    display: flex; justify-content: space-between; align-items: center; gap: 16px;
+  }
+  .footer .cap { font-size: 16px; font-weight: 600; color: #9aa8ba; max-width: 1100px; line-height: 1.35; }
+  .footer .stamp { font-size: 13px; font-weight: 700; letter-spacing: 0.06em; color: #5a6678; text-align: right; line-height: 1.45; }
+</style>
+</head>
+<body>
+  <div class="panel">
+    <header class="hdr">
+      <div class="hdr-left">
+        <a class="back" href="desk-index.html" aria-label="Back to Desk index"><span class="chev">‹</span> Desk</a>
+        <div>
+          <img src="../assets/wardos-mark-header.png" width="220" height="55" alt="WardOS" style="display:block;margin-bottom:6px" />
+          <a class="eyebrow" href="desk-index.html">Desk · PIN · Ledger 07:53</a>
+          <div class="title">Cash</div>
+        </div>
+      </div>
+      <div class="tags">
+        <span class="live-chip" style="color:#ff8a3d;border-color:rgba(255,138,61,.5);">STALE · ASSUMED · Thu Sep 24 ~7:40a CT</span>
+        <span class="mock-chip">TABLET-TEST</span>
+        <span class="tag tag-pin">Desk PIN layer</span>
+        <span class="tag">Wells pull DEAD · ASSUMED (portal Wed 3:16p − Venmo $50)</span>
+      </div>
+    </header>
+
+    <div class="stale-banner" role="status" aria-label="Cash packet STALE · ASSUMED Thu Sep 24 ~7:40a CT · GATE CLOSED">
+      <div>
+        <div class="sb-k">Money packet · Ledger · STALE ASSUMED Thu Sep 24 ~7:40a CT</div>
+        <div class="sb-main"><em>STALE</em> · as-of <span class="amber">Thu Sep 24 ~7:40a CT</span> · ASSUMED · FREEZE holds</div>
+        <div class="sb-sub">AVAILABLE $14,114.46 · under $15k → disc $0 · kill RED $5,885.54 · source: ASSUMED (portal $14,164.46 − Venmo Erin $50)</div>
+      </div>
+      <div class="sb-badge">STALE</div>
+    </div>
+
+    <div class="grid">
+      <section class="bluf">
+        <div class="bluf-top">
+          <div>
+            <div class="bluf-label">Available</div>
+            <div class="acct">Wells Everyday …6854</div>
+          </div>
+          <div class="chips">
+            <span class="chip chip-freeze">DISC $0 / FREEZE</span>
+            <span class="chip chip-hold">HOLD DISC</span>
+          </div>
+        </div>
+        <div class="avail"><span class="dollar">$</span>14,114.46</div>
+        <div class="recommend">
+          <span class="dot"></span>
+          <p>Recommend: HOLD discretionary · freeze holds</p>
+        </div>
+        <p class="meta-line">
+          <strong style="color:#ff8a3d;">STALE</strong> · as-of <strong style="color:#ffd24d;">Thu Sep 24 ~7:40a CT</strong> · ASSUMED (no invent)<br />
+          FREEZE disc $0 · SW extra $0 · Guild extra PAUSED · EOY gap $5,885.54 · Wells pull DEAD
+        </p>
+        <p class="meta-line" style="margin-top:8px;font-size:14px;color:#5a6678;">
+          Footnote: Costco order 1310376316 OPEN payable $587.15 PENDING · Citi …8432 · LEGIT accident dispute · Atlas owns withdraw of provisional credit; Ledger last-yes before repay · TCL 50Q77K Nashville amount UNKNOWN until charge posts
+        </p>
+      </section>
+
+      <div class="side">
+        <section class="gates">
+          <div class="gate gate-locked">
+            <div class="g-label">$15k Disc Gate</div>
+            <div class="g-val">UNDER</div>
+            <div class="g-state">LOCKED · Disc $0</div>
+          </div>
+          <div class="gate gate-floor">
+            <div class="g-label">$20k EOY Floor</div>
+            <div class="g-val">$5,885.54</div>
+            <div class="g-state">GAP REMAINING</div>
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="card-h">
+            <h2>EOY path</h2>
+            <span class="sub">Floor $20,000</span>
+          </div>
+          <div class="gap-row">
+            <div class="gap-need"><em>Still needed</em>$5,885.54</div>
+            <div class="gap-pct">70.6% of floor</div>
+          </div>
+          <div class="track"><div class="fill"></div></div>
+          <div class="markers">
+            <span class="now">$14,114.46 now</span>
+            <span>$15k disc gate</span>
+            <span class="floor">$20,000 floor</span>
+          </div>
+        </section>
+
+      </div>
+    </div>
+
+    
+    <section class="card" style="padding:14px 18px;margin-top:4px">
+      <div class="card-h"><h2>Fixed · Ledger STALE 7:40a</h2><span class="sub">overlays OFF</span></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px;font-size:16px;font-weight:700;line-height:1.35">
+        <div>SW Autopay<br/><span style="color:#fff;font-size:20px">$5,283.69</span><br/><span style="color:#a8b0bc;font-size:13px">due 10/02 · extra $0</span></div>
+        <div>SuperGrok<br/><span style="color:#fff;font-size:20px">$30</span></div>
+        <div>Therapy Phase 1<br/><span style="color:#fff;font-size:20px">~$1,044/mo</span><br/><span style="color:#a8b0bc;font-size:13px">Dan locked</span></div>
+        <div>Tax<br/><span style="color:#ff8a3d;font-size:20px">UNKNOWN</span><br/><span style="color:#a8b0bc;font-size:13px">no withholding stub</span></div>
+      </div>
+      <p style="margin-top:10px;font-size:14px;color:#a8b0bc;font-weight:600">Overlays OFF · Xmas / Erin / Hayes / ring / S Fund Phase 0 · Kill to $20k <strong style="color:#ff5c5c">RED $5,885.54</strong></p>
+    </section>
+
+    <nav class="nav" aria-label="Desk financial">
+      <a href="desk-index.html">Desk home</a>
+      <a href="desk-cfo.html">CFO Glass</a>
+      <a href="desk-cash.html" class="here">Cash</a>
+      <a href="desk-eoy.html">EOY</a>
+      <a href="desk-cards.html">Cards</a>
+      <a href="desk-freeze.html">FREEZE</a>
+      <a href="desk-autopay.html">Autopay</a>
+      <a href="desk-envelopes.html">Envelopes</a>
+      <a href="desk-refresh.html">Refresh</a>
+      <a href="desk-gallery.html">Gallery</a>
+    </nav>
+
+    <footer class="footer">
+      <p class="cap">Under $15k: disc frozen at $0. Gap to EOY floor $5,885.54. House soft glass never shows cash.</p>
+      <div class="stamp">Desk · dark camo glass<br />STALE · Thu Sep 24 ~7:40a CT · ASSUMED $14,114.46 · FREEZE disc $0</div>
+    </footer>
+  </div>
+</body>
+</html>
