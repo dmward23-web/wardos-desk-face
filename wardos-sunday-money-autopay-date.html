@@ -42,6 +42,14 @@ html,body{width:1080px;height:1920px;overflow:hidden;font-family:InterDisplay,In
   background:rgba(255,210,77,.12);border:1px dashed rgba(255,210,77,.55);color:#ffd24d}
 .gate-chip{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:7px 12px;border-radius:999px;
   background:rgba(255,92,92,.14);border:1px solid rgba(255,92,92,.5);color:#ff5c5c}
+.chip.open,.gate-chip.open{background:rgba(42,182,122,.14);border:1px solid rgba(42,182,122,.55);color:#2ab87a}
+.stamp.live{background:rgba(42,182,122,.12);border:1px solid rgba(42,182,122,.55);color:#2ab87a;border-style:solid}
+.dot.ok{background:#2ab87a;box-shadow:0 0 8px rgba(42,182,122,.7)}
+.ro-status.ok span{color:#2ab87a}
+.ro-v.clear,.ro-v.yes{color:#2ab87a}
+.mini-lab strong.ok{color:#2ab87a}
+.fund.clear{color:#2ab87a}
+
 .ctx{font-size:11px;font-weight:600;letter-spacing:.04em;padding:7px 11px;border-radius:999px;
   background:rgba(18,22,28,.9);border:1px solid rgba(255,255,255,.16);color:#a8b0bc}
 
@@ -83,7 +91,7 @@ html,body{width:1080px;height:1920px;overflow:hidden;font-family:InterDisplay,In
       <div class="title">Autopay Date Pick</div>
       <div class="asof">as-of Sat 26 Sep ~12:40p CT · Ledger books</div>
     </div>
-    <div class="chip">GATE CLOSED</div>
+    <div class="chip open">GATE OPEN · EOY floor CLEAR</div>
   </div>
 
   <div class="bluf glass">
@@ -91,8 +99,8 @@ html,body{width:1080px;height:1920px;overflow:hidden;font-family:InterDisplay,In
     <div class="hero">DATE PICK PENDING</div>
     <div class="sub">Amounts LOCKED · no Wells change until Dan picks</div>
     <div class="row-chips">
-      <span class="gate-chip">GATE CLOSED</span>
-      <span class="stamp">STALE ASSUMED</span>
+      <span class="gate-chip open">GATE OPEN</span>
+      <span class="stamp live">LIVE</span>
       <span class="ctx">Wells DEAD · last LIVE $14,164.46 23 Sep − Venmo Erin $50 · disc $0 · overlays OFF</span>
     </div>
   </div>
@@ -146,7 +154,7 @@ html,body{width:1080px;height:1920px;overflow:hidden;font-family:InterDisplay,In
   </div>
 
   <div class="ftr">
-    <span class="note">as-of Sat 26 Sep ~12:40p CT · AVAILABLE $14,114.46 STALE ASSUMED · GATE CLOSED · Ledger books · never invent</span>
+    <span class="note">as-of Sat 26 Sep ~2:34p CT · AVAILABLE $20,577.95 LIVE · GATE OPEN · EOY $20k floor CLEAR · Ledger books · never invent</span>
     <span>WardOS · Sunday-Money · Autopay Date Pick</span>
   </div>
 </div></body></html>

@@ -42,6 +42,14 @@ html,body{width:1080px;height:1920px;overflow:hidden;font-family:InterDisplay,In
   background:rgba(255,210,77,.12);border:1px dashed rgba(255,210,77,.55);color:#ffd24d}
 .gate-chip{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:7px 12px;border-radius:999px;
   background:rgba(255,92,92,.14);border:1px solid rgba(255,92,92,.5);color:#ff5c5c}
+.chip.open,.gate-chip.open{background:rgba(42,182,122,.14);border:1px solid rgba(42,182,122,.55);color:#2ab87a}
+.stamp.live{background:rgba(42,182,122,.12);border:1px solid rgba(42,182,122,.55);color:#2ab87a;border-style:solid}
+.dot.ok{background:#2ab87a;box-shadow:0 0 8px rgba(42,182,122,.7)}
+.ro-status.ok span{color:#2ab87a}
+.ro-v.clear,.ro-v.yes{color:#2ab87a}
+.mini-lab strong.ok{color:#2ab87a}
+.fund.clear{color:#2ab87a}
+
 .ctx{font-size:11px;font-weight:600;letter-spacing:.04em;padding:7px 11px;border-radius:999px;
   background:rgba(18,22,28,.9);border:1px solid rgba(255,255,255,.16);color:#a8b0bc}
 
@@ -52,7 +60,7 @@ html,body{width:1080px;height:1920px;overflow:hidden;font-family:InterDisplay,In
 .mini-rail .zr{position:absolute;left:0;right:0;bottom:0;height:60%;background:linear-gradient(0deg,#2a0a0a,#a82828);opacity:.95}
 .mini-rail .za{position:absolute;left:0;right:0;bottom:60%;height:20%;background:linear-gradient(0deg,#8a5e0a,#d4a017);opacity:.92}
 .mini-rail .zg{position:absolute;left:0;right:0;bottom:80%;height:20%;background:linear-gradient(0deg,#0d5c3a,#22a66a);opacity:.92}
-.mini-rail .mk{position:absolute;left:-3px;right:-3px;bottom:56.4458%;height:3px;background:#fff;
+.mini-rail .mk{position:absolute;left:-3px;right:-3px;bottom:82.3118%;height:3px;background:#fff;
   box-shadow:0 0 8px rgba(255,92,92,.7);border-radius:2px;z-index:3}
 .mini-rail .fl{position:absolute;left:0;right:0;bottom:80%;height:2px;background:rgba(42,182,122,.9);z-index:2}
 .mini-lab{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#a8b0bc;text-align:center;line-height:1.25}
@@ -113,9 +121,9 @@ html,body{width:1080px;height:1920px;overflow:hidden;font-family:InterDisplay,In
       <div class="brand"><img src="file:///workspace/wardos-kit/chrome/wardos-mark-header.png" height="48" alt="WardOS"/></div>
       <div class="eyebrow">WARDOS-SUNDAY-MONEY · INSTRUMENT</div>
       <div class="title">This Week Cliffs</div>
-      <div class="asof">as-of Sat 26 Sep ~12:40p CT · Ledger books</div>
+      <div class="asof">as-of Sat 26 Sep ~2:34p CT · Ledger LIVE</div>
     </div>
-    <div class="chip">GATE CLOSED · disc $0</div>
+    <div class="chip open">GATE OPEN · EOY floor CLEAR</div>
   </div>
 
   <div class="bluf glass">
@@ -124,9 +132,9 @@ html,body{width:1080px;height:1920px;overflow:hidden;font-family:InterDisplay,In
         <div class="lab">Cash cliffs · kill the floor path</div>
         <div class="hero">Next cash cliffs that can kill the floor path</div>
         <div class="row-chips">
-          <span class="gate-chip">GATE CLOSED · disc $0</span>
-          <span class="stamp">STALE ASSUMED</span>
-          <span class="ctx">Wells DEAD · last LIVE $14,164.46 23 Sep − Venmo Erin $50 · overlays OFF</span>
+          <span class="gate-chip open">GATE OPEN</span>
+          <span class="stamp live">LIVE</span>
+          <span class="ctx">Everyday …6854 · EOY $20k floor CLEAR</span>
         </div>
       </div>
       <div class="mini-climb">
@@ -135,7 +143,7 @@ html,body{width:1080px;height:1920px;overflow:hidden;font-family:InterDisplay,In
           <div class="fl"></div>
           <div class="mk"></div>
         </div>
-        <div class="mini-lab">NOW<strong>$14,114.46</strong>56.4% · floor $20k</div>
+        <div class="mini-lab">NOW<strong class="ok">$20,577.95</strong>82.3% · floor $20k CLEAR</div>
       </div>
     </div>
   </div>
@@ -225,7 +233,7 @@ html,body{width:1080px;height:1920px;overflow:hidden;font-family:InterDisplay,In
   <div class="gate-bar glass">
     <span class="ar dead">max extra SW payoff $0</span>
     <span class="ar hold">until live A0 + path green</span>
-    <span class="ar">GATE CLOSED · disc $0</span>
+    <span class="ar">GATE OPEN · EOY floor CLEAR</span>
   </div>
 
   <div class="caption glass">
@@ -233,7 +241,7 @@ html,body{width:1080px;height:1920px;overflow:hidden;font-family:InterDisplay,In
   </div>
 
   <div class="ftr">
-    <span class="note">as-of Sat 26 Sep ~12:40p CT · AVAILABLE $14,114.46 STALE ASSUMED · GATE CLOSED · Ledger books · never invent</span>
+    <span class="note">as-of Sat 26 Sep ~2:34p CT · AVAILABLE $20,577.95 LIVE · GATE OPEN · EOY $20k floor CLEAR · Ledger books · never invent</span>
     <span>WardOS · Sunday-Money · This Week Cliffs</span>
   </div>
 </div></body></html>
