@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080" />
+<title>HOUSE / Alin · board-OS v1</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    width: 1080px;
+    height: 1920px;
+    overflow: hidden;
+    background: #070b10;
+    color: #e8eaed;
+    font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .panel {
+    width: 1080px;
+    height: 1920px;
+    padding: 36px 40px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    background:
+      radial-gradient(ellipse 90% 50% at 50% -10%, #142033 0%, transparent 55%),
+      linear-gradient(180deg, #0a1018 0%, #070b10 40%, #0a121a 100%);
+    border: 1px solid #1a2738;
+  }
+
+  /* Header */
+  .hdr {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #1e2d42;
+  }
+  .hdr-left { display: flex; flex-direction: column; gap: 4px; }
+  .eyebrow {
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #4da3ff;
+  }
+  .title {
+    font-size: 34px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: #fff;
+  }
+  .mock-tag {
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #8b95a5;
+    background: #141c28;
+    border: 1px dashed #3a4a60;
+    padding: 10px 16px;
+    border-radius: 8px;
+  }
+
+  /* BLUF */
+  .bluf {
+    background: linear-gradient(145deg, #0f1a28 0%, #0c1520 100%);
+    border: 1px solid #243448;
+    border-radius: 18px;
+    padding: 20px 24px 18px;
+    position: relative;
+    overflow: hidden;
+  }
+  .bluf::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #3d8bfd, #6ddeb5 45%, #ffc14d);
+  }
+  .bluf-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 6px;
+  }
+  .bluf-label {
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #7a8799;
+  }
+  .addr {
+    font-size: 20px;
+    font-weight: 600;
+    color: #9aa8ba;
+    margin-top: 4px;
+  }
+  .count-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: flex-end;
+  }
+  .chip {
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 8px 14px;
+    border-radius: 999px;
+    border: 1px solid;
+  }
+  .chip-work {
+    background: #0c1a28;
+    color: #8ec5ff;
+    border-color: #2a4a6a;
+    box-shadow: 0 0 14px rgba(61, 139, 253, 0.12);
+  }
+  .chip-look {
+    background: #2a2208;
+    color: #ffc14d;
+    border-color: #6a5420;
+  }
+  .hero {
+    font-size: 40px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    color: #ffffff;
+    margin: 8px 0 12px;
+  }
+  .hero .accent { color: #8ec5ff; }
+  .recommend {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #141008;
+    border: 1px solid #4a3a12;
+    border-radius: 12px;
+    padding: 12px 16px;
+  }
+  .recommend .dot {
+    width: 11px; height: 11px;
+    border-radius: 50%;
+    background: #ffc14d;
+    box-shadow: 0 0 10px #ffc14d;
+    flex-shrink: 0;
+  }
+  .recommend p {
+    font-size: 20px;
+    font-weight: 700;
+    color: #ffd88a;
+    letter-spacing: 0.01em;
+  }
+
+  /* Section card */
+  .card {
+    background: #0c131c;
+    border: 1px solid #1e2d42;
+    border-radius: 16px;
+    padding: 16px 18px 16px;
+  }
+  .card-h {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  .card-h h2 {
+    font-size: 17px;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #c5d0de;
+  }
+  .card-h .sub {
+    font-size: 14px;
+    font-weight: 600;
+    color: #6b7788;
+    letter-spacing: 0.04em;
+  }
+
+  /* Work list */
+  .work {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .work > li {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 7px 10px;
+    border-radius: 10px;
+    background: #0a1118;
+    border: 1px solid #1a2738;
+  }
+  .num {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: #121c2a;
+    border: 1px solid #2a3d58;
+    color: #8ec5ff;
+    font-size: 16px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-variant-numeric: tabular-nums;
+    margin-top: 1px;
+  }
+  .item-body { flex: 1; min-width: 0; }
+  .item-text {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.28;
+    color: #f0f2f5;
+  }
+  .nest {
+    margin-top: 5px;
+    padding: 6px 12px;
+    background: #0e1620;
+    border: 1px solid #243448;
+    border-radius: 8px;
+    font-size: 15px;
+    line-height: 1.35;
+    color: #9aa8ba;
+  }
+  .nest strong {
+    color: #6ddeb5;
+    font-weight: 700;
+  }
+  .nest .arr {
+    color: #ffc14d;
+    font-weight: 700;
+  }
+
+  /* Look-while-there */
+  .look-flag {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #141008;
+    border: 1px solid #4a3a12;
+    border-radius: 10px;
+    padding: 10px 14px;
+    margin-bottom: 10px;
+  }
+  .look-flag .dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: #ffc14d;
+    box-shadow: 0 0 8px #ffc14d;
+    flex-shrink: 0;
+  }
+  .look-flag p {
+    font-size: 17px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #ffd88a;
+  }
+  .look-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .look-list li {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 7px 10px;
+    border-radius: 10px;
+    background: #0a1118;
+    border: 1px solid #1a2738;
+  }
+  .look-mark {
+    flex-shrink: 0;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #ffc14d;
+    margin-top: 10px;
+    box-shadow: 0 0 6px rgba(255, 193, 77, 0.4);
+  }
+  .look-body { flex: 1; min-width: 0; }
+  .look-text {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.28;
+    color: #e8eaed;
+  }
+
+  /* Mock controls */
+  .controls-wrap { margin-top: 2px; }
+  .controls-label {
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #5a6678;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .controls-label::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #1e2d42;
+  }
+  .controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+  }
+  .btn {
+    appearance: none;
+    border: 1px dashed #3a4a60;
+    background: #0e1520;
+    color: #5a6678;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    padding: 16px 10px;
+    border-radius: 12px;
+    text-align: center;
+    opacity: 0.72;
+  }
+  .btn .mock-pill {
+    display: block;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #4a5568;
+    margin-bottom: 4px;
+  }
+  .btn .btn-label { color: #7a8799; }
+
+  /* Footer */
+  .footer {
+    margin-top: auto;
+    padding-top: 12px;
+    border-top: 1px solid #1e2d42;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+  .footer .cap {
+    font-size: 16px;
+    font-weight: 600;
+    color: #9aa8ba;
+    line-height: 1.35;
+    max-width: 680px;
+  }
+  .footer .stamp {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: #5a6678;
+    text-align: right;
+    line-height: 1.45;
+    white-space: nowrap;
+  }
+</style>
+</head>
+<body>
+  <div class="panel">
+    <header class="hdr">
+      <div class="hdr-left">
+        <div class="eyebrow">Board-OS · HOUSE / Alin</div>
+        <div class="title">House / Alin punch list</div>
+      </div>
+      <div class="mock-tag">MOCK PANEL · NOT LIVE</div>
+    </header>
+
+    <!-- BLUF -->
+    <section class="bluf">
+      <div class="bluf-top">
+        <div>
+          <div class="bluf-label">Punch list</div>
+          <div class="addr">6719 W 147th Terrace</div>
+        </div>
+        <div class="count-chips">
+          <span class="chip chip-work">10 Work</span>
+          <span class="chip chip-look">Look survey</span>
+        </div>
+      </div>
+      <div class="hero">10 work items <span class="accent">·</span> look-while-there survey only</div>
+      <div class="recommend">
+        <span class="dot"></span>
+        <p>Look-while-there: no buy without last-yes</p>
+      </div>
+    </section>
+
+    <!-- Work -->
+    <section class="card" style="flex: 1; min-height: 0;">
+      <div class="card-h">
+        <h2>Work</h2>
+        <span class="sub">10 items · materials nested</span>
+      </div>
+      <ol class="work">
+        <li>
+          <div class="num">1</div>
+          <div class="item-body"><div class="item-text">Basement items → garage</div></div>
+        </li>
+        <li>
+          <div class="num">2</div>
+          <div class="item-body"><div class="item-text">Master bath drain won’t close</div></div>
+        </li>
+        <li>
+          <div class="num">3</div>
+          <div class="item-body"><div class="item-text">Master left sink drains slow</div></div>
+        </li>
+        <li>
+          <div class="num">4</div>
+          <div class="item-body"><div class="item-text">All 3 showers weak pressure · fix/replace</div></div>
+        </li>
+        <li>
+          <div class="num">5</div>
+          <div class="item-body"><div class="item-text">Dryer vent fix + clear error</div></div>
+        </li>
+        <li>
+          <div class="num">6</div>
+          <div class="item-body"><div class="item-text">Downspout fix + rain collector</div></div>
+        </li>
+        <li>
+          <div class="num">7</div>
+          <div class="item-body"><div class="item-text">Front-yard downspout left of front door</div></div>
+        </li>
+        <li>
+          <div class="num">8</div>
+          <div class="item-body">
+            <div class="item-text">Deck wood-rot repair · poles on hand</div>
+            <div class="nest"><strong>On hand:</strong> deck poles</div>
+          </div>
+        </li>
+        <li>
+          <div class="num">9</div>
+          <div class="item-body"><div class="item-text">Hang curtains both boys’ rooms; Hayes mount pulled through drywall · patch+remount</div></div>
+        </li>
+        <li>
+          <div class="num">10</div>
+          <div class="item-body">
+            <div class="item-text">Basement guest-room door install · hardware on hand</div>
+            <div class="nest"><strong>On hand:</strong> guest-room door hardware</div>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- Look-while-there -->
+    <section class="card">
+      <div class="card-h">
+        <h2>Look-while-there</h2>
+        <span class="sub">survey only</span>
+      </div>
+      <div class="look-flag">
+        <span class="dot"></span>
+        <p>No buy without last-yes</p>
+      </div>
+      <ul class="look-list">
+        <li>
+          <span class="look-mark"></span>
+          <div class="look-body"><div class="look-text">Garage opener / sensors / power for phone + auto-close</div></div>
+        </li>
+        <li>
+          <span class="look-mark"></span>
+          <div class="look-body">
+            <div class="look-text">Nest doorbell hardwire</div>
+            <div class="nest"><span class="arr">Arriving:</span> Newhouse 30TR Nest transformer 16V/30VA · #111-0831376-3294655 · Sat Sep 19</div>
+          </div>
+        </li>
+        <li>
+          <span class="look-mark"></span>
+          <div class="look-body">
+            <div class="look-text">Outdoor KUNCAN + Cord Dome</div>
+            <div class="nest"><span class="arr">Arriving:</span> KUNCAN 3-outlet outdoor splitter · #112-4249031-2601012 · Mon Sep 21<br/>
+            Cord Dome · #111-2331310-9761059 · Wed Sep 23</div>
+          </div>
+        </li>
+        <li>
+          <span class="look-mark"></span>
+          <div class="look-body"><div class="look-text">Smart-switch survey (neutral)</div></div>
+        </li>
+        <li>
+          <span class="look-mark"></span>
+          <div class="look-body"><div class="look-text">Door-pad prep FRONT + GARAGE + BACK</div></div>
+        </li>
+        <li>
+          <span class="look-mark"></span>
+          <div class="look-body"><div class="look-text">Cam power</div></div>
+        </li>
+        <li>
+          <span class="look-mark"></span>
+          <div class="look-body"><div class="look-text">Breaker labels</div></div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Mock controls -->
+    <section class="controls-wrap">
+      <div class="controls-label">Mock controls · not wired · future SCADA</div>
+      <div class="controls">
+        <div class="btn" aria-disabled="true">
+          <span class="mock-pill">Mock</span>
+          <span class="btn-label">[Text Alin list]</span>
+        </div>
+        <div class="btn" aria-disabled="true">
+          <span class="mock-pill">Mock</span>
+          <span class="btn-label">[Mark job done]</span>
+        </div>
+        <div class="btn" aria-disabled="true">
+          <span class="mock-pill">Mock</span>
+          <span class="btn-label">[Refresh arrivals]</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p class="cap">
+        10 work · look survey only · materials nested under jobs · no buy without last-yes
+      </p>
+      <div class="stamp">
+        Atlas punch facts<br />
+        Prism panel v1
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

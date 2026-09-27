@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080" />
+<title>PARTY / Events · board-OS v1</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    width: 1080px;
+    height: 1920px;
+    overflow: hidden;
+    background: #070b10;
+    color: #e8eaed;
+    font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .panel {
+    width: 1080px;
+    height: 1920px;
+    padding: 40px 44px 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background:
+      radial-gradient(ellipse 90% 50% at 50% -10%, #142033 0%, transparent 55%),
+      linear-gradient(180deg, #0a1018 0%, #070b10 40%, #0a121a 100%);
+    border: 1px solid #1a2738;
+  }
+
+  /* Header */
+  .hdr {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #1e2d42;
+  }
+  .hdr-left { display: flex; flex-direction: column; gap: 6px; }
+  .eyebrow {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #4da3ff;
+  }
+  .title {
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: #fff;
+  }
+  .mock-tag {
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #8b95a5;
+    background: #141c28;
+    border: 1px dashed #3a4a60;
+    padding: 10px 16px;
+    border-radius: 8px;
+  }
+
+  /* BLUF */
+  .bluf {
+    background: linear-gradient(145deg, #0f1a28 0%, #0c1520 100%);
+    border: 1px solid #243448;
+    border-radius: 20px;
+    padding: 26px 30px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .bluf::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #3d8bfd, #6ddeb5 45%, #ffc14d);
+  }
+  .bluf-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 6px;
+  }
+  .bluf-label {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #7a8799;
+  }
+  .event-meta {
+    font-size: 20px;
+    font-weight: 600;
+    color: #9aa8ba;
+    margin-top: 4px;
+  }
+  .count-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: flex-end;
+  }
+  .chip {
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 10px 16px;
+    border-radius: 999px;
+    border: 1px solid;
+  }
+  .chip-yes {
+    background: #0c1a14;
+    color: #6ddeb5;
+    border-color: #2a5a40;
+    box-shadow: 0 0 18px rgba(109, 222, 181, 0.12);
+  }
+  .chip-pend {
+    background: #2a2208;
+    color: #ffc14d;
+    border-color: #6a5420;
+  }
+  .chip-no {
+    background: #3a1212;
+    color: #ff7a7a;
+    border-color: #7a2a2a;
+  }
+  .hero {
+    font-size: 72px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    color: #ffffff;
+    font-variant-numeric: tabular-nums;
+    margin: 10px 0 14px;
+  }
+  .hero .accent { color: #8ec5ff; }
+  .recommend {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #141008;
+    border: 1px solid #4a3a12;
+    border-radius: 12px;
+    padding: 14px 18px;
+  }
+  .recommend .dot {
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: #ffc14d;
+    box-shadow: 0 0 10px #ffc14d;
+    flex-shrink: 0;
+  }
+  .recommend p {
+    font-size: 24px;
+    font-weight: 700;
+    color: #ffd88a;
+    letter-spacing: 0.01em;
+  }
+  .meta-line {
+    margin-top: 14px;
+    font-size: 18px;
+    color: #6b7788;
+    line-height: 1.45;
+  }
+
+  /* Section card */
+  .card {
+    background: #0c131c;
+    border: 1px solid #1e2d42;
+    border-radius: 18px;
+    padding: 20px 22px 22px;
+  }
+  .card-h {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+  }
+  .card-h h2 {
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #c5d0de;
+  }
+  .card-h .sub {
+    font-size: 16px;
+    font-weight: 600;
+    color: #6b7788;
+    letter-spacing: 0.04em;
+  }
+
+  /* Action strip */
+  .action-strip {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+  }
+  .ap-cell {
+    background: #0a1118;
+    border: 1px solid #243448;
+    border-radius: 14px;
+    padding: 16px 16px 14px;
+  }
+  .ap-cell .ap-label {
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #6b7788;
+    margin-bottom: 8px;
+  }
+  .ap-cell .ap-main {
+    font-size: 30px;
+    font-weight: 800;
+    color: #fff;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.02em;
+  }
+  .ap-cell .ap-sub {
+    margin-top: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #9aa8ba;
+  }
+  .ap-cover .ap-main { color: #8ec5ff; }
+  .ap-need .ap-main { color: #ffc14d; }
+  .ap-locked .ap-main { color: #6ddeb5; }
+
+  /* Name groups */
+  .group {
+    margin-bottom: 16px;
+  }
+  .group:last-child { margin-bottom: 0; }
+  .group-h {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  .group-h .g-tag {
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border-radius: 8px;
+    border: 1px solid;
+  }
+  .g-yes {
+    background: #0c1a14;
+    color: #6ddeb5;
+    border-color: #2a5a40;
+  }
+  .g-pend {
+    background: #1a1608;
+    color: #ffc14d;
+    border-color: #6a5420;
+  }
+  .g-no {
+    background: #1a0c0c;
+    color: #ff8a8a;
+    border-color: #6a2828;
+  }
+  .group-h .g-count {
+    font-size: 16px;
+    font-weight: 700;
+    color: #6b7788;
+    font-variant-numeric: tabular-nums;
+  }
+  .names {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .name {
+    font-size: 17px;
+    font-weight: 700;
+    padding: 8px 14px;
+    border-radius: 999px;
+    border: 1px solid;
+    letter-spacing: 0.01em;
+  }
+  .name-yes {
+    background: #0a1410;
+    color: #b8f0d0;
+    border-color: #1e4a34;
+  }
+  .name-pend {
+    background: #141008;
+    color: #ffd88a;
+    border-color: #4a3a12;
+  }
+  .name-no {
+    background: #140c0c;
+    color: #ffb0b0;
+    border-color: #4a2020;
+  }
+
+  /* Mock controls */
+  .controls-wrap {
+    margin-top: 2px;
+  }
+  .controls-label {
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #5a6678;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .controls-label::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #1e2d42;
+  }
+  .controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+  }
+  .btn {
+    appearance: none;
+    border: 1px dashed #3a4a60;
+    background: #0e1520;
+    color: #5a6678;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    padding: 22px 12px;
+    border-radius: 14px;
+    text-align: center;
+    opacity: 0.72;
+    position: relative;
+  }
+  .btn .mock-pill {
+    display: block;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #4a5568;
+    margin-bottom: 6px;
+  }
+  .btn .btn-label {
+    color: #7a8799;
+  }
+
+  /* Footer */
+  .footer {
+    margin-top: auto;
+    padding-top: 14px;
+    border-top: 1px solid #1e2d42;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+  .footer .cap {
+    font-size: 20px;
+    font-weight: 600;
+    color: #9aa8ba;
+    line-height: 1.35;
+    max-width: 680px;
+  }
+  .footer .stamp {
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: #5a6678;
+    text-align: right;
+    line-height: 1.45;
+    white-space: nowrap;
+  }
+</style>
+</head>
+<body>
+  <div class="panel">
+    <header class="hdr">
+      <div class="hdr-left">
+        <div class="eyebrow">Board-OS · PARTY / Events</div>
+        <div class="title">Hayes Urban Air</div>
+      </div>
+      <div class="mock-tag">MOCK PANEL · NOT LIVE</div>
+    </header>
+
+    <!-- BLUF -->
+    <section class="bluf">
+      <div class="bluf-top">
+        <div>
+          <div class="bluf-label">RSVP locked</div>
+          <div class="event-meta">Fri Sep 25 · Urban Air</div>
+        </div>
+        <div class="count-chips">
+          <span class="chip chip-yes">14 Yes</span>
+          <span class="chip chip-pend">4 Pending</span>
+          <span class="chip chip-no">4 No</span>
+        </div>
+      </div>
+      <div class="hero">14 Yes <span class="accent">·</span> buy 4 add-ons</div>
+      <div class="recommend">
+        <span class="dot"></span>
+        <p>Recommend: buy 4 Groupon add-ons for the 14 locked Yes</p>
+      </div>
+      <p class="meta-line">
+        Groupon covers 10 · need 4 add-ons · Atlas RSVP as-of Fri Sep 18 night
+      </p>
+    </section>
+
+    <!-- Action recommend strip -->
+    <section class="card">
+      <div class="card-h">
+        <h2>Action · Groupon</h2>
+        <span class="sub">10 covered + 4 add-ons</span>
+      </div>
+      <div class="action-strip">
+        <div class="ap-cell ap-cover">
+          <div class="ap-label">Groupon cover</div>
+          <div class="ap-main">10</div>
+          <div class="ap-sub">Included seats</div>
+        </div>
+        <div class="ap-cell ap-need">
+          <div class="ap-label">Add-ons needed</div>
+          <div class="ap-main">4</div>
+          <div class="ap-sub">For locked Yes</div>
+        </div>
+        <div class="ap-cell ap-locked">
+          <div class="ap-label">Yes locked</div>
+          <div class="ap-main">14</div>
+          <div class="ap-sub">10 + 4 = 14</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Name groups -->
+    <section class="card" style="flex: 1; min-height: 0;">
+      <div class="card-h">
+        <h2>Name roster</h2>
+        <span class="sub">22 total · chips by status</span>
+      </div>
+
+      <div class="group">
+        <div class="group-h">
+          <span class="g-tag g-yes">Yes locked</span>
+          <span class="g-count">14</span>
+        </div>
+        <div class="names">
+          <span class="name name-yes">Hayes</span>
+          <span class="name name-yes">Harris</span>
+          <span class="name name-yes">Ainsley</span>
+          <span class="name name-yes">Liv</span>
+          <span class="name name-yes">Max</span>
+          <span class="name name-yes">Carter</span>
+          <span class="name name-yes">Reid</span>
+          <span class="name name-yes">Theo</span>
+          <span class="name name-yes">Riley</span>
+          <span class="name name-yes">Luke Yakle</span>
+          <span class="name name-yes">Oscar Yakle</span>
+          <span class="name name-yes">Austin Perdew</span>
+          <span class="name name-yes">Landon Stephens</span>
+          <span class="name name-yes">Oliver Olson</span>
+        </div>
+      </div>
+
+      <div class="group">
+        <div class="group-h">
+          <span class="g-tag g-pend">Pending</span>
+          <span class="g-count">4</span>
+        </div>
+        <div class="names">
+          <span class="name name-pend">Decker</span>
+          <span class="name name-pend">Arsen</span>
+          <span class="name name-pend">Amay</span>
+          <span class="name name-pend">Owen</span>
+        </div>
+      </div>
+
+      <div class="group">
+        <div class="group-h">
+          <span class="g-tag g-no">No</span>
+          <span class="g-count">4</span>
+        </div>
+        <div class="names">
+          <span class="name name-no">Jack Stephenson</span>
+          <span class="name name-no">Weston Edelen</span>
+          <span class="name name-no">Henry Rockefeller</span>
+          <span class="name name-no">Arlo Lenox</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mock controls -->
+    <section class="controls-wrap">
+      <div class="controls-label">Mock controls · not wired · future SCADA</div>
+      <div class="controls">
+        <div class="btn" aria-disabled="true">
+          <span class="mock-pill">Mock</span>
+          <span class="btn-label">[Buy 4 add-ons]</span>
+        </div>
+        <div class="btn" aria-disabled="true">
+          <span class="mock-pill">Mock</span>
+          <span class="btn-label">[Refresh RSVP]</span>
+        </div>
+        <div class="btn" aria-disabled="true">
+          <span class="mock-pill">Mock</span>
+          <span class="btn-label">[Text host list]</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p class="cap">
+        14 Yes locked. Groupon covers 10; buy 4 add-ons. Pending and No stay off the buy list.
+      </p>
+      <div class="stamp">
+        Atlas RSVP · as-of Fri Sep 18 night<br />
+        Prism panel v1
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
