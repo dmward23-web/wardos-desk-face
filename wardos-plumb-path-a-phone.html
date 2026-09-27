@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080" />
+<title>WardOS · Plumb / Path A · Atlas managed</title>
+<style>
+@font-face{font-family:InterDisplay;src:url("fonts/InterDisplay-Regular.ttf");font-weight:400;font-style:normal}
+@font-face{font-family:InterDisplay;src:url("fonts/InterDisplay-Medium.ttf");font-weight:500;font-style:normal}
+@font-face{font-family:InterDisplay;src:url("fonts/InterDisplay-SemiBold.ttf");font-weight:600;font-style:normal}
+@font-face{font-family:InterDisplay;src:url("fonts/InterDisplay-Bold.ttf");font-weight:700;font-style:normal}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;font-family:InterDisplay,Inter,-apple-system,Helvetica,sans-serif;color:#e8eaed;background:#252a32;-webkit-font-smoothing:antialiased}
+.panel{width:1080px;height:1920px;padding:16px 22px 12px;display:flex;flex-direction:column;gap:8px;position:relative;overflow:hidden;
+  background-color:#252a32;
+  background-image:
+    linear-gradient(165deg,rgba(90,96,108,.42) 0%,rgba(28,32,38,.30) 42%,rgba(10,12,16,.35) 100%),
+    radial-gradient(ellipse 90% 70% at 50% 40%,transparent 30%,rgba(0,0,0,.30) 100%),
+    url("camo-glass-tile-desk.png");
+  background-size:auto,auto,520px 520px;background-position:center,center,0 0;background-repeat:no-repeat,no-repeat,repeat;
+  border:1px solid rgba(255,255,255,.10)}
+.panel::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.14) 0%,transparent 22%,transparent 74%,rgba(0,0,0,.24) 100%),
+    radial-gradient(ellipse 65% 45% at 16% 10%,rgba(255,255,255,.13) 0%,transparent 55%);
+  mix-blend-mode:soft-light;opacity:.9}
+.panel>*{position:relative;z-index:2}
+.glass{backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  background:rgba(22,26,34,.82);border:1px solid rgba(255,255,255,.13);
+  box-shadow:0 1px 0 rgba(255,255,255,.16) inset,0 10px 28px rgba(0,0,0,.28);border-radius:14px}
+.hdr{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:10px 14px}
+.brand img{display:block;height:52px;width:auto}
+.eyebrow{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#a8b0bc;margin-top:4px}
+.title{font-size:30px;font-weight:700;letter-spacing:-.035em;color:#fff;margin-top:2px;line-height:1.05}
+.asof{font-size:11px;font-weight:500;color:#a8b0bc;margin-top:3px;line-height:1.3}
+.chip{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:9px 13px;border-radius:999px;
+  background:rgba(18,22,28,.92);border:1px solid rgba(255,255,255,.42);color:#f2f4f7;align-self:flex-start}
+.chip-hold{border-color:rgba(255,193,77,.55);color:#ffd24d;background:rgba(42,34,8,.92)}
+.where{font-size:13px;font-weight:600;color:#a8b0bc;line-height:1.3;padding:0 2px}
+.hero{padding:14px 16px;flex:0 0 auto;min-height:150px;display:flex;flex-direction:column;justify-content:center}
+.hero .k{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#a8b0bc}
+.hero .v{font-size:28px;font-weight:700;margin-top:6px;line-height:1.15;color:#fff;letter-spacing:-.03em}
+.hero .s{font-size:14px;font-weight:500;color:#b0b8c4;margin-top:8px;line-height:1.35}
+.card{padding:10px 14px}
+.h{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:5px;color:#a8b0bc}
+.plumb .h{color:#ffc14d}.gates .h{color:#9ec5ff}.sku .h{color:#ffb080}.law .h{color:#ff8a8a}.route .h{color:#b8c0cc}
+.li{font-size:14px;font-weight:600;line-height:1.28;padding:4px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.li:last-child{border-bottom:none}
+.amber{color:#ffd24d}.red{color:#ff5c5c}.mute{color:#a8b0bc}.ok{color:#7dffd4}
+.chips{display:flex;flex-wrap:wrap;gap:8px;padding:0 2px}
+.kchip{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:7px 11px;border-radius:999px;border:1px solid rgba(255,255,255,.22);background:rgba(18,22,28,.88);color:#f2f4f7}
+.kchip.hold{border-color:rgba(255,193,77,.5);color:#ffd24d}
+.kchip.ban{border-color:rgba(255,92,92,.45);color:#ff8a8a}
+.kchip.live{border-color:rgba(125,255,212,.4);color:#7dffd4}
+.ftr{margin-top:auto;display:flex;justify-content:space-between;align-items:flex-end;gap:12px;font-size:11px;font-weight:500;color:#a8b0bc;padding-top:6px;border-top:1px solid rgba(255,255,255,.14)}
+.ftr .note{max-width:64%;line-height:1.35}
+</style>
+</head>
+<body>
+<div class="panel">
+  <div class="hdr glass">
+    <div>
+      <div class="brand"><img src="wardos-mark-header.png" height="52" alt="WardOS"/></div>
+      <div class="eyebrow">WARDOS · PLUMB / WALL · PATH A · ATLAS OWNS</div>
+      <div class="title">Path A · YE26 prove</div>
+      <div class="asof">Locked Sun 27 Sep ~4:24p CT · NO-BUY · Ring first extra</div>
+    </div>
+    <div class="chip chip-hold">HOLD IRON</div>
+  </div>
+
+  <div class="where">147th HOME · Mode A master · kids on House glass · Desk dark stays Desk</div>
+
+  <div class="hero glass">
+    <div class="k">CADENCE LOCK</div>
+    <div class="v">Home prove → YE26 · LIVE 1/1/27</div>
+    <div class="s">Burn-in through Dec 31. Not a 3-week rush. Hang only after iron last-yes.</div>
+  </div>
+
+  <div class="chips">
+    <span class="kchip hold">HOLD IRON</span>
+    <span class="kchip live">1/1 LIVE</span>
+    <span class="kchip ban">NO CHECKOUT</span>
+    <span class="kchip">CAP 12</span>
+  </div>
+
+  <div class="card glass gates">
+    <div class="h">Next gates</div>
+    <div class="li"><span class="amber">Mock</span> on existing glass · walk-by before iron</div>
+    <div class="li"><span class="amber">Hang-when-yes</span> · 147th Path A after buy last-yes</div>
+    <div class="li"><span class="amber">Day-7 boring</span> · harden through YE26 · photo filed</div>
+    <div class="li"><span class="amber">TM checklist</span> · search-only · no filing w/o last-yes</div>
+  </div>
+
+  <div class="card glass sku">
+    <div class="h">SKU · Desk only · not on wall</div>
+    <div class="li">Hw <span class="amber">$1,999</span> · Desk <span class="amber">$99/mo</span> BYO Grok · Stand-up <span class="amber">~$1,250</span></div>
+    <div class="li"><span class="red">Tombstones</span> · $99×24 panel dead · $149 only Heavy/two</div>
+    <div class="li">Founder kill ~100 hrs/yr · pause if &gt;4 hrs/wk × 2</div>
+  </div>
+
+  <div class="card glass law">
+    <div class="h">Wall law reminder</div>
+    <div class="li"><span class="red">No money dollars on wall.</span> No Desk / PIN / FREEZE on House glass.</div>
+    <div class="li mute">Master: plates/2026-09-27/wall-station/column-straight-on-2026-09-27.jpg</div>
+  </div>
+
+  <div class="card glass route">
+    <div class="h">Route · Atlas owns</div>
+    <div class="li">Atlas board · Wright kit/hang when yes · Ledger cash · Prism glass · Dan last-yes</div>
+    <div class="li mute">Manage: night Watch if status moved · morning only if gate is today</div>
+  </div>
+
+  <div class="ftr">
+    <span class="note">PLUMB-STUDIO-PLAN · WALL-STATION-PROVE-PLAN · charter v1.2 · Atlas manage md</span>
+    <span>WardOS · Path A · LIVE kit</span>
+  </div>
+</div>
+</body>
+</html>

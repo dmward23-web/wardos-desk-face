@@ -19,3 +19,11 @@ https://dmward23-web.github.io/wardos-desk-face/wardos-sunday-money-kill-line.ht
 Re-save only if the current tile came from Drive, Files, or a tunnel. Cash stamps do not require a new save.
 
 Numbers: Ledger only. Never invent.
+
+## Plumb / Path A (Atlas managed · baked 27 Sep 2026)
+https://dmward23-web.github.io/wardos-desk-face/desk-plumb.html
+
+Phone plate:
+https://dmward23-web.github.io/wardos-desk-face/wardos-plumb-path-a-phone.html
+
+HOLD iron · YE26 home prove → 1/1 LIVE · no wall $. Manage: wardos-kit/PLUMB-PATH-A-ATLAS-MANAGE-2026-09-27.md

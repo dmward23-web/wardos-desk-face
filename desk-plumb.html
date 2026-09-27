@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1920" />
+<title>WardOS · Desk · Plumb / Wall Path A</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    width: 1920px; min-height: 1200px; height: auto; overflow: auto;
+    background: #2a2e34; color: #e8eaed;
+    font-family: "Inter Display", "Inter", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .panel {
+    width: 1920px; height: 1200px;
+    padding: 22px 32px 16px;
+    display: flex; flex-direction: column; gap: 12px;
+    position: relative; overflow: hidden;
+    background-color: #2a2e34;
+    background-image:
+      linear-gradient(165deg, rgba(90,96,108,0.42) 0%, rgba(40,44,50,0.28) 45%, rgba(22,24,28,0.30) 100%),
+      url("camo-glass-tile-desk.png");
+    background-size: auto, 420px 420px;
+    background-position: center, 0 0;
+    background-repeat: no-repeat, repeat;
+    border: 1px solid rgba(255,255,255,0.10);
+  }
+  .panel::before {
+    content: "";
+    position: absolute; inset: 0; pointer-events: none; z-index: 0;
+    background:
+      linear-gradient(180deg, rgba(255,255,255,0.14) 0%, transparent 28%, transparent 72%, rgba(0,0,0,0.24) 100%),
+      radial-gradient(ellipse 70% 50% at 18% 12%, rgba(255,255,255,0.13) 0%, transparent 55%);
+    mix-blend-mode: soft-light; opacity: 0.85;
+  }
+  .panel > * { position: relative; z-index: 2; }
+  .hdr, .bluf, .card, .nav, .footer, .grid .cell {
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  }
+  .hdr { display:flex; align-items:center; justify-content:space-between; padding: 12px 18px; border-radius: 16px; background: rgba(28,32,38,0.68); border: 1px solid rgba(255,255,255,0.12); box-shadow: 0 1px 0 rgba(255,255,255,0.10) inset, 0 8px 24px rgba(0,0,0,0.22); flex-shrink:0; }
+  .hdr-left { display:flex; align-items:center; gap:0; min-width:0; }
+  .back { display:inline-flex; align-items:center; gap:6px; font-size:14px; font-weight:750; color:#7ec8ff; padding:8px 14px; border-radius:999px; min-height:40px; background:#0f1a28; border:1px solid #2a4a6a; text-decoration:none; flex-shrink:0; margin-right:14px; }
+  .back .chev { font-size:16px; color:#4da3ff; line-height:1; }
+  .eyebrow { font-size:15px; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:#4da3ff; margin-bottom:4px; text-decoration:none; display:block; }
+  .title { font-size:32px; font-weight:700; letter-spacing:-.02em; color:#fff; }
+  .tags { display:flex; gap:10px; align-items:center; flex-wrap:wrap; justify-content:flex-end; }
+  .tag { font-size:13px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; padding:8px 12px; border-radius:8px; color:#a8b0bc; background: rgba(30,34,42,0.65); border: 1px dashed rgba(255,255,255,0.22); }
+  .tag-live { color:#7dffd4; background:#0c1a16; border:1px solid #2a5a48; border-style:solid; }
+  .tag-hold { color:#ffc14d; background:#2a2208; border:1px solid #6a5420; border-style:solid; }
+  .tag-pin { color: #b8d4f0; border-color: rgba(180,200,220,0.35); background: rgba(40,48,58,0.72); border-style: solid; }
+  .bluf { background: linear-gradient(145deg, rgba(28,32,38,0.72) 0%, rgba(18,20,24,0.78) 100%); border:1px solid #243448; border-radius:18px; padding:16px 22px; position:relative; overflow:hidden; display:flex; align-items:center; justify-content:space-between; gap:20px; flex-shrink:0; }
+  .bluf::before { content:""; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,#ffc14d,#4da3ff 55%,#6ddeb5); }
+  .bluf .lbl { font-size:13px; font-weight:800; letter-spacing:.16em; text-transform:uppercase; color:#7a8799; }
+  .bluf .line { font-size:26px; font-weight:850; color:#fff; margin-top:4px; letter-spacing:-.02em; }
+  .bluf .meta { font-size:15px; color:#a8b0bc; margin-top:6px; line-height:1.35; }
+  .bluf .chips { display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end; }
+  .chip { font-size:13px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; padding:8px 12px; border-radius:999px; border:1px solid; }
+  .chip-hold { background:#2a2208; color:#ffc14d; border-color:#6a5420; }
+  .chip-live { background:#0c1a16; color:#7dffd4; border-color:#2a5a48; }
+  .chip-ban { background:#3a1212; color:#ff7a7a; border-color:#7a2a2a; }
+  .grid { flex:1; min-height:0; display:grid; grid-template-columns: 1.15fr 1fr 1fr; gap:12px; }
+  .cell { border-radius:16px; background: rgba(22,26,32,0.70); border:1px solid rgba(255,255,255,0.12); box-shadow: 0 1px 0 rgba(255,255,255,0.08) inset, 0 6px 18px rgba(0,0,0,0.22); padding:16px 18px; display:flex; flex-direction:column; gap:8px; min-height:0; overflow:hidden; }
+  .cell .h { font-size:12px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:#9ec5ff; }
+  .cell.gates .h { color:#ffc14d; }
+  .cell.sku .h { color:#ffb080; }
+  .cell.manage .h { color:#6ddeb5; }
+  .cell.law .h { color:#ff8a8a; }
+  .li { font-size:16px; font-weight:650; line-height:1.35; padding:6px 0; border-bottom:1px solid rgba(255,255,255,.06); color:#e8eaed; }
+  .li:last-child { border-bottom:none; }
+  .li .mute { color:#a8b0bc; font-weight:550; }
+  .li .amber { color:#ffd24d; }
+  .li .red { color:#ff5c5c; }
+  .li .ok { color:#7dffd4; }
+  .big { font-size:22px; font-weight:800; color:#fff; letter-spacing:-.02em; line-height:1.25; margin:2px 0 6px; }
+  .nav { display:flex; flex-wrap:wrap; gap:8px; flex-shrink:0; }
+  .nav a { flex:1 1 90px; text-align:center; text-decoration:none; border:1px dashed #3a4a60; background:#0e1520; color:#7a8799; font-size:12px; font-weight:700; letter-spacing:.04em; padding:10px 6px; border-radius:12px; }
+  .nav a.here { border-style:solid; border-color:#6a5420; color:#ffc14d; background:#2a2208; }
+  .footer { flex-shrink:0; padding-top:8px; border-top:1px solid #1e2d42; display:flex; justify-content:space-between; align-items:center; gap:16px; }
+  .footer .cap { font-size:14px; font-weight:600; color:#9aa8ba; max-width:1400px; line-height:1.35; }
+  .footer .stamp { font-size:12px; font-weight:700; letter-spacing:.06em; color:#5a6678; text-align:right; line-height:1.45; }
+</style>
+</head>
+<body>
+<div class="panel">
+  <header class="hdr">
+    <div class="hdr-left">
+      <a class="back" href="desk-index.html" aria-label="Back to Desk"><span class="chev">‹</span> Desk</a>
+      <div>
+        <a class="eyebrow" href="desk-index.html">WardOS · Desk · PIN</a>
+        <div class="title">Plumb / Wall · Path A</div>
+      </div>
+    </div>
+    <div class="tags">
+      <span class="tag tag-live">ATLAS OWNS</span>
+      <span class="tag tag-hold">HOLD IRON</span>
+      <span class="tag tag-pin">PIN</span>
+      <span class="tag">NO-BUY</span>
+    </div>
+  </header>
+
+  <section class="bluf">
+    <div>
+      <div class="lbl">Path A locked · Sun 27 Sep ~4:24p CT exact-yes</div>
+      <div class="line">YE26 home prove at 147th → Plumb LIVE 2027-01-01</div>
+      <div class="meta">Burn-in through Dec 31 · not a 3-week rush · kids on House glass · master photo filed · Ring first extra</div>
+    </div>
+    <div class="chips">
+      <span class="chip chip-hold">HOLD IRON</span>
+      <span class="chip chip-live">1/1 LIVE GATE</span>
+      <span class="chip chip-ban">NO CHECKOUT</span>
+    </div>
+  </section>
+
+  <div class="grid">
+    <div class="cell gates">
+      <div class="h">Next gates · Atlas watch</div>
+      <div class="big">Prove first. Iron only on last-yes.</div>
+      <div class="li"><span class="amber">1 · Mock</span> on existing glass · walk-by read before iron</div>
+      <div class="li"><span class="amber">2 · Hang-when-yes</span> · Path A at 147th only after buy last-yes</div>
+      <div class="li"><span class="amber">3 · Day-7 boring</span> · harden through YE26 · photo filed</div>
+      <div class="li"><span class="amber">4 · TM checklist</span> · search-only · no filing without last-yes</div>
+      <div class="li mute">Docs: PLUMB-STUDIO-PLAN · WALL-STATION-PROVE-PLAN · charter v1.2</div>
+    </div>
+
+    <div class="cell sku">
+      <div class="h">Live SKU · Desk only</div>
+      <div class="big">Locked offer · not on House wall</div>
+      <div class="li">Hardware list <span class="amber">$1,999</span> · BOM × 1.25</div>
+      <div class="li">Desk <span class="amber">$99/mo</span> · BYO SuperGrok</div>
+      <div class="li">Stand-up <span class="amber">~$1,250</span> · one wound · walk once</div>
+      <div class="li"><span class="red">Tombstones</span> · $99×24 includes panel dead · $149/mo only two-station/Heavy</div>
+      <div class="li">Founder kill ~100 hrs/yr · flag if &gt;4 hrs/wk × 2 wks · Cap <span class="ok">12</span> named 2027</div>
+    </div>
+
+    <div class="cell manage">
+      <div class="h">Atlas manage cadence</div>
+      <div class="big">Standing watch · quiet unless gate moves</div>
+      <div class="li"><span class="ok">Night close</span> · one Watch line if Path A status changed</div>
+      <div class="li"><span class="ok">Morning ROS</span> · mention only if hang/buy/last-yes is today</div>
+      <div class="li"><span class="ok">Sunday Money</span> · HOLD iron + Ring-first reminder · no wall $</div>
+      <div class="li">Weekly · scan prove plan + TM search-only progress</div>
+      <div class="li mute">Full checklist: wardos-kit/PLUMB-PATH-A-ATLAS-MANAGE-2026-09-27.md</div>
+    </div>
+
+    <div class="cell law" style="grid-column:1 / -1;">
+      <div class="h">Wall law · House glass</div>
+      <div class="li"><span class="red">No money dollars on wall.</span> No Desk dark on wall. No PIN. Kids live on House Face only.</div>
+      <div class="li">Master photo: <span class="mute">/workspace/plates/2026-09-27/wall-station/column-straight-on-2026-09-27.jpg</span> · hang above white rocker · do not cover switch</div>
+      <div class="li">Hardware HOLD until separate last-yes · do not open checkout · Ring remains first extra</div>
+      <div class="li">Owners: Atlas board · Wright kit/hang when yes · Ledger cash gates · Prism glass last-look · Dan exact yes</div>
+    </div>
+  </div>
+
+  <nav class="nav" aria-label="Desk plates">
+    <a href="desk-index.html">Desk</a>
+    <a href="desk-plumb.html" class="here">Plumb</a>
+    <a href="wardos-plumb-path-a-phone.html">Path A phone</a>
+    <a href="desk-waiting.html">Waiting</a>
+    <a href="desk-cash.html">Cash</a>
+    <a href="desk-gallery.html">Gallery</a>
+    <a href="mode-a-kit-frozen-phone.html">Mode A kit</a>
+  </nav>
+  <footer class="footer">
+    <p class="cap">Plumb / Path A · Atlas owns · YE26 home prove → 2027-01-01 LIVE · HOLD iron · NO-BUY · wall law = no $ on House · baked Sun 27 Sep 2026 CT.</p>
+    <div class="stamp">WardOS · Desk dark camo<br />Mode A · Atlas managed<br />as-of Sun 27 Sep 2026 CT</div>
+  </footer>
+</div>
+</body>
+</html>
