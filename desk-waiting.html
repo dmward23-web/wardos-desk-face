@@ -17,7 +17,7 @@
     --line:rgba(255,255,255,.13); --text:#f2f4f7; --mute:#9aa6b5; --quiet:#718094;
     --blue:#4da3ff; --soft:#6ddeb5; --amber:#ffc14d; --cliff:#ff8a4c;
   }
-  html,body { width:100%; height:100%; min-width:0; overflow:hidden; background:var(--canvas); color:var(--text); font-family:"Inter Display",Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; -webkit-font-smoothing:antialiased; }
+  html,body { width:100%; min-height:100%; height:auto; min-width:0; overflow:auto; background:var(--canvas); color:var(--text); font-family:"Inter Display",Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; -webkit-font-smoothing:antialiased; }
   a { color:inherit; text-decoration:none; }
   .panel { width:100vw; height:100vh; min-height:0; padding:22px 32px 16px; display:flex; flex-direction:column; gap:14px; position:relative; overflow:hidden; background-color:var(--canvas); background-image:linear-gradient(165deg,rgba(90,96,108,.42),rgba(40,44,50,.28) 45%,rgba(22,24,28,.30)),url("camo-glass-tile-desk.png"); background-size:auto,420px 420px; background-position:center,0 0; background-repeat:no-repeat,repeat; border:1px solid rgba(255,255,255,.10); }
   .panel::before { content:""; position:absolute; inset:0; pointer-events:none; z-index:0; background:linear-gradient(180deg,rgba(255,255,255,.14),transparent 28%,transparent 72%,rgba(0,0,0,.24)),radial-gradient(ellipse 70% 50% at 18% 12%,rgba(255,255,255,.13),transparent 55%),radial-gradient(ellipse 50% 40% at 88% 78%,rgba(255,255,255,.05),transparent 60%); mix-blend-mode:soft-light; opacity:.85; }
