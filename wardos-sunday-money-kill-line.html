@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=1080"/>
-<title>WardOS-Sunday-Money · Kill Line · Sat Sep 26 2026</title><style>
+<title>WardOS-Sunday-Money · Kill Line · Mon Sep 28 2026</title><style>
 @font-face{font-family:InterDisplay;src:url("fonts/InterDisplay-Regular.ttf");font-weight:400;font-style:normal}
 @font-face{font-family:InterDisplay;src:url("fonts/InterDisplay-Medium.ttf");font-weight:500;font-style:normal}
 @font-face{font-family:InterDisplay;src:url("fonts/InterDisplay-SemiBold.ttf");font-weight:600;font-style:normal}
@@ -76,8 +76,8 @@ html,body{width:1080px;height:1920px;overflow:hidden;font-family:InterDisplay,In
 /* labels sit outside gauge — handled in.readout */
 
 .marker{position:absolute;left:-6px;right:-6px;height:0;z-index:5;
-  /* AVAILABLE $20,577.95 / 25000 = 82.3118% from bottom */
-  bottom:82.3118%}
+  /* AVAILABLE $19,961.90 / 25000 = 79.8476% from bottom */
+  bottom:79.8476%}
 .marker-line{height:3px;background:#fff;box-shadow:0 0 12px rgba(255,92,92,.7),0 0 4px #fff;border-radius:2px}
 .marker-wing{position:absolute;right:-4px;top:50%;transform:translateY(-50%);
   width:0;height:0;border-top:8px solid transparent;border-bottom:8px solid transparent;border-right:12px solid #fff;
@@ -164,22 +164,22 @@ html,body{width:1080px;height:1920px;overflow:hidden;font-family:InterDisplay,In
       <div class="brand"><img src="wardos-mark-header.png" height="48" alt="WardOS"/></div>
       <div class="eyebrow">WARDOS-SUNDAY-MONEY · INSTRUMENT</div>
       <div class="title">Kill Line</div>
-      <div class="asof">as-of Sat 26 Sep ~2:34p CT · Ledger LIVE</div>
+      <div class="asof">as-of Mon 28 Sep ~7:50p CT · Ledger LIVE</div>
     </div>
-    <div class="chip open">GATE OPEN · EOY floor CLEAR</div>
+    <div class="chip open">GATE OPEN · EOY SHORT $38.10</div>
   </div>
 
   <!-- BLUF -->
   <div class="bluf glass">
     <div class="lab">Wells AVAILABLE</div>
     <div class="acct">Everyday …6854 · Ledger LIVE</div>
-    <div class="avail"><span class="dol">$</span>20,577.95</div>
+    <div class="avail"><span class="dol">$</span>19,961.90</div>
     <div class="row-chips">
       <span class="gate-chip open">GATE OPEN</span>
       <span class="stamp live">LIVE</span>
-      <span class="gate-chip open">EOY $20k floor CLEAR</span>
+      <span class="gate-chip" style="background:rgba(255,92,92,.14);border-color:rgba(255,92,92,.5);color:#ff5c5c">EOY SHORT $38.10</span>
     </div>
-    <div class="stale-note">EOY $20k floor CLEAR · GATE OPEN · replaces STALE ~$14,114.46</div>
+    <div class="stale-note">EOY $20k floor SHORT $38.10 · GATE OPEN · holds ~$616 pending · current $19,961.90</div>
   </div>
 
   <!-- Climb gauge -->
@@ -204,22 +204,23 @@ html,body{width:1080px;height:1920px;overflow:hidden;font-family:InterDisplay,In
           <span class="gs mid" style="bottom:60%">$15k</span>
           <span class="gs lo" style="bottom:40%">$10k</span>
           <span class="gs" style="bottom:0%">$0</span>
-          <span class="gs" style="bottom:82.3118%;color:#fff;font-weight:700;left:0">NOW</span>
+          <span class="gs" style="bottom:79.8476%;color:#fff;font-weight:700;left:0">NOW</span>
         </div>
       </div>
       <div class="readout">
         <div class="ro-block">
           <div class="ro-k">Distance to floor</div>
-          <div class="ro-v clear">CLEAR</div>
-          <div class="ro-s"><strong style="color:#2ab87a">$20,000</strong> EOY floor · by 12/31/2026</div>
-          <div class="ro-status ok"><i class="dot ok"></i><span>CLEAR · at/above floor</span></div>
+          <div class="ro-v gap">SHORT $38.10</div>
+          <div class="ro-s"><strong style="color:#ffd24d">$20,000</strong> EOY floor · by 12/31/2026 · gap <strong style="color:#ff5c5c">$38.10</strong></div>
+          <div class="ro-status"><i class="dot" style="background:#ff9a6a"></i><span>SHORT $38.10 · under $20k floor</span></div>
         </div>
         <div class="ro-block">
           <div class="ro-k">Band map</div>
           <div class="bands">
             <div class="band"><i class="r"></i> Red under $15k</div>
-            <div class="band"><i class="a"></i> Amber $15k–$20k <span class="mute">· gate opens</span></div>
-            <div class="band"><i class="g"></i> Green ≥$20k <span class="mute">· you are here · EOY floor CLEAR</span></div>
+            <div class="band"><i class="a"></i> Amber $15k–$20k <span class="mute">· you are here · gate open</span></div>
+            <div class="band"><i class="a"></i> Amber $15k–$20k <span class="mute">· you are here · EOY SHORT $38.10</span></div>
+            <div class="band"><i class="g"></i> Green ≥$20k</div>
           </div>
         </div>
       </div>
@@ -228,12 +229,12 @@ html,body{width:1080px;height:1920px;overflow:hidden;font-family:InterDisplay,In
 
   <!-- Mission stack -->
   <div class="mission glass">
-    <div class="sec">Mission stack · floor CLEAR · next still frozen</div>
+    <div class="sec">Mission stack · floor SHORT $38.10 · hold drain ID · next still frozen</div>
     <div class="m-row">
-      <div class="m-item done">
+      <div class="m-item">
         <div class="m-icon">1</div>
         <div class="m-lab">$20k Floor</div>
-        <div class="m-sub">CLEAR · LIVE</div>
+        <div class="m-sub">SHORT $38.10 · LIVE</div>
       </div>
       <div class="m-item">
         <span class="lock">FROZEN</span>
@@ -275,11 +276,11 @@ html,body{width:1080px;height:1920px;overflow:hidden;font-family:InterDisplay,In
 
   <!-- Caption -->
   <div class="caption glass">
-    Floor CLEAR. Gate open. EOY $20k green — Ledger LIVE $20,577.95.
+    Floor SHORT $38.10. Gate open. Holds ~$616. Ledger LIVE $19,961.90. One action = ID hold drain.
   </div>
 
   <div class="ftr">
-    <span class="note">as-of Sat 26 Sep ~2:34p CT · AVAILABLE $20,577.95 LIVE · GATE OPEN · EOY $20k floor CLEAR · Ledger books · never invent</span>
+    <span class="note">as-of Mon 28 Sep ~7:50p CT · AVAILABLE $19,961.90 LIVE · GATE OPEN · EOY SHORT $38.10 · holds ~$616 · kill OFF · Ledger books · never invent</span>
     <span>WardOS-Sunday-Money · Kill Line</span>
   </div>
 </div></body></html>

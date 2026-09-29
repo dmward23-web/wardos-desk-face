@@ -27,3 +27,6 @@ Phone plate:
 https://dmward23-web.github.io/wardos-desk-face/wardos-plumb-path-a-phone.html
 
 HOLD iron · YE26 home prove → 1/1 LIVE · no wall $. Manage: wardos-kit/PLUMB-PATH-A-ATLAS-MANAGE-2026-09-27.md
+
+## ON ARRIVAL (Atlas · locked 27 Sep 2026)
+SoT: wardos-kit/ON-ARRIVAL-LOCK-2026-09-27.md — Free/Busy + Erin overlay + House glass + Path A HOLD + packet + wallet/cards + lawn/HD box-return. NO-BUY. NO calendar spam.
