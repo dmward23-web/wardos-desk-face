@@ -205,11 +205,11 @@
       <div>
         <div class="lbl">BLUF · Available</div>
         <div class="acct">Wells Everyday …6854 · source LIVE Wells portal · signed_in session</div>
-        <div class="avail"><span class="d">$</span>19,961.90</div>
+        <div class="avail"><span class="d">$</span><span data-bind="available" data-fmt="num">19,961.90</span></div>
       </div>
       <div class="right">
-        <div class="gap" style="color:#ff9a6a"><em>EOY floor</em>SHORT $38.10</div>
-        <div class="meta">99.8% of floor · SHORT $38.10 · GATE OPEN · holds ~$616</div>
+        <div class="gap" style="color:#ff9a6a"><em>EOY floor</em><span data-bind="eoy.gapDisplay">SHORT $38.10</span></div>
+        <div class="meta"><span data-bind="eoy.pctDisplay">99.8%</span> of floor · SHORT $38.10 · GATE OPEN · holds ~$616</div>
         <div class="chips">
           <span class="chip chip-live">LIVE</span>
           <span class="chip chip-live">ASK-BEFORE-BUYS</span>
@@ -248,20 +248,20 @@
 
       <section class="sec">
         <h2>Variables <span>open cliffs</span></h2>
-        <div class="row"><span class="k">SW Autopay 10/02</span><span class="v amber">$5,283.69</span></div>
-        <div class="row"><span class="k">Costco card LIVE</span><span class="v">$159.12</span></div>
+        <div class="row"><span class="k">SW Autopay 10/02</span><span class="v amber"><span data-bind="southwest.statementDisplay">$5,283.69</span></span></div>
+        <div class="row"><span class="k">Costco card LIVE</span><span class="v"><span data-bind="lastHarvest.costco.8432" data-fmt="money">$159.12</span></span></div>
         <div class="row"><span class="k">Costco OPEN payable</span><span class="v amber">$587.15</span></div>
         <div class="row"><span class="k">Jacobs AR inbound</span><span class="v">$1,970.10</span></div>
         <div class="row"><span class="k">Therapy P1 Dan</span><span class="v">~$1,044/mo</span></div>
         <div class="row"><span class="k">CS+maint → May ’28</span><span class="v">$4,998/mo</span></div>
-        <div class="row"><span class="k">Guild stmt · extra</span><span class="v muted">~$3,589.57 · PAUSED</span></div>
+        <div class="row"><span class="k">Guild stmt · extra</span><span class="v muted">~<span data-bind="guild.monthlyPayment" data-fmt="money">$3,589.57</span> · PAUSED</span></div>
         <div class="row"><span class="k">SuperGrok Heavy</span><span class="v">$30/mo</span></div>
         <p class="note">AR <strong>not</strong> in AVAILABLE. Costco = OPEN payable PENDING last-yes · <strong>not return</strong>. Nov/Dec SW ≤$1,550.</p>
       </section>
 
       <section class="sec">
         <h2>Invest <span>locked facts</span></h2>
-        <div class="row"><span class="k">Fidelity IRA …5027</span><span class="v">$257,915.88</span></div>
+        <div class="row"><span class="k">Fidelity IRA …5027</span><span class="v"><span data-bind="lastHarvest.iraTotal" data-fmt="money">$257,915.88</span></span></div>
         <div class="stamp-line">as-of Tue 29 Sep ~9:15p CT Finance harvest · FDRXX ≈100% · <strong style="color:#6ddeb5">CASH</strong></div>
         <div class="row"><span class="k">Sunday LAST-YES</span><span class="v muted">80/20 FZROX/FZILX</span></div>
         <div class="row"><span class="k">Vanguard 401k …0383</span><span class="v amber">6% HOLD</span></div>
@@ -326,5 +326,25 @@
       <div class="stamp">Desk · dark camo glass<br />LIVE · Tue 29 Sep ~9:15p CT month-end close · AVAILABLE $19,961.90 · holds ~$616 · Ledger</div>
     </footer>
   </div>
+<script id="cash-bind">
+/* Ledger item 25 · binds [data-bind] (JSON path in data/cash.json) · typed text stays as fallback */
+(function(){
+  function get(o,p){return p.split('.').reduce(function(a,k){return a==null?undefined:a[k];},o);}
+  function fmt(v,f){
+    if(typeof v!=='number') return String(v);
+    var s=v.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+    return f==='money'?'$'+s:s;
+  }
+  fetch('data/cash.json',{cache:'no-store'}).then(function(r){return r.ok?r.json():null;}).then(function(c){
+    if(!c||c.stale===true) return;
+    document.querySelectorAll('[data-bind]').forEach(function(el){
+      var v=get(c,el.getAttribute('data-bind'));
+      if(v===undefined||v===null||v==='') return;
+      el.textContent=fmt(v,el.getAttribute('data-fmt'));
+      el.setAttribute('data-bound','1');
+    });
+  }).catch(function(){});
+})();
+</script>
 </body>
 </html>

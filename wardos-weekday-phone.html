@@ -1,163 +1,17 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=1080" />
-<title>WardOS-Weekday · Dan Needs nest · Mon 28 Sep 2026 LIVE kit</title>
-<style>
-@font-face{font-family:InterDisplay;src:url("fonts/InterDisplay-Regular.ttf");font-weight:400;font-style:normal}
-@font-face{font-family:InterDisplay;src:url("fonts/InterDisplay-Medium.ttf");font-weight:500;font-style:normal}
-@font-face{font-family:InterDisplay;src:url("fonts/InterDisplay-SemiBold.ttf");font-weight:600;font-style:normal}
-@font-face{font-family:InterDisplay;src:url("fonts/InterDisplay-Bold.ttf");font-weight:700;font-style:normal}
-*{box-sizing:border-box;margin:0;padding:0}
-html,body{width:1080px;height:1920px;overflow:hidden;font-family:InterDisplay,Inter,-apple-system,Helvetica,sans-serif;color:#e8eaed;background:#252a32;-webkit-font-smoothing:antialiased}
-.panel{width:1080px;height:1920px;padding:16px 22px 12px;display:flex;flex-direction:column;gap:8px;position:relative;overflow:hidden;
-  background-color:#252a32;
-  background-image:
-    linear-gradient(165deg,rgba(90,96,108,.42) 0%,rgba(28,32,38,.30) 42%,rgba(10,12,16,.35) 100%),
-    radial-gradient(ellipse 90% 70% at 50% 40%,transparent 30%,rgba(0,0,0,.30) 100%),
-    url("camo-glass-tile-desk.png");
-  background-size:auto,auto,520px 520px;background-position:center,center,0 0;background-repeat:no-repeat,no-repeat,repeat;
-  border:1px solid rgba(255,255,255,.10)}
-.panel::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
-  background:
-    linear-gradient(180deg,rgba(255,255,255,.14) 0%,transparent 22%,transparent 74%,rgba(0,0,0,.24) 100%),
-    radial-gradient(ellipse 65% 45% at 16% 10%,rgba(255,255,255,.13) 0%,transparent 55%);
-  mix-blend-mode:soft-light;opacity:.9}
-.panel>*{position:relative;z-index:2}
-.glass{backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
-  background:rgba(22,26,34,.82);border:1px solid rgba(255,255,255,.13);
-  box-shadow:0 1px 0 rgba(255,255,255,.16) inset,0 10px 28px rgba(0,0,0,.28);border-radius:14px}
-.hdr{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:10px 14px}
-.brand{display:flex;align-items:center;gap:0}
-.brand img{display:block;height:52px;width:auto}
-.eyebrow{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#a8b0bc;margin-top:4px}
-.title{font-size:30px;font-weight:700;letter-spacing:-.035em;color:#fff;margin-top:2px;line-height:1.05}
-.asof{font-size:11px;font-weight:500;color:#a8b0bc;margin-top:3px;line-height:1.3}
-.chip{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:9px 13px;border-radius:999px;
-  background:rgba(18,22,28,.92);border:1px solid rgba(255,255,255,.42);color:#f2f4f7;align-self:flex-start}
-.where{font-size:13px;font-weight:600;color:#a8b0bc;line-height:1.3;padding:0 2px}
-.hero{padding:14px 16px;flex:0 0 auto;min-height:140px;display:flex;flex-direction:column;justify-content:center}
-.hero .k{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#a8b0bc}
-.hero .v{font-size:30px;font-weight:700;margin-top:6px;line-height:1.15;color:#fff;letter-spacing:-.03em}
-.hero .s{font-size:14px;font-weight:500;color:#b0b8c4;margin-top:8px;line-height:1.35}
-.card{padding:10px 14px}
-.h{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:5px}
-.p1 .h{color:#ff8f7a}.watch .h{color:#9ec5ff}.wait .h{color:#c9b6ff}.decide .h{color:#ffc14d}.cash .h{color:#ffb080}.route .h{color:#b8c0cc}.plumb .h{color:#ffc14d}
-.dan-needs .h{color:#ffc14d;margin-bottom:4px}
-.dan-needs .dn-asof{font-size:9px;font-weight:500;letter-spacing:.06em;text-transform:none;color:#a8b0bc;margin-left:8px}
-.dan-needs .li{font-size:13px;font-weight:600;line-height:1.28;padding:3px 0}
-.dn-more{font-size:12px;font-weight:600;padding:4px 0 2px;color:#a8b0bc}
-.dn-logins-label{font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-top:6px;margin-bottom:4px;color:#a8b0bc}
-.dn-logins{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
-.dn-chip{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:none;padding:6px 10px;align-self:auto}
-.li{font-size:14px;font-weight:600;line-height:1.28;padding:4px 0;border-bottom:1px solid rgba(255,255,255,.06)}
-.li:last-child{border-bottom:none}
-.tap{color:#ffb4a6;font-weight:700}.amber{color:#ffd24d}.red{color:#ff5c5c}.mute{color:#a8b0bc}
-.day{font-size:11px;font-weight:700;color:#9ec5ff;margin-top:5px;margin-bottom:2px}
-.day:first-of-type{margin-top:0}
-.row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.caption{font-size:13px;font-weight:600;color:#d0d5dc;line-height:1.35;padding:10px 14px}
-.ftr{margin-top:auto;display:flex;justify-content:space-between;align-items:flex-end;gap:12px;font-size:11px;font-weight:500;color:#a8b0bc;padding-top:6px;border-top:1px solid rgba(255,255,255,.14)}
-.ftr .note{max-width:64%;line-height:1.35}
-</style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex" />
+<meta http-equiv="refresh" content="0; url=wardos-weekday-money-strip.html" />
+<link rel="canonical" href="wardos-weekday-money-strip.html" />
+<title>Retired · moved to wardos-weekday-money-strip.html</title>
+<style>body{background:#0b0d0c;color:#d8e0da;font:16px/1.5 system-ui,sans-serif;padding:32px}a{color:#7dffd4}</style>
 </head>
 <body>
-<div class="panel">
-  <div class="hdr glass">
-    <div>
-      <div class="brand">
-        <img src="wardos-mark-header.png" height="52" alt="WardOS" />
-      </div>
-      <div class="eyebrow">WARDOS-WEEKDAY · DAN NEEDS NEST · MON LIVE KIT</div>
-      <div class="title">Weekday · Mon Sep 28</div>
-      <div class="asof">TEMPLATE SAMPLE facts · Dan Needs LIVE from file · Mon 28 Sep 2026</div>
-    </div>
-    <div class="chip">LIVE</div>
-  </div>
-
-  <div class="where">Nashville · Harbor Cove · kids with their mom through Fri 3:00</div>
-
-  <div class="hero glass">
-    <div class="k">BLUF</div>
-    <div class="v">Tonight Costco window call · Fri fly home</div>
-    <div class="s">Kids with mom. Costco Hisense call 6–9p. Friday: leave 6:50a, boys at 3, Hayes party at 4.</div>
-  </div>
-
-  <div class="card glass p1">
-    <div class="h">P1 today · max 3</div>
-    <div class="li tap">1 · Costco Hisense window call tonight 6–9p · rewrite Thu pickup Busy when window lands</div>
-    <div class="li">2 · GET · reconnect budget LIVE import (Ledger) 8:20–8:30</div>
-  </div>
-
-  <div class="card glass cash">
-    <div class="h">Cash · Wells</div>
-    <div class="li">AVAILABLE <span class="amber">$19,961.90</span> LIVE · as-of Tue 29 Sep ~9:15p CT</div>
-    <div class="li"><span class="red">GATE OPEN</span> · HOLD lean · disc $0 · EOY gap <span class="red">SHORT $38.10</span></div>
-  </div>
-
-<!-- DAN-NEEDS-START -->
-<div class="card glass dan-needs">
-  <div class="h">Dan Needs · DECIDE <span class="dn-asof">as-of 2026-09-25 7:21p CT</span></div>
-  <div class="li">1 · DOC 14 Parenting Plan → Drive</div>
-  <div class="li">2 · CS / maint lore vs decree</div>
-  <div class="li">3 · Uber One</div>
-  <div class="li">4 · Google Home Premium</div>
-  <div class="li">5 · Apple Card Autopay</div>
-  <div class="li">6 · Spotify billing</div>
-  <div class="li">7 · Ainsley wallpaper hang</div>
-  <div class="li">8 · Form 8332</div>
-  <div class="dn-more mute">+14 more</div>
-  <div class="dn-logins-label mute">LOGINS</div>
-  <div class="dn-logins">
-    <span class="chip dn-chip">ParentSquare</span>
-    <span class="chip dn-chip">CVS ExtraCare</span>
-    <span class="chip dn-chip">Cap One rewards</span>
-    <span class="chip dn-chip">Bank 2FA round</span>
-    <span class="chip dn-chip">HD checkout with new card</span>
-  </div>
-</div>
-<!-- DAN-NEEDS-END -->
-
-  <div class="card glass watch">
-    <div class="h">Watch</div>
-    <div class="day">THU</div>
-    <div class="li">Costco Hisense pickup Harbor Cove (window TBD) · order 1310376316</div>
-    <div class="li mute">Boys Fun Run + Faulkner’s (mom’s week awareness)</div>
-    <div class="day">FRI LOAD</div>
-    <div class="li">Leave 6:50a Harbor Cove · WN557 BNA→MCI 8:05–9:45 (#BCFO7F)</div>
-    <div class="li">Boys pickup mom’s 3:00 · leave ~3:35 · Hayes UA Glow 4–6</div>
-  </div>
-
-  <div class="card glass wait">
-    <div class="h">Waiting on</div>
-    <div class="li"><span class="red">Wells re-auth</span> last-yes</div>
-    <div class="li">Ainsley SimplePractice docs before Wed Sep 30</div>
-    <div class="li">KS claim #2180733 upload last-yes</div>
-    <div class="li mute">Ohio claim 12618552 · Evite open</div>
-  </div>
-
-
-<!-- PLUMB-PATH-A-START -->
-  <div class="card glass plumb">
-    <div class="h">PLUMB / PATH A · Atlas</div>
-    <div class="li"><span class="amber">YE26 home prove</span> → <span class="amber">1/1 LIVE</span> · HOLD iron</div>
-    <div class="li">Next: mock · hang-when-yes · day-7 boring · TM search-only</div>
-    <div class="li mute">Wall law: no $ on House glass · Ring first · NO-BUY</div>
-  </div>
-<!-- PLUMB-PATH-A-END -->
-
-  <div class="card glass route">
-    <div class="h">Route</div>
-    <div class="li">Ledger owns LIVE import + Wells chase. Harbor quiet.</div>
-  </div>
-
-  <div class="caption glass">Nashville Wednesday. Kids with mom. Tonight’s the Costco window call; Friday is fly home, boys at 3, Hayes party at 4.</div>
-
-  <div class="ftr">
-    <span class="note">as-of TEMPLATE SAMPLE · Dan Needs LIVE nest · never invent</span>
-    <span>WardOS-Weekday · TEMPLATE</span>
-  </div>
-</div>
+<!-- Retired by Ledger Tue 29 Sep 2026 (Alfred audit item 24): stale $ snapshot. Original archived in board-os/desk/_archive/2026-09-29-item24/ + git history. -->
+<p>This page was retired (stale $ snapshot: TEMPLATE SAMPLE). Live numbers: <a href="wardos-weekday-money-strip.html">wardos-weekday-money-strip.html</a></p>
+<script>location.replace("wardos-weekday-money-strip.html");</script>
 </body>
 </html>

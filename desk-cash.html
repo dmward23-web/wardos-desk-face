@@ -297,7 +297,7 @@
             <span class="chip" style="background:#16120c;color:#ff9a6a;border-color:#8a4a2a">EOY FLOOR SHORT $38.10</span>
           </div>
         </div>
-        <div class="avail"><span class="dollar">$</span>19,961.90</div>
+        <div class="avail"><span class="dollar">$</span><span data-bind="available" data-fmt="num">19,961.90</span></div>
         <div class="recommend">
           <span class="dot" style="background:#2ab87a;box-shadow:0 0 10px #2ab87a"></span>
           <p style="color:#b8f0d0">GATE OPEN · EOY $20k floor SHORT $38.10</p>
@@ -320,7 +320,7 @@
           </div>
           <div class="gate gate-floor">
             <div class="g-label">$20k EOY Floor</div>
-            <div class="g-val">SHORT $38.10</div>
+            <div class="g-val"><span data-bind="eoy.gapDisplay">SHORT $38.10</span></div>
             <div class="g-state">SHORT $38.10 · LIVE</div>
           </div>
         </section>
@@ -332,7 +332,7 @@
           </div>
           <div class="gap-row">
             <div class="gap-need" style="color:#ff9a6a"><em>EOY floor</em>SHORT $38.10</div>
-            <div class="gap-pct">SHORT $38.10 · 99.8%</div>
+            <div class="gap-pct"><span data-bind="eoy.gapDisplay">SHORT $38.10</span> · <span data-bind="eoy.pctDisplay">99.8%</span></div>
           </div>
           <div class="track"><div class="fill" style="width:99.8095%"></div></div>
           <div class="markers">
@@ -349,7 +349,7 @@
     <section class="card" style="padding:14px 18px;margin-top:4px">
       <div class="card-h"><h2>Fixed · Ledger LIVE 2:34p</h2><span class="sub">GATE OPEN</span></div>
       <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px;font-size:16px;font-weight:700;line-height:1.35">
-        <div>SW Autopay<br/><span style="color:#fff;font-size:20px">$5,283.69</span><br/><span style="color:#a8b0bc;font-size:13px">due 10/02 · extra $0</span></div>
+        <div>SW Autopay<br/><span style="color:#fff;font-size:20px"><span data-bind="southwest.statementDisplay">$5,283.69</span></span><br/><span style="color:#a8b0bc;font-size:13px">due 10/02 · extra $0</span></div>
         <div>SuperGrok<br/><span style="color:#fff;font-size:20px">$30</span></div>
         <div>Therapy Phase 1<br/><span style="color:#fff;font-size:20px">~$1,044/mo</span><br/><span style="color:#a8b0bc;font-size:13px">Dan locked</span></div>
         <div>Tax<br/><span style="color:#ff8a3d;font-size:20px">UNKNOWN</span><br/><span style="color:#a8b0bc;font-size:13px">no withholding stub</span></div>
@@ -375,5 +375,25 @@
       <div class="stamp">Desk · dark camo glass<br />LIVE · Tue 29 Sep ~9:15p CT · AVAILABLE $19,961.90 · GATE OPEN · EOY floor SHORT $38.10</div>
     </footer>
   </div>
+<script id="cash-bind">
+/* Ledger item 25 · binds [data-bind] (JSON path in data/cash.json) · typed text stays as fallback */
+(function(){
+  function get(o,p){return p.split('.').reduce(function(a,k){return a==null?undefined:a[k];},o);}
+  function fmt(v,f){
+    if(typeof v!=='number') return String(v);
+    var s=v.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+    return f==='money'?'$'+s:s;
+  }
+  fetch('data/cash.json',{cache:'no-store'}).then(function(r){return r.ok?r.json():null;}).then(function(c){
+    if(!c||c.stale===true) return;
+    document.querySelectorAll('[data-bind]').forEach(function(el){
+      var v=get(c,el.getAttribute('data-bind'));
+      if(v===undefined||v===null||v==='') return;
+      el.textContent=fmt(v,el.getAttribute('data-fmt'));
+      el.setAttribute('data-bound','1');
+    });
+  }).catch(function(){});
+})();
+</script>
 </body>
 </html>

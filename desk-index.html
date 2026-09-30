@@ -265,7 +265,7 @@
         <div class="line">Wells Everyday …6854</div>
         <div class="meta">Ledger LIVE source · as-of Tue 29 Sep ~9:15p CT · GATE OPEN</div>
       </div>
-      <div class="avail-mini"><span class="d">$</span>19,961.90</div>
+      <div class="avail-mini"><span class="d">$</span><span data-bind="available" data-fmt="num">19,961.90</span></div>
       <div class="chips">
         <span class="chip chip-freeze">GATE OPEN</span>
         <span class="chip chip-hold">EOY FLOOR SHORT $38.10</span>
@@ -277,7 +277,7 @@
       <a class="tile tile-cfo" href="desk-cfo.html">
         <div class="kicker">00 · Money</div>
         <h2>CFO Glass</h2>
-        <div class="preview">AVAILABLE <strong>$19,961.90</strong><br /><span style="color:#ff5c5c">EOY SHORT $38.10</span> · <span style="color:#6ddeb5">GATE OPEN</span> · holds ~$616</div>
+        <div class="preview">AVAILABLE <strong><span data-bind="lastHarvest.availableDisplay">$19,961.90</span></strong><br /><span style="color:#ff5c5c">EOY <span data-bind="eoy.gapDisplay">SHORT $38.10</span></span> · <span style="color:#6ddeb5">GATE OPEN</span> · holds ~$616</div>
         <div class="go">Open →</div>
       </a>
       <a class="tile tile-freeze" href="desk-freeze.html">
@@ -289,7 +289,7 @@
       <a class="tile tile-cash" href="desk-cash.html">
         <div class="kicker">02</div>
         <h2>Cash</h2>
-        <div class="preview">AVAILABLE <strong>$19,961.90</strong><br />EOY SHORT $38.10 · GATE OPEN</div>
+        <div class="preview">AVAILABLE <strong><span data-bind="lastHarvest.availableDisplay">$19,961.90</span></strong><br />EOY <span data-bind="eoy.gapDisplay">SHORT $38.10</span> · GATE OPEN</div>
         <div class="go">Open →</div>
       </a>
       <a class="tile tile-envelopes" href="desk-envelopes.html">
@@ -301,13 +301,13 @@
       <a class="tile tile-autopay" href="desk-autopay.html">
         <div class="kicker">04</div>
         <h2>Autopay</h2>
-        <div class="preview">SW Priority …0694 <span class="amber">$5,283.69</span><br />Due 2026-10-02 · extra $0</div>
+        <div class="preview">SW Priority …0694 <span class="amber"><span data-bind="southwest.statementDisplay">$5,283.69</span></span><br />Due <span data-bind="southwest.due">2026-10-02</span> · extra $0</div>
         <div class="go">Open →</div>
       </a>
       <a class="tile tile-eoy" href="desk-eoy.html">
         <div class="kicker">05</div>
         <h2>EOY</h2>
-        <div class="preview">EOY $20k floor<br /><span class="amber">SHORT $38.10</span> · holds ~$616</div>
+        <div class="preview">EOY $20k floor<br /><span class="amber"><span data-bind="eoy.gapDisplay">SHORT $38.10</span></span> · holds ~$616</div>
         <div class="go">Open →</div>
       </a>
       <a class="tile tile-cards" href="desk-cards.html">
@@ -416,5 +416,25 @@
       <div class="stamp">WardOS · Desk PIN<br />cash LIVE · Tue 29 Sep ~9:15p CT · Ledger · GATE OPEN</div>
     </footer>
   </div>
+<script id="cash-bind">
+/* Ledger item 25 · binds [data-bind] (JSON path in data/cash.json) · typed text stays as fallback */
+(function(){
+  function get(o,p){return p.split('.').reduce(function(a,k){return a==null?undefined:a[k];},o);}
+  function fmt(v,f){
+    if(typeof v!=='number') return String(v);
+    var s=v.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+    return f==='money'?'$'+s:s;
+  }
+  fetch('data/cash.json',{cache:'no-store'}).then(function(r){return r.ok?r.json():null;}).then(function(c){
+    if(!c||c.stale===true) return;
+    document.querySelectorAll('[data-bind]').forEach(function(el){
+      var v=get(c,el.getAttribute('data-bind'));
+      if(v===undefined||v===null||v==='') return;
+      el.textContent=fmt(v,el.getAttribute('data-fmt'));
+      el.setAttribute('data-bound','1');
+    });
+  }).catch(function(){});
+})();
+</script>
 </body>
 </html>

@@ -173,7 +173,7 @@ html,body{width:1080px;height:1920px;overflow:hidden;font-family:InterDisplay,In
   <div class="bluf glass">
     <div class="lab">Wells AVAILABLE</div>
     <div class="acct">Everyday …6854 · Ledger LIVE</div>
-    <div class="avail"><span class="dol">$</span>19,961.90</div>
+    <div class="avail"><span class="dol">$</span><span data-bind="available" data-fmt="num">19,961.90</span></div>
     <div class="row-chips">
       <span class="gate-chip open">GATE OPEN</span>
       <span class="stamp live">LIVE</span>
@@ -210,7 +210,7 @@ html,body{width:1080px;height:1920px;overflow:hidden;font-family:InterDisplay,In
       <div class="readout">
         <div class="ro-block">
           <div class="ro-k">Distance to floor</div>
-          <div class="ro-v gap">SHORT $38.10</div>
+          <div class="ro-v gap"><span data-bind="eoy.gapDisplay">SHORT $38.10</span></div>
           <div class="ro-s"><strong style="color:#ffd24d">$20,000</strong> EOY floor · by 12/31/2026 · gap <strong style="color:#ff5c5c">$38.10</strong></div>
           <div class="ro-status"><i class="dot" style="background:#ff9a6a"></i><span>SHORT $38.10 · under $20k floor</span></div>
         </div>
@@ -255,7 +255,7 @@ html,body{width:1080px;height:1920px;overflow:hidden;font-family:InterDisplay,In
     <div class="sec">This week cliffs</div>
     <div class="cliff kill">
       <span class="nm">SW Autopay</span>
-      <span><span class="amt">$5,283.69</span><span class="due">due 2026-10-02</span></span>
+      <span><span class="amt"><span data-bind="southwest.statementDisplay">$5,283.69</span></span><span class="due">due <span data-bind="southwest.due">2026-10-02</span></span></span>
     </div>
     <div class="cliff amber">
       <span class="nm">Autopay DATE pick · PENDING Sunday</span>
@@ -282,4 +282,24 @@ html,body{width:1080px;height:1920px;overflow:hidden;font-family:InterDisplay,In
     <span class="note">as-of Tue 29 Sep ~9:15p CT · AVAILABLE $19,961.90 LIVE · GATE OPEN · EOY SHORT $38.10 · holds ~$616 · kill OFF · Ledger books · never invent</span>
     <span>WardOS-Sunday-Money · Kill Line</span>
   </div>
-</div></body></html>
+</div><script id="cash-bind">
+/* Ledger item 25 · binds [data-bind] (JSON path in data/cash.json) · typed text stays as fallback */
+(function(){
+  function get(o,p){return p.split('.').reduce(function(a,k){return a==null?undefined:a[k];},o);}
+  function fmt(v,f){
+    if(typeof v!=='number') return String(v);
+    var s=v.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+    return f==='money'?'$'+s:s;
+  }
+  fetch('data/cash.json',{cache:'no-store'}).then(function(r){return r.ok?r.json():null;}).then(function(c){
+    if(!c||c.stale===true) return;
+    document.querySelectorAll('[data-bind]').forEach(function(el){
+      var v=get(c,el.getAttribute('data-bind'));
+      if(v===undefined||v===null||v==='') return;
+      el.textContent=fmt(v,el.getAttribute('data-fmt'));
+      el.setAttribute('data-bound','1');
+    });
+  }).catch(function(){});
+})();
+</script>
+</body></html>

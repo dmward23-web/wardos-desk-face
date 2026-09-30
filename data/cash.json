@@ -1,0 +1,66 @@
+{
+  "schema": "board-os.cash.packet.v1",
+  "layer": "Desk",
+  "mode": "LIVE",
+  "status": "LIVE",
+  "stale": false,
+  "lockedAt": "2026-09-29T21:15:00-05:00",
+  "as_of": "2026-09-29",
+  "asOf": "2026-09-29T21:15:00-05:00",
+  "asOfLabel": "Tue 29 Sep ~9:15p CT · nightly harvest Finance confirm · LIVE Wells Everyday …6854",
+  "restampAsOf": "Tue 29 Sep ~9:15p CT · nightly harvest Finance confirm · LIVE Wells · AVAILABLE $19,961.90 · holds ~$616",
+  "restampedAt": "2026-09-29T21:15:00-05:00",
+  "available": 19961.9,
+  "current": 20577.95,
+  "holds": 616.05,
+  "discGate": {
+    "threshold": 15000,
+    "state": "OPEN",
+    "posture": "ASK_BEFORE_BUYS",
+    "display": "≥$15k → GATE OPEN · ask-before-buys ON · swExtra 0"
+  },
+  "eoy": {
+    "floor": 20000,
+    "gap": 38.1,
+    "gapDisplay": "SHORT $38.10",
+    "short": 38.1,
+    "shortDisplay": "$38.10",
+    "overage": 0,
+    "overageDisplay": "$0",
+    "pctOfFloor": 99.8,
+    "pctDisplay": "99.8%",
+    "killLine": "SHORT",
+    "killLedgerClause": "OFF",
+    "state": "SHORT"
+  },
+  "southwest": {
+    "last4": "0694",
+    "autopay": true,
+    "balance": 10395.17,
+    "statementAmount": 5283.69,
+    "statementDisplay": "$5,283.69",
+    "due": "2026-10-02",
+    "extraFromWells": 0,
+    "extraDisplay": "$0"
+  },
+  "guild": {
+    "monthlyPayment": 3589.57,
+    "extra": "PAUSED"
+  },
+  "lastHarvest": {
+    "at": "2026-09-29T21:15:00-05:00",
+    "label": "Tue 29 Sep ~9:15p CT · nightly harvest Finance confirm",
+    "available": 19961.9,
+    "availableDisplay": "$19,961.90",
+    "current": 20577.95,
+    "holds": 616.05,
+    "ira": "CASH",
+    "iraTotal": 257915.88,
+    "fdrxx": 257915.88,
+    "fdrxxPct": 100,
+    "costco": {
+      "8432": 159.12
+    }
+  },
+  "_published": "Public projection of board-os/data/cash.json (same paths) · shipped by desk-face-deploy.sh"
+}
