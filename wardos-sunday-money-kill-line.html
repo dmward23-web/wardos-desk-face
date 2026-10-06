@@ -76,8 +76,8 @@ html,body{width:1080px;height:1920px;overflow:hidden;font-family:InterDisplay,In
 /* labels sit outside gauge — handled in.readout */
 
 .marker{position:absolute;left:-6px;right:-6px;height:0;z-index:5;
-  /* AVAILABLE $13,923.03 / 25000 = 55.6921% from bottom */
-  bottom:55.6921%}
+  /* AVAILABLE $9,076.79 / 25000 = 36.3072% from bottom */
+  bottom:36.3072%}
 .marker-line{height:3px;background:#fff;box-shadow:0 0 12px rgba(255,92,92,.7),0 0 4px #fff;border-radius:2px}
 .marker-wing{position:absolute;right:-4px;top:50%;transform:translateY(-50%);
   width:0;height:0;border-top:8px solid transparent;border-bottom:8px solid transparent;border-right:12px solid #fff;
@@ -164,22 +164,22 @@ html,body{width:1080px;height:1920px;overflow:hidden;font-family:InterDisplay,In
       <div class="brand"><img src="wardos-mark-header.png" height="48" alt="WardOS"/></div>
       <div class="eyebrow">WARDOS-SUNDAY-MONEY · INSTRUMENT</div>
       <div class="title">Kill Line</div>
-      <div class="asof">as-of Sat 3 Oct ~9:40p CT · Ledger LIVE</div>
+      <div class="asof">as-of Mon 5 Oct ~9:20p CT · Ledger LIVE</div>
     </div>
-    <div class="chip open" style="background:rgba(255,92,92,.14);border-color:rgba(255,92,92,.5);color:#ff5c5c">GATE CLOSED · EOY SHORT $6,076.97</div>
+    <div class="chip open" style="background:rgba(255,92,92,.14);border-color:rgba(255,92,92,.5);color:#ff5c5c">GATE CLOSED · EOY SHORT $10,923.21</div>
   </div>
 
   <!-- BLUF -->
   <div class="bluf glass">
     <div class="lab">Wells AVAILABLE</div>
     <div class="acct">Everyday …6854 · Ledger LIVE</div>
-    <div class="avail"><span class="dol">$</span><span data-bind="available" data-fmt="num">13,923.03</span></div>
+    <div class="avail"><span class="dol">$</span><span data-bind="available" data-fmt="num">9,076.79</span></div>
     <div class="row-chips">
       <span class="gate-chip open" style="background:rgba(255,92,92,.14);border-color:rgba(255,92,92,.5);color:#ff5c5c">GATE CLOSED</span>
       <span class="stamp live">LIVE</span>
-      <span class="gate-chip" style="background:rgba(255,92,92,.14);border-color:rgba(255,92,92,.5);color:#ff5c5c">EOY SHORT $6,076.97</span>
+      <span class="gate-chip" style="background:rgba(255,92,92,.14);border-color:rgba(255,92,92,.5);color:#ff5c5c">EOY SHORT $10,923.21</span>
     </div>
-    <div class="stale-note">EOY SHORT $6,076.97 · GATE CLOSED · holds $0 · SW + Kind Goods pending → ~$8,425.89</div>
+    <div class="stale-note">EOY SHORT $10,923.21 · GATE CLOSED · holds $4,846.24 · SW $5,250.88 pending on Wells · Kind Goods $213.45 not yet → ~$8,863.34</div>
   </div>
 
   <!-- Climb gauge -->
@@ -204,20 +204,20 @@ html,body{width:1080px;height:1920px;overflow:hidden;font-family:InterDisplay,In
           <span class="gs mid" style="bottom:60%">$15k</span>
           <span class="gs lo" style="bottom:40%">$10k</span>
           <span class="gs" style="bottom:0%">$0</span>
-          <span class="gs" style="bottom:55.6921%;color:#fff;font-weight:700;left:0">NOW</span>
+          <span class="gs" style="bottom:36.3072%;color:#fff;font-weight:700;left:0">NOW</span>
         </div>
       </div>
       <div class="readout">
         <div class="ro-block">
           <div class="ro-k">Distance to floor</div>
-          <div class="ro-v gap"><span data-bind="eoy.gapDisplay">SHORT $6,076.97</span></div>
-          <div class="ro-s"><strong style="color:#ffd24d">$20,000</strong> EOY floor · by 12/31/2026 · gap <strong style="color:#ff5c5c">$6,076.97</strong></div>
-          <div class="ro-status"><i class="dot" style="background:#ff9a6a"></i><span>SHORT $6,076.97 · under $20k floor</span></div>
+          <div class="ro-v gap"><span data-bind="eoy.gapDisplay">SHORT $10,923.21</span></div>
+          <div class="ro-s"><strong style="color:#ffd24d">$20,000</strong> EOY floor · by 12/31/2026 · gap <strong style="color:#ff5c5c">$10,923.21</strong></div>
+          <div class="ro-status"><i class="dot" style="background:#ff9a6a"></i><span>SHORT $10,923.21 · under $20k floor</span></div>
         </div>
         <div class="ro-block">
           <div class="ro-k">Band map</div>
           <div class="bands">
-            <div class="band"><i class="r"></i> Red under $15k <span class="mute">· you are here · gate closed · EOY SHORT $6,076.97</span></div>
+            <div class="band"><i class="r"></i> Red under $15k <span class="mute">· you are here · gate closed · EOY SHORT $10,923.21</span></div>
             <div class="band"><i class="a"></i> Amber $15k–$20k</div>
             <div class="band"><i class="g"></i> Green ≥$20k <span class="mute">· EOY floor</span></div>
           </div>
@@ -233,7 +233,7 @@ html,body{width:1080px;height:1920px;overflow:hidden;font-family:InterDisplay,In
       <div class="m-item">
         <div class="m-icon">1</div>
         <div class="m-lab">$20k Floor</div>
-        <div class="m-sub">SHORT $6,076.97 · LIVE</div>
+        <div class="m-sub">SHORT $10,923.21 · LIVE</div>
       </div>
       <div class="m-item">
         <span class="lock">FROZEN</span>
@@ -275,11 +275,11 @@ html,body{width:1080px;height:1920px;overflow:hidden;font-family:InterDisplay,In
 
   <!-- Caption -->
   <div class="caption glass">
-    Floor SHORT $6,076.97. Gate closed. Ledger LIVE $13,923.03. SW Autopay $5,283.69 + Kind Goods $213.45 still pending → ~$8,425.89.
+    Floor SHORT $10,923.21. Gate closed. Ledger LIVE $9,076.79. SW Autopay $5,250.88 now pending on Wells · Kind Goods $213.45 not yet → ~$8,863.34.
   </div>
 
   <div class="ftr">
-    <span class="note">as-of Sat 3 Oct ~9:40p CT · AVAILABLE $13,923.03 LIVE · GATE CLOSED · EOY SHORT $6,076.97 · holds $0 · kill OFF · Ledger books · never invent</span>
+    <span class="note">as-of Mon 5 Oct ~9:20p CT · AVAILABLE $9,076.79 LIVE · GATE CLOSED · EOY SHORT $10,923.21 · holds $4,846.24 · kill OFF · Ledger books · never invent</span>
     <span>WardOS-Sunday-Money · Kill Line</span>
   </div>
 </div><script id="cash-bind">
