@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=1080"/>
+<title>WardOS-Sunday-Body · Sun Oct 11</title><style>
+@font-face{font-family:InterDisplay;src:url("fonts/InterDisplay-Regular.ttf");font-weight:400;font-style:normal}
+@font-face{font-family:InterDisplay;src:url("fonts/InterDisplay-Medium.ttf");font-weight:500;font-style:normal}
+@font-face{font-family:InterDisplay;src:url("fonts/InterDisplay-SemiBold.ttf");font-weight:600;font-style:normal}
+@font-face{font-family:InterDisplay;src:url("fonts/InterDisplay-Bold.ttf");font-weight:700;font-style:normal}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;font-family:InterDisplay,Inter,-apple-system,Helvetica,sans-serif;color:#e8eaed;background:#252a32;-webkit-font-smoothing:antialiased}
+.panel{width:1080px;height:1920px;padding:20px 24px 16px;display:flex;flex-direction:column;gap:10px;position:relative;overflow:hidden;
+  background-color:#252a32;
+  background-image:
+    linear-gradient(165deg,rgba(90,96,108,.42) 0%,rgba(28,32,38,.30) 42%,rgba(10,12,16,.35) 100%),
+    radial-gradient(ellipse 90% 70% at 50% 40%,transparent 30%,rgba(0,0,0,.30) 100%),
+    url("camo-glass-tile-desk.png");
+  background-size:auto,auto,520px 520px;background-position:center,center,0 0;background-repeat:no-repeat,no-repeat,repeat;
+  border:1px solid rgba(255,255,255,.10)}
+.panel::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.14) 0%,transparent 22%,transparent 74%,rgba(0,0,0,.24) 100%),
+    radial-gradient(ellipse 65% 45% at 16% 10%,rgba(255,255,255,.13) 0%,transparent 55%);
+  mix-blend-mode:soft-light;opacity:.9}
+.panel>*{position:relative;z-index:2}
+.glass{backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  background:rgba(22,26,34,.82);border:1px solid rgba(255,255,255,.13);
+  box-shadow:0 1px 0 rgba(255,255,255,.16) inset,0 10px 28px rgba(0,0,0,.28);border-radius:14px}
+.hdr{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:12px 14px}
+.brand img{display:block;height:58px;width:auto}
+.eyebrow{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#a8b0bc;margin-top:6px}
+.title{font-size:34px;font-weight:700;letter-spacing:-.035em;color:#fff;margin-top:2px;line-height:1.05}
+.asof{font-size:12px;font-weight:500;color:#a8b0bc;margin-top:4px;line-height:1.3}
+.chip{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:9px 13px;border-radius:999px;
+  background:rgba(18,22,28,.92);border:1px solid rgba(255,255,255,.42);color:#f2f4f7;align-self:flex-start}
+.where{font-size:14px;font-weight:600;color:#a8b0bc;line-height:1.3;padding:0 2px}
+.hero{padding:20px 18px;flex:0 0 auto;min-height:220px;display:flex;flex-direction:column;justify-content:center}
+.hero .k{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#a8b0bc}
+.hero .v{font-size:36px;font-weight:700;margin-top:8px;line-height:1.15;color:#fff;letter-spacing:-.03em}
+.hero .s{font-size:16px;font-weight:500;color:#b0b8c4;margin-top:10px;line-height:1.35}
+.card{padding:12px 14px}
+.h{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:6px;color:#a8b0bc}
+.p1 .h{color:#ff8f7a}.watch .h{color:#9ec5ff}.wait .h{color:#c9b6ff}.decide .h{color:#ffc14d}.cash .h{color:#ffb080}.route .h{color:#b8c0cc}.proof .h{color:#ffb080}.body .h{color:#9ec5ff}.mind .h{color:#c9b6ff}.next .h{color:#ffc14d}
+.li{font-size:15px;font-weight:600;line-height:1.32;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.li:last-child{border-bottom:none}
+.tap{color:#ffb4a6;font-weight:700}.amber{color:#ffd24d}.red{color:#ff5c5c}.mute{color:#a8b0bc}
+.day{font-size:11px;font-weight:700;color:#9ec5ff;margin-top:6px;margin-bottom:2px}
+.day:first-of-type{margin-top:0}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.caption{font-size:14px;font-weight:600;color:#d0d5dc;line-height:1.4;padding:12px 14px}
+.ftr{margin-top:auto;display:flex;justify-content:space-between;align-items:flex-end;gap:12px;font-size:11px;font-weight:500;color:#a8b0bc;padding-top:8px;border-top:1px solid rgba(255,255,255,.14)}
+.ftr .note{max-width:64%;line-height:1.35}
+.badge{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#ffd24d;padding:0 2px}
+.num{font-size:32px;font-weight:700;letter-spacing:-.02em;line-height:1.1}
+.sub{font-size:14px;font-weight:500;color:#a8b0bc;margin-top:6px;line-height:1.3}
+
+.hero{min-height:280px}
+.hero .v{font-size:44px}
+.call{padding:16px 18px}
+.call .k{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#c9b6ff}
+.call .v{font-size:22px;font-weight:700;margin-top:8px;line-height:1.3;color:#fff}
+
+/* Oct 4 walk-by scale: same chrome, bigger type for a 1080x1920 phone glance */
+.panel{padding:24px 32px 22px;gap:22px}
+.hdr{padding:16px 22px}
+.brand img{height:70px}
+.eyebrow{font-size:17px;margin-top:10px}
+.title{font-size:54px;margin-top:2px}
+.asof{font-size:22px;margin-top:8px}
+.chip{font-size:19px;padding:13px 20px}
+.where{font-size:24px;padding:0 6px}
+.hero{min-height:0;padding:30px 30px 26px;border-color:rgba(255,193,77,.38)}
+.hero .k{font-size:19px;color:#ffc14d}
+.hero .v{font-size:66px;line-height:1.08;margin-top:12px}
+.hero .s{font-size:27px;margin-top:14px;color:#c4cad3}
+.hero .day{font-size:20px;color:#ffc14d;margin-top:22px;margin-bottom:4px;letter-spacing:.06em;text-transform:uppercase}
+.hero .li{font-size:29px;padding:4px 0}
+.card{padding:22px 24px}
+.h{font-size:18px;margin-bottom:12px}
+.li{font-size:27px;line-height:1.3;padding:8px 0}
+.num{font-size:48px}
+.sub{font-size:25px;margin-top:10px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.stat{padding:22px 22px}
+.stat .lab{font-size:17px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#9ec5ff}
+.stat .num{margin-top:8px;color:#a8b0bc}
+.stat .sub{color:#8f97a3}
+.flag{font-size:26px;font-weight:500;line-height:1.35;color:#a8b0bc;padding:18px 22px}
+.flag b{font-weight:700;color:#c4cad3;letter-spacing:.12em;text-transform:uppercase;font-size:17px;display:block;margin-bottom:6px}
+.call .k{font-size:18px}
+.call .v{font-size:42px;margin-top:10px;line-height:1.2}
+.call{padding:24px 26px}
+.quiet{font-size:25px;font-weight:600;color:#a8b0bc;padding:16px 22px}
+.ftr{font-size:18px;padding-top:12px}
+</style></head>
+<body><div class="panel">
+  <div class="hdr glass">
+    <div>
+      <div class="brand"><img src="wardos-mark-header.png" height="70" alt="WardOS"/></div>
+      <div class="eyebrow">WARDOS-SUNDAY-BODY · VITA → DAN</div>
+      <div class="title">Sunday Body</div>
+      <div class="asof">Sun Oct 11 · week of Oct 4 to Oct 11 · Wellness Project</div>
+    </div>
+    <div class="chip">KIDS WEEK</div>
+  </div>
+  <div class="where">Overland Park · kids with Dan through Fri Oct 16</div>
+  <div class="hero glass">
+    <div class="k">Next week · Oct 12 to Oct 18 · the plan</div>
+    <div class="v">Home bodyweight, soft. Talk&#8209;test walks, 20 to 30 min.</div>
+    <div class="s">Plus the fixed 5-min floor trio: hip flexor, thoracic, hamstring. Keep sessions tiny around the kids. No make-up grind.</div>
+    <div class="day">Sat Oct 17 · fly BNA → CLE</div>
+    <div class="li">Walk + the 5-min mobility. Cleveland weekend, back Sun Oct 18.</div>
+  </div>
+  <div class="card glass body">
+    <div class="h">This week · Oct 4 to Oct 11</div>
+    <div class="num">0 sessions logged</div>
+    <div class="sub">Nashville week ended Fri Oct 9 with the drive home. Every day was a soft call because the feed is dark.</div>
+  </div>
+  <div class="grid2">
+    <div class="stat glass">
+      <div class="lab">Sleep</div>
+      <div class="num">missing</div>
+      <div class="sub">empty since 9/20</div>
+    </div>
+    <div class="stat glass">
+      <div class="lab">Weight</div>
+      <div class="num">nothing new</div>
+      <div class="sub">last 221.1 lb · 9/17</div>
+    </div>
+    <div class="stat glass">
+      <div class="lab">Resting HR</div>
+      <div class="num">missing</div>
+      <div class="sub">empty since 9/20</div>
+    </div>
+    <div class="stat glass">
+      <div class="lab">HRV</div>
+      <div class="num">missing</div>
+      <div class="sub">empty since 9/20</div>
+    </div>
+  </div>
+  <div class="flag glass"><b>Data flag</b>Feed dark: sleep, watch, scale not syncing, so numbers are stale or missing.</div>
+  <div class="call glass">
+    <div class="k">Mind</div>
+    <div class="v">Kids are home. Be here for it.</div>
+  </div>
+  <div class="quiet glass">Quiet: fuel · meds/pack</div>
+  <div class="ftr">
+    <span class="note">as-of Sun Oct 11 · Wellness Project · Vita</span>
+    <span>WardOS-Sunday-Body</span>
+  </div>
+</div></body></html>
