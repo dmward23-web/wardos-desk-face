@@ -2,21 +2,18 @@
   "schema": "board-os.cash.packet.v1",
   "layer": "Desk",
   "mode": "LIVE",
-  "status": "LIVE",
-  "stale": false,
   "lockedAt": "2026-10-20T07:25:00-05:00",
   "as_of": "2026-10-20",
-  "asOf": "2026-10-08T22:15:00-05:00",
   "asOfLabel": "Tue 20 Oct ~7:25a CT · LIVE · Finance · Wells Everyday …6854",
-  "restampAsOf": "2026-10-15T07:25:00-05:00",
-  "restampedAt": "2026-10-15T07:25:00-05:00",
+  "stale": false,
+  "source": "LIVE · Finance (Plaid, Wells refresh 2026-10-19 ~6:29p CT) · Wells Everyday …6854 AVAILABLE $11,404.07 · weekday money desk 2026-10-20",
   "available": 11404.07,
-  "current": 14124.86,
-  "holds": 68.7,
   "discGate": {
     "threshold": 15000,
     "state": "CLOSED",
     "posture": "DISC_0",
+    "discretionary": 0,
+    "swExtra": 0,
     "display": "<$15k → GATE CLOSED · disc $0 · overlays frozen · swExtra 0"
   },
   "eoy": {
@@ -33,34 +30,665 @@
     "killLedgerClause": "OFF",
     "state": "SHORT"
   },
+  "freeze": {
+    "discretionary": 0,
+    "swExtra": 0,
+    "guildExtra": "PAUSED",
+    "posture": "GATE CLOSED · disc $0 · overlays frozen · EOY SHORT $8,595.93 · last-yes",
+    "stillRuns": [
+      "SW Priority …0694 Autopay statement (Nov/Dec ≤ $1,550)",
+      "Apple Card statement Autopay $1,619.95 Wells 10/31",
+      "Support 2 of 2 $2,499 ~10/16",
+      "Therapy Phase 1 Dan ~$1,044/mo LOCKED",
+      "SuperGrok Plus ~$109/mo KEEP renews 10/30",
+      "YouTube TV KEEP",
+      "Spotify Basic $12.99 KEEP",
+      "M365 Personal $9.99 from 10/26 KEEP"
+    ]
+  },
   "southwest": {
     "last4": "0694",
+    "label": "Southwest Priority …0694",
     "autopay": true,
     "balance": 9323.62,
     "statementAmount": null,
     "statementDisplay": "Oct stmt paid $5,250.88 on 10/02",
     "due": null,
     "extraFromWells": 0,
-    "extraDisplay": "$0"
+    "extraDisplay": "$0",
+    "note": "Oct Autopay $5,250.88 posted Wells 10/05 · bal $6,563.03 LIVE · Nov/Dec Autopay ≤ $1,550 · extra $0",
+    "remainingStatement": null,
+    "remainingStatementDisplay": "n/a (Oct cliff posted)",
+    "novDecCap": 1550.0
   },
   "guild": {
+    "loanLast4": "1173",
+    "account": "00519-1001173",
     "monthlyPayment": 3589.57,
-    "extra": "PAUSED"
+    "additionalPrincipal": 0.0,
+    "additionalEscrow": 0.0,
+    "totalAutopay": 3589.57,
+    "drawDate": "1st",
+    "bankLast4": "6854",
+    "extra": "PAUSED",
+    "asOf": "2026-09-23T15:30:00-05:00",
+    "source": "Guild Autopay screen snap LIVE",
+    "evidenceId": "1m-EpirhLAzoXo_Vqh041rmt_KwxfQM9s",
+    "note": "statement-only · never double-count · updated successfully emailed dmward23"
   },
+  "tcl": {
+    "amount": null,
+    "state": "UNKNOWN",
+    "note": "TCL 50Q77K Nashville amount UNKNOWN until charge posts"
+  },
+  "footnote": {
+    "jacobsConcurAR": "OPEN Jacobs/Concur biz-travel AR $1,970.10 — NOT in AVAILABLE",
+    "costcoOpenPayable": "OPEN Costco order 1310376316 payable $587.15 PENDING last-yes · Citi · Allstate $71.33 refund CLOSED 2026-09-25 (separate line) · Atlas owns withdraw of provisional credit · Ledger last-yes before repay · LEGIT accident dispute",
+    "erinZelle": "Erin $690 Zelle = Costco TV+groceries settle · not overlay",
+    "midwestKristinAR": "OPEN Midwest Kristin AR $119.60 — NOT in AVAILABLE",
+    "holds": "Wells pending Riverside Wellness −$153.09 · current $11,557.16 · AVAILABLE $11,404.07 (LIVE · Finance Tue 20 Oct ~7:25a CT)",
+    "kristinAR": "OPEN Kristin combined ~$553.70 (UA 259.33 + MA 119.60 + Art 100 + MA 10/01 31.20 + MA 10/06 31.20 + Stanley 7.13 + Freckle 5.24) soft-due was Fri 10/9",
+    "diningBreachOct": "Oct dining HARD $0 breach ~$279 MTD (Glory Days×2 + DoorDash Gus + McD×2 + Nectar)",
+    "urbanAir": "Urban Air Unleashed $28.38 Autopay DECLINED on dead Visa …0972 — keep/kill + card update"
+  },
+  "boards": {
+    "index": "desk/desk-index.html",
+    "freeze": "desk/desk-freeze.html",
+    "cash": "desk/desk-cash.html",
+    "autopay": "desk/desk-autopay.html",
+    "eoy": "desk/desk-eoy.html",
+    "cards": "desk/desk-cards.html",
+    "envelopes": "desk/desk-envelopes.html",
+    "refresh": "desk/desk-refresh.html",
+    "gallery": "desk/desk-gallery.html",
+    "cfo": "desk/desk-cfo.html",
+    "cfoPacket": "data/cfo-glass.json"
+  },
+  "note": "LIVE Wells restamp · AVAILABLE $15,264.59 · LIVE · Plaid 2026-10-08 ~10:15p CT · EOY $20k floor SHORT $4,735.41 · GATE OPEN (≥$15k) · ask-before-buys · kill-Ledger OFF · pending Jacobs payroll +$6,599.56 − WaterOne Autopay $48.44 (available>current) · Costco OPEN $587.15 · Jacobs AR $1,970.10",
+  "asOf": "2026-10-08T22:15:00-05:00",
+  "status": "LIVE",
+  "session": "LIVE Wells · Plaid restamp · Ledger nightly harvest · Thu 8 Oct ~10:15p CT",
+  "notes": "LIVE · Plaid 2026-10-08 ~10:15p CT: Wells Everyday …6854 AVAILABLE $15,264.59 (current $8,713.47, pending net +$6,551.12). pending Jacobs payroll +$6,599.56 − WaterOne Autopay $48.44 (available>current). EOY $20k floor SHORT $4,735.41. GATE OPEN (≥$15k) · ask-before-buys. Kill-Ledger OFF. SW …0694 $6,420.89. IRA FDRXX cash. Never raid IRA/HSA/401k. No SoFi.",
+  "staleNote": "LIVE stamp current · next Plaid/portal snap supersedes",
+  "ledgerRestamp": {
+    "at": "2026-10-08T22:15:00-05:00",
+    "label": "Thu 8 Oct ~10:15p CT · LIVE · Plaid",
+    "by": "Ledger",
+    "source": "LIVE · Plaid Wells Everyday …6854",
+    "note": "AVAILABLE $15,264.59 · current $8,713.47 · pending net +$6,551.12 · GATE OPEN · EOY SHORT $4,735.41 · kill OFF · was $9,076.79 (10/5–10/7)"
+  },
+  "restampAsOf": "2026-10-15T07:25:00-05:00",
+  "fixed": {
+    "superGrok": 109.35,
+    "therapyPhase1Monthly": 1044,
+    "therapyNote": "Phase 1 Dan ~$1,044/mo locked",
+    "overlays": "RING FIRST EXTRA · home behind · ask-before-buys",
+    "overlaysList": [
+      "Christmas",
+      "Erin",
+      "Hayes",
+      "ring FIRST EXTRA",
+      "home behind ring"
+    ],
+    "tax": "UNKNOWN",
+    "taxNote": "refund-or-owe UNKNOWN (no withholding stub)"
+  },
+  "restampedAt": "2026-10-15T07:25:00-05:00",
+  "restampSource": "LIVE · Plaid Wells Everyday …6854 · Ledger nightly harvest",
+  "activeCash": {
+    "balance": 872.44,
+    "statementAmount": 67.45,
+    "due": "2026-10-15",
+    "lastLive": "2026-09-16",
+    "note": "statement Autopay"
+  },
+  "apple": {
+    "autopay": true,
+    "note": "statement Autopay"
+  },
+  "therapy": {
+    "locked": true,
+    "rate": 240,
+    "boys": "1×/mo joint",
+    "ainsleyPhase1": "weekly ~3 mo then 2×/mo",
+    "danPhase1Mo": 1044,
+    "doNotCut": true
+  },
+  "superGrok": {
+    "plan": "Plus",
+    "monthly": 109.35,
+    "subtotal": 100.0,
+    "tax": 9.35,
+    "lastCharge": "2026-08-23",
+    "expectedRenew": "2026-09-23",
+    "sepRenew": "NO_CHARGE",
+    "note": "KEEP Plus locked 9/25 · no Sep 23 Apple receipt/SW ~$109 · treat miss as dead until re-up last-yes · cash.json was wrongly Heavy $30"
+  },
+  "overlays": {
+    "state": "RING_FIRST_EXTRA",
+    "until": "floor CLEAR · ring first extra on directional · last-yes each buy",
+    "items": [
+      "ring ~$10k FIRST EXTRA · funded $0 · last-yes · NOT blocked by floor",
+      "home behind ring",
+      "Christmas",
+      "Erin ~$1k",
+      "Hayes $150"
+    ],
+    "note": "26 Sep law · S Fund REMOVED · ask Ledger before buys · last-yes before any buy/overlay"
+  },
+  "tax": {
+    "asOf": "2026-09-28T19:50:00-05:00",
+    "asOfLabel": "Mon 28 Sep ~7:50p CT",
+    "source": "LIVE · Wells Everyday …6854 AVAILABLE $19,961.90 · current $20,577.95 · holds ~$616 · Finance month-end close · Ledger restamp Mon 28 Sep ~7:50p CT",
+    "mission": "24% band via 401k max without blowing Wells $20k floor · floor SHORT $38.10 · GATE OPEN · kill-Ledger OFF",
+    "gate": "OPEN",
+    "cash": {
+      "available": 19961.9,
+      "current": 20577.95,
+      "holds": 616.05,
+      "disc": "ask-before-buys",
+      "freeze": false,
+      "floor15k": "OPEN · ≥$15k",
+      "kill20k": {
+        "target": 20000,
+        "gap": 38.1,
+        "short": 38.1,
+        "overage": 0,
+        "by": "2026-12-31",
+        "line": "SHORT"
+      }
+    },
+    "bracket": {
+      "nowStay6": {
+        "rate": "32%",
+        "tiApprox": 204000,
+        "note": "EST if stay 6%"
+      },
+      "afterMax": {
+        "rate": "24%",
+        "tiApprox": 195000,
+        "fedSaveApprox": 2900,
+        "note": "EST if EE max · exit 32%→24%"
+      },
+      "hohExit": 202000
+    },
+    "vanguard401k": {
+      "plan": "Jacobs/Vanguard …0383",
+      "rate": "6%",
+      "status": "HOLD 6% · GATE OPEN for consideration · last-yes before raise",
+      "biweekly": 606.21,
+      "match": "full · 75% of first 6%",
+      "eeYtd": 10912,
+      "balanceApprox": 12098.2,
+      "eeMax": 24500,
+      "maxed": false,
+      "holdRule": "NEVER cut below 6% · NEVER raid for Wells · Dan last-yes on Vanguard click · gate OPEN but HOLD until last-yes"
+    },
+    "hsa": "fill leftover when cash allows (2025 left room)",
+    "kids": {
+      "evenYear": "Ainsley+Hayes (2)",
+      "form8332": "if needed",
+      "refundOrOwe": "UNKNOWN · need stubs"
+    },
+    "tnNights": {
+      "countApprox": 189,
+      "range": "180–195",
+      "domicile": "KS stands"
+    },
+    "glassTitle": "TAX / 401k",
+    "glassFields": [
+      "Bracket now (stay 6%): 32% · TI ~$204k",
+      "Bracket after max: 24% · TI ~$195k · ~$2.9k fed save EST",
+      "401k: EE YTD ~$10,912 · rate 6% HOLD · bal $12,098.20 · NOT maxed · GATE OPEN consider / last-yes",
+      "Cash: AVAILABLE $19,961.90 · GATE OPEN · EOY SHORT $38.10 · kill OFF · holds ~$616",
+      "Midwest Anxiety: Dan-paid YTD $920",
+      "GATE OPEN · ask-before-buys · floor SHORT $38.10",
+      "HSA: fill leftover when cash allows",
+      "Kids: even-year Ainsley+Hayes · 8332 if needed · refund/owe UNKNOWN",
+      "TN nights ~189 · KS domicile stands",
+      "Never raid retirement · Dan last-yes on Vanguard click · S Fund REMOVED"
+    ],
+    "taxMedicalLine": "Midwest Anxiety Dan-paid YTD $920"
+  },
+  "recommend": "LIVE $15,264.59 · GATE OPEN (≥$15k) · ask-before-buys · EOY SHORT $4,735.41 · kill OFF · never raid IRA/HSA/401k",
+  "classification": {
+    "erinZelle_2026_09_19": {
+      "amount": 690.0,
+      "parts": [
+        650.0,
+        40.0
+      ],
+      "class": "Costco TV + groceries to KC (Dan)",
+      "not": "gift overlay",
+      "alignsWith": "Costco Lenexa $685.95 + $6.95 = $692.90"
+    },
+    "pendingNetted": {
+      "venmo": 391.0,
+      "appleCash": 25.0,
+      "note": "historical netting · LIVE AVAILABLE $19,961.90 (current $20,577.95 · holds ~$616) · as-of Tue 29 Sep ~7:30a CT"
+    }
+  },
+  "mission24": {
+    "lockedAt": "2026-09-21T13:39:00-05:00",
+    "lockedBy": "Dan NO EXCEPTION · Ledger+Atlas co-own",
+    "title": "24% federal band via 401k max · Wells $20k floor SHORT $38.10 · GATE OPEN · kill-Ledger OFF",
+    "wells": {
+      "available": 19961.9,
+      "current": 20577.95,
+      "holds": 616.05,
+      "asOf": "2026-09-28T19:50:00-05:00",
+      "disc": "ask-before-buys",
+      "freeze": false,
+      "gate15k": "OPEN · ≥$15k",
+      "kill20k": {
+        "floor": 20000,
+        "gap": 38.1,
+        "short": 38.1,
+        "overage": 0,
+        "by": "2026-12-31",
+        "line": "SHORT"
+      },
+      "killLedgerClause": "OFF",
+      "source": "LIVE · Wells Everyday …6854 AVAILABLE $19,961.90 · current $20,577.95 · holds ~$616 · Finance month-end close · Ledger restamp Mon 28 Sep ~7:50p CT",
+      "pending": 616.05
+    },
+    "vanguard401k": {
+      "plan": "Jacobs/Vanguard …0383",
+      "rate": "6% pre-tax",
+      "biweekly": 606.21,
+      "match": "full · 75% of first 6%",
+      "eeYtd": 10911.78,
+      "balanceApprox": 12098.2,
+      "eeMax": 24500,
+      "roomApprox": "~$8.7–13.6k depending on catch-up",
+      "hold": "NEVER cut below 6% · NEVER raid for Wells · GATE OPEN for consideration · HOLD 6% until last-yes"
+    },
+    "taxPencil": {
+      "stay6pct": "TI ~$204k · 32% band",
+      "maxDefer": "TI ~$195k · 24% band · ~$2.9k fed save",
+      "takeHomeThin": "~$6–9k this year if catch-up hard",
+      "hohExit": "~$202k HoH to exit 32%→24%"
+    },
+    "atlasLane": [
+      "TIME — no discretionary creep",
+      "no calendar money events",
+      "board LIVE cash tiles honest",
+      "ask-before-buys · last-yes before any buy/overlay",
+      "ring FIRST EXTRA on directional · home behind",
+      "S Fund REMOVED from LIVE",
+      "GATE OPEN → help Vanguard % when Dan last-yes · no auto raise"
+    ],
+    "ledgerLane": [
+      "live AVAILABLE / EOY path / when to flip raise",
+      "tax pencil",
+      "never invent · never file · never cut below 6% · never raid retirement",
+      "score GATE to Atlas for board"
+    ],
+    "operating": {
+      "askLedgerBeforeBuys": true,
+      "overlays": "ring FIRST EXTRA · home behind · S Fund REMOVED",
+      "therapy": "funded",
+      "superGrok": 30,
+      "gate": "OPEN",
+      "killLedger": "OFF"
+    },
+    "taxGlass": {
+      "asOf": "2026-09-28T19:50:00-05:00",
+      "asOfLabel": "Mon 28 Sep ~7:50p CT",
+      "source": "LIVE · Wells Everyday …6854 AVAILABLE $19,961.90 · current $20,577.95 · holds ~$616 · Finance month-end close · Ledger restamp Mon 28 Sep ~7:50p CT",
+      "mission": "24% band via 401k max without blowing Wells $20k floor · floor SHORT $38.10 · GATE OPEN · kill-Ledger OFF",
+      "gate": "OPEN",
+      "cash": {
+        "available": 19961.9,
+        "current": 20577.95,
+        "holds": 616.05,
+        "disc": "ask-before-buys",
+        "freeze": false,
+        "floor15k": "OPEN · ≥$15k",
+        "kill20k": {
+          "target": 20000,
+          "gap": 38.1,
+          "short": 38.1,
+          "overage": 0,
+          "by": "2026-12-31",
+          "line": "SHORT"
+        }
+      },
+      "bracket": {
+        "nowStay6": {
+          "rate": "32%",
+          "tiApprox": 204000,
+          "note": "EST if stay 6%"
+        },
+        "afterMax": {
+          "rate": "24%",
+          "tiApprox": 195000,
+          "fedSaveApprox": 2900,
+          "note": "EST if EE max · exit 32%→24%"
+        },
+        "hohExit": 202000
+      },
+      "vanguard401k": {
+        "plan": "Jacobs/Vanguard …0383",
+        "rate": "6%",
+        "status": "HOLD 6% · GATE OPEN for consideration · last-yes before raise",
+        "biweekly": 606.21,
+        "match": "full · 75% of first 6%",
+        "eeYtd": 10912,
+        "balanceApprox": 12098.2,
+        "eeMax": 24500,
+        "maxed": false,
+        "holdRule": "NEVER cut below 6% · NEVER raid for Wells · Dan last-yes on Vanguard click · gate OPEN but HOLD until last-yes"
+      },
+      "hsa": "fill leftover when cash allows (2025 left room)",
+      "kids": {
+        "evenYear": "Ainsley+Hayes (2)",
+        "form8332": "if needed",
+        "refundOrOwe": "UNKNOWN · need stubs"
+      },
+      "tnNights": {
+        "countApprox": 189,
+        "range": "180–195",
+        "domicile": "KS stands"
+      },
+      "glassTitle": "TAX / 401k",
+      "glassFields": [
+        "Bracket now (stay 6%): 32% · TI ~$204k",
+        "Bracket after max: 24% · TI ~$195k · ~$2.9k fed save EST",
+        "401k: EE YTD ~$10,912 · rate 6% HOLD · bal $12,098.20 · NOT maxed · GATE OPEN consider / last-yes",
+        "Cash: AVAILABLE $19,961.90 · GATE OPEN · EOY SHORT $38.10 · kill OFF · holds ~$616",
+        "Midwest Anxiety: Dan-paid YTD $920",
+        "GATE OPEN · ask-before-buys · floor SHORT $38.10",
+        "HSA: fill leftover when cash allows",
+        "Kids: even-year Ainsley+Hayes · 8332 if needed · refund/owe UNKNOWN",
+        "TN nights ~189 · KS domicile stands",
+        "Never raid retirement · Dan last-yes on Vanguard click · S Fund REMOVED"
+      ],
+      "taxMedicalLine": "Midwest Anxiety Dan-paid YTD $920"
+    },
+    "taxMedicalLine": "Midwest Anxiety Dan-paid YTD $920"
+  },
+  "sessionDeadAt": "2026-09-22T07:00:00-05:00",
+  "openArNote": "OPEN not in AVAILABLE: Midwest Kristin $119.60 · Jacobs/Concur biz-travel AR $1,970.10 · Costco order 1310376316 Hisense OPEN payable $587.15 PENDING (Citi) · Urban Air half+swim CLOSED",
+  "hsa": {
+    "available": 4282.41,
+    "asof": "2026-09-23T12:53:00-05:00",
+    "source": "Sofia snap",
+    "prefer_for_medical": true
+  },
+  "payable": {
+    "costco": {
+      "order": "1310376316",
+      "state": "OPEN",
+      "amount": 587.15,
+      "amountDisplay": "$587.15",
+      "status": "PENDING",
+      "lastYes": true,
+      "card": "Citi …8432 / …5112",
+      "note": "Atlas owns withdraw of provisional credit; Ledger last-yes before repay · Allstate $71.33 refund CLOSED 2026-09-25 (separate) · Hisense dispute payable STILL OPEN",
+      "classification": "LEGIT accident dispute",
+      "allstateRefund": {
+        "date": "2026-09-25",
+        "amount": 71.33,
+        "item": "ALLSTATE TV $65 item 1575685",
+        "state": "CLOSED",
+        "to": "Visa",
+        "source": "Gmail 1a0d901109fa5410"
+      }
+    }
+  },
+  "costToLive": {
+    "horizon": "2026 rem + 2027 + 2028 cliff",
+    "cliff": "May 2028",
+    "cliffNote": "¶32 maint first pay 2025-10-01 · 32 months · ends May 2028 · 2028 Jan–May full $4,998 CS+maint · Jun–Dec CS ASSUMED $2,600/mo",
+    "lean2026mo": 10973.89,
+    "dir2026": 1724.81,
+    "lean2027mo": 11144.4,
+    "dir2027": 1947.14,
+    "lean2028avg": 9921.03,
+    "dir2028avg": 3575.13,
+    "lean2029post": 9102.43,
+    "dir2029": 4810.49,
+    "commandBook": "01-Ledger-Cost-To-Live-LIVE.xlsx",
+    "commandBookId": "1exP3bAZ6EA9bEBQlEuWrV9s7VZZJxTR5",
+    "commandBookFolder": "1F3t_wCNCx2BeHeIPzSW1gQZTG_aBOWeq",
+    "dining": 0,
+    "diningNote": "inside living",
+    "under15k": {
+      "discretionary": "ask-before-buys",
+      "overlays": "GATE OPEN · last-yes",
+      "display": "GATE OPEN · ask-before-buys · floor SHORT $4,735.41"
+    }
+  },
+  "taxMedicalLine": "Midwest Anxiety Dan-paid YTD $1,400",
+  "largeVariables": [
+    {
+      "id": "citi-5112-ofd",
+      "label": "Citi Costco …5112 replacement",
+      "amount": 0,
+      "state": "OUT_FOR_DELIVERY",
+      "note": "OFD · no $ · do not click Citi link · Costco payable $587.15 still OPEN",
+      "asOf": "2026-09-24T08:24:00-05:00",
+      "source": "Gmail citicards thread 1a0d391b92d868b0",
+      "replaces": "8432"
+    },
+    {
+      "id": "ainsley-vanity-pass-through",
+      "label": "Ainsley vanity install — Mom gift pass-through",
+      "amount": 0,
+      "amountTag": "TBD $150–$200",
+      "state": "PENDING_PASS_THROUGH",
+      "note": "Mom gift · prefer Mom IN then Jessy OUT · NOT disc/floor/overlay · job not booked",
+      "lockedAt": "2026-09-24T11:00:00-05:00"
+    }
+  ],
+  "recentPosts": [
+    {
+      "date": "2026-09-25",
+      "dir": "In",
+      "counterparty": "Costco.com Allstate refund · order 1310376316",
+      "amount": 71.33,
+      "envelope": "Cards",
+      "note": "Visa credit $71.33 · Allstate item 1575685 CLOSED · $587.15 payable STILL OPEN · no Wells move",
+      "status": "CLOSED"
+    },
+    {
+      "date": "2026-09-24",
+      "dir": "Info",
+      "counterparty": "Ainsley vanity — Mom gift pass-through lock",
+      "amount": 0,
+      "envelope": "Kids vanity (mom reimb)",
+      "note": "Jessy HD Pro · TBD $150–$200 · prefer Mom IN first · NOT disc/floor · Atlas last-look",
+      "status": "PENDING"
+    },
+    {
+      "date": "2026-09-24",
+      "dir": "Info",
+      "counterparty": "Citi Costco Anywhere Visa …5112 OFD",
+      "amount": 0,
+      "envelope": "Cards",
+      "note": "replace …8432 · thread 1a0d391b92d868b0 · CLOSED ops · payable $587.15 still OPEN",
+      "status": "CLOSED"
+    }
+  ],
+  "cards": {
+    "costcoAnywhere": {
+      "last4": "5112",
+      "replaces": "8432",
+      "status": "OUT_FOR_DELIVERY",
+      "balance": "UNKNOWN",
+      "balanceNote": "last Plaid $230.18 was on …8432 STALE",
+      "asOf": "2026-09-24",
+      "source": "Gmail OFD",
+      "autopsy": "do not click Citi view-message link"
+    }
+  },
+  "openWatch": [
+    "Ainsley vanity PASS-THROUGH PENDING (Mom gift · TBD $150–$200 · Mom IN→Jessy OUT · NOT disc)",
+    "Costco OPEN payable $587.15 order 1310376316 STILL OPEN (Allstate $71.33 refund CLOSED 9/25)"
+  ],
+  "passThrough": [
+    {
+      "id": "ainsley-vanity-pass-through",
+      "label": "Ainsley vanity install — Mom gift pass-through",
+      "amount": "TBD",
+      "amountNote": "$150 if under 3h else $200 — Jessy confirms",
+      "vendor": "Jessy / Home Depot Pro",
+      "phone": "913-808-8413",
+      "state": "PENDING",
+      "jobBooked": false,
+      "flow": "Mom Venmo Dan IN → Dan Venmo Jessy OUT",
+      "prefer": "Mom IN first then Jessy OUT",
+      "class": "reimbursed gift / kids vanity (mom)",
+      "notDisc": true,
+      "notFloorBurn": true,
+      "notOverlay": true,
+      "atlasLastLook": true,
+      "lockedAt": "2026-09-24T11:00:00-05:00",
+      "source": "Dan LOCK via Atlas"
+    }
+  ],
   "lastHarvest": {
     "at": "2026-10-20T07:25:00-05:00",
     "label": "Tue 20 Oct ~7:25a CT · LIVE · Plaid · weekday money desk confirm",
+    "quiet": false,
     "available": 11404.07,
     "availableDisplay": "$11,404.07",
     "current": 11557.16,
     "holds": 153.09,
+    "holdsNote": "pending Riverside Wellness −$153.09 (Dutchie Pay by Bank, 10/16)",
     "ira": "CASH",
     "iraTotal": 258649.49,
     "fdrxx": 258649.49,
     "fdrxxPct": 100,
     "costco": {
-      "8432": 159.12
-    }
+      "8432": 159.12,
+      "5112": 249.98,
+      "note": "Plaid twin — book …8432 only; …5112 has Allstate credit — do not double"
+    },
+    "sw": {
+      "0694": 9323.62,
+      "statement": 5283.69,
+      "due": "2026-10-02",
+      "paid": 5250.88,
+      "wellsDebit": "POSTED 2026-10-05"
+    },
+    "guild": {
+      "1173_balance": 462256.39,
+      "monthly": 3589.57,
+      "extra": "PAUSED"
+    },
+    "inboundEvidenceLocal": null,
+    "line": "Ledger: Wells AVAILABLE $11,404.07, down $2,652.09 vs 10/15 stamp (Zelle Support 2 of 2 −$2,499 posted 10/16, GFiber −$112.94 posted, Cursor +$44.24 posted, Riverside Wellness −$153.09 pending). GATE CLOSED. IRA: cash.",
+    "prismNotified": false,
+    "onArrivalForever": true,
+    "monthEnd": false,
+    "vsPrior": "−$2,652.09 vs Thu 10/15 stamp $14,056.16 · bridge: current 14,124.86 −112.94 GFiber +44.24 Cursor −2,499.00 Zelle WFCT22RZPGY2 = current 11,557.16; −153.09 Riverside Wellness pending = 11,404.07",
+    "inboundEvidenceId": null,
+    "inboundEvidenceMdId": null,
+    "inboundEvidenceLinks": {},
+    "deploy": "DEPLOY OK · Pages LIVE AVAILABLE 11,404.07 · commit e48b626",
+    "prismNotifiedAt": null,
+    "inboundEvidenceNote": "10 Inbound files 10/12 → Consume Proof A32–A41 (Kristin settlement KA!A170 OPEN unpaid)"
   },
-  "_published": "Public projection of board-os/data/cash.json (same paths) · shipped by desk-face-deploy.sh"
+  "harvestConfirm": {
+    "at": "2026-09-28T19:50:00-05:00",
+    "matchesLiveSnap": "month-end-close Finance",
+    "delta": -616.05,
+    "note": "Month-end AVAILABLE moved $19,961.90 (was $20,577.95) · holds ~$616 · EOY flipped CLEAR→SHORT $38.10"
+  },
+  "spendSqueeze": {
+    "at": "2026-09-28T19:50:00-05:00",
+    "available": 19961.9,
+    "gate": "OPEN",
+    "eoy": "SHORT",
+    "danPing": true,
+    "top": [
+      "YouTube TV $90.75/mo (~$1,089/yr) kill/keep — last SW 8/30",
+      "SuperGrok Plus Sep renew miss — no ~$109 charge; re-up last-yes if still want",
+      "Dining $0 breach 9/17 CFA $42.37 + Jimmy Johns $55.25 on SW"
+    ],
+    "atlas": [
+      "Apple Card Autopay flip Statement Balance still open on Dashboard",
+      "Spotify Wells single $18.99 9/16 — Billing screenshot confirm still open",
+      "Uber One renew 10/02 still KILL CANDIDATE — do not re-ask Dan"
+    ],
+    "nounou": "CLEAN no Sep pull"
+  },
+  "sundayLastYesCapital": {
+    "at": "2026-10-18T08:58:00-05:00",
+    "label": "Sun 18 Oct ~8:58a CT",
+    "line0": "ACTIVE",
+    "fdrxx": 258649.49,
+    "fzrox": 206519.59,
+    "fzilx": 51629.9,
+    "cashLeave": 500.0,
+    "packet": "/workspace/morning-board/2026-10-18-sunday-last-yes-capital.md",
+    "packetJson": "/workspace/morning-board/2026-10-18-sunday-last-yes-capital.json",
+    "prismTemplate": "WardOS-Sunday-Money",
+    "plate": "/workspace/plates/2026-10-18/sunday-money/wardos-sunday-money-2026-10-18.png",
+    "action": "PRINT ONLY · never trade"
+  },
+  "current": 14124.86,
+  "holds": 68.7,
+  "holdsNote": "pending GFiber −$112.94 (card 6935, 10/14) net of pending Cursor refund +$44.24",
+  "monthEndClose": {
+    "as_of": "2026-09-28T19:50:00-05:00",
+    "label": "Mon 28 Sep ~7:50p CT",
+    "available": 19961.9,
+    "availableDisplay": "$19,961.90",
+    "current": 20577.95,
+    "holdsApprox": 616,
+    "holdsExact": 616.05,
+    "gate": "OPEN",
+    "eoy": "SHORT",
+    "eoyGap": 38.1,
+    "eoyGapDisplay": "SHORT $38.10",
+    "killLedger": "OFF",
+    "askBeforeBuys": true,
+    "southwestBalance": 10326.38,
+    "southwestStatement": 5283.69,
+    "southwestDue": "2026-10-02",
+    "costco8432": 159.12,
+    "hisenseOpen": 587.15,
+    "guildBalance": 462256.39,
+    "guildMonthly": 3589.57,
+    "guildExtra": "PAUSED",
+    "ira5027": 257915.88,
+    "iraPosture": "FDRXX 100% CASH",
+    "line0": "PRINT ONLY · FZROX $205,932.70 / FZILX $51,483.18 / FDRXX leave $500 · waiting Dan execute",
+    "openARs": {
+      "jacobsConcur": 1970.1,
+      "midwestKristin": 119.6,
+      "costcoHisense": 587.15
+    },
+    "threeCount": {
+      "plaid": 94,
+      "sheetKnownActivity": 89,
+      "evidence": 16,
+      "ties": false,
+      "exceptionsPath": "/workspace/ledger/inbound/2026-09-28-month-end-close.md"
+    },
+    "softRailsNotInWells": [
+      "Erin Venmo $100 Beer IN",
+      "Meigan↔Birdsong $240 net $0",
+      "Google Device Access $5 on MC …6902"
+    ],
+    "oneAction": "ID hold drain (~$616 pending) — what pending?",
+    "source": "/workspace/ledger/inbound/2026-09-28-month-end-close.md"
+  },
+  "ira": {
+    "mask": "5027",
+    "status": "CASH",
+    "fdrxx": 258649.49,
+    "fzrox": 0,
+    "fzilx": 0,
+    "line0": "ACTIVE",
+    "ticket": {
+      "fzrox": 206519.59,
+      "fzilx": 51629.9,
+      "fdrxxLeave": 500.0
+    },
+    "asOf": "Sun 18 Oct ~8:58a CT"
+  }
 }
